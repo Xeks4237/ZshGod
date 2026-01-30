@@ -28,22 +28,16 @@
 # [ Sourcing and Loading extra stuff ]
 # Some snippet which allows to get directory where prompt is located
 # It allows uasge of ${0:h} to get plugin’s directory
-0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
-0="${${(M)0:#/*}:-$PWD/$0}"
+# 0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
+# 0="${${(M)0:#/*}:-$PWD/$0}"
 
-# Zsh module related to zle hooks
-autoload -Uz add-zle-hook-widget add-zsh-hook
-
-# Builtin zsh module for getting basic info from vcs systems
-autoload -Uz vcs_info
-
-# Allows using command substitutions in prompt variable directly
+# Allows using command substitutions in prompt
 setopt PROMPT_SUBST
 
 # Files with functions to use in prompt
-source ${0:h}/functions_rectangular.zsh
-source ${0:h}/functions_right-to-left_arrowed.zsh
-source ${0:h}/functions_left-to-right_arrowed.zsh
+source functions_rectangular.zsh
+source functions_right-to-left_arrowed.zsh
+source functions_left-to-right_arrowed.zsh
 
 # [ Prompt specific opts and Hooks for Functions ]
 # preexec hook for recording time when any command was runned, needed for exectime functions
@@ -128,6 +122,15 @@ prompt_zshgod_exectime_precmd() {
 # [ Prompt Scructure ]
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
+    # Allows using command substitutions in prompt
+    prompt_opts=(subst)
+
+    # Zsh module related to zsh hooks
+    autoload -Uz add-zsh-hook
+
+    # Builtin zsh module for getting basic info from vcs systems
+    autoload -Uz vcs_info
+
     # Echo nothing before setting up prompt to make it sparce
     echo ''
 
@@ -136,5 +139,10 @@ prompt_zshgod_setup() {
 
     # Variable which sets right side of prompt
     RPS1='%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
+
+    # Return 0 exit code to indicate that noting went wrong
+    return 0
 }
 
+# And actually run setup function
+prompt_zshgod_setup "$@"
