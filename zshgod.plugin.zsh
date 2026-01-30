@@ -137,8 +137,8 @@ prompt_zshgod_setup() {
     add-zsh-hook precmd vcs_info
 
     # [ Prompt Scructure ]
-    # Echo nothing before setting up prompt to make it sparce
-    echo ''
+    # Print nothing before setting up prompt to make it sparce
+    print ''
 
     # Variable which sets left side of prompt
     PS1='%B$(prompt_zshgod_left-to-right_time)$(prompt_zshgod_left-to-right_root-indicator)%b '
