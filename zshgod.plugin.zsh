@@ -36,16 +36,14 @@
 0="${${(M)0:#/*}:-$PWD/$0}"
 
 # Set variable to be equal to directory with prompt files using argzero
-ZSHGOD_HOME="${0:h}"
-
-setopt PROMPT_SUBST
+export ZSHGOD_HOME="${0:h}"
 
 # [ Global Usage Variables ]
 # Variable which sets amount of exectime after exectime is not hided
-ZSHGOD_EXECTIME_MIN=5
+export ZSHGOD_EXECTIME_MIN=5
 
 # Builtin variable which sets indentation for prompts right side
-ZLE_RPROMPT_INDENT=0
+export ZLE_RPROMPT_INDENT=0
 
 # zstyle options to enable or disable some vcs systems which you don't use
 zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
@@ -109,6 +107,9 @@ prompt_zshgod_exectime_precmd() {
 
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
+    # Allows using command substitutions in prompt
+    prompt_opts=(subst)
+
     # Zsh module related to zsh hooks
     autoload -Uz add-zsh-hook
 
@@ -116,9 +117,9 @@ prompt_zshgod_setup() {
     autoload -Uz vcs_info
 
     # Files with functions to use in prompt
-    source $ZSHGOD_HOME/functions_rectangular.zsh
-    source $ZSHGOD_HOME/functions_right-to-left_arrowed.zsh
-    source $ZSHGOD_HOME/functions_left-to-right_arrowed.zsh
+    source $ZSHGOD_HOME/functions_rectangular.zsh 2>/dev/null
+    source $ZSHGOD_HOME/functions_right-to-left_arrowed.zsh 2>/dev/null
+    source $ZSHGOD_HOME/functions_left-to-right_arrowed.zsh 2>/dev/null
 
     # [ Prompt specific opts and Hooks for Functions ]
     # preexec hook for recording time when any command was runned, needed for exectime functions
@@ -129,9 +130,6 @@ prompt_zshgod_setup() {
 
     # vcs_info function for gettings info about current vcs
     add-zsh-hook precmd vcs_info
-
-    # Allows using command substitutions in prompt
-    prompt_opts=(subst)
 
     # [ Prompt Scructure ]
     # Echo nothing before setting up prompt to make it sparce
