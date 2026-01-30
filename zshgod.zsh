@@ -36,7 +36,9 @@ autoload -Uz vcs_info
 setopt PROMPT_SUBST
 
 # Files with functions to use in prompt
-source "./functions*.zsh"
+source "./functions_rectangular.zsh"
+source "./functions_right-to-left_arrowed.zsh"
+source "./functions_left-to-right_arrowed.zsh"
 
 # [ Prompt specific opts and Hooks for Functions ]
 # preexec hook for recording time when any command was runned, needed for exectime functions
