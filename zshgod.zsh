@@ -26,6 +26,11 @@
 # TODO: make '--help' or 'prompt_zshgod_help' function for help
 
 # [ Sourcing and Loading extra stuff ]
+# Some snippet which allows to get directory where prompt is located
+# It allows uasge of ${0:h} to get plugin’s directory
+0="${ZERO:-${${0:#$ZSH_ARGZERO}:-${(%):-%N}}}"
+0="${${(M)0:#/*}:-$PWD/$0}"
+
 # Zsh module related to zle hooks
 autoload -Uz add-zle-hook-widget add-zsh-hook
 
@@ -36,9 +41,9 @@ autoload -Uz vcs_info
 setopt PROMPT_SUBST
 
 # Files with functions to use in prompt
-source "./functions_rectangular.zsh"
-source "./functions_right-to-left_arrowed.zsh"
-source "./functions_left-to-right_arrowed.zsh"
+source ${0:h}/functions_rectangular.zsh
+source ${0:h}/functions_right-to-left_arrowed.zsh
+source ${0:h}/functions_left-to-right_arrowed.zsh
 
 # [ Prompt specific opts and Hooks for Functions ]
 # preexec hook for recording time when any command was runned, needed for exectime functions
