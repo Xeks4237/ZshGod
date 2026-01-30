@@ -120,9 +120,9 @@ prompt_zshgod_setup() {
     autoload -Uz vcs_info
 
     # Files with functions to use in prompt
-    source $ZSHGOD_HOME/functions_rectangular.zsh 2>/dev/null
-    source $ZSHGOD_HOME/functions_right-to-left_arrowed.zsh 2>/dev/null
-    source $ZSHGOD_HOME/functions_left-to-right_arrowed.zsh 2>/dev/null
+    source $ZSHGOD_HOME/lib/functions_rectangular.zsh 2>/dev/null
+    source $ZSHGOD_HOME/lib/functions_right-to-left_arrowed.zsh 2>/dev/null
+    source $ZSHGOD_HOME/lib/functions_left-to-right_arrowed.zsh 2>/dev/null
 
     # [ Prompt specific opts and Hooks for Functions ]
     # preexec hook for recording time when any command was runned, needed for exectime functions
