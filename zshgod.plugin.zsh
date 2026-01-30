@@ -39,7 +39,7 @@
 export ZSHGOD_HOME="${0:h}"
 
 # Adds directory with extra files needed for funxtions to fpath
-fpath=$($fpath $ZSHGOD_HOME/lib/)
+fpath=($fpath $ZSHGOD_HOME/lib)
 
 # [ Global Usage Variables ]
 # Variable which sets amount of exectime after exectime is not hided
@@ -120,9 +120,9 @@ prompt_zshgod_setup() {
     autoload -Uz vcs_info
 
     # Files with functions to use in prompt
-    source $ZSHGOD_HOME/lib/functions_rectangular.zsh 2>/dev/null
-    source $ZSHGOD_HOME/lib/functions_right-to-left_arrowed.zsh 2>/dev/null
-    source $ZSHGOD_HOME/lib/functions_left-to-right_arrowed.zsh 2>/dev/null
+    source ${0:h}/lib/functions_rectangular.zsh
+    source $ZSHGOD_HOME/lib/functions_right-to-left_arrowed.zsh
+    source $ZSHGOD_HOME/lib/functions_left-to-right_arrowed.zsh
 
     # [ Prompt specific opts and Hooks for Functions ]
     # preexec hook for recording time when any command was runned, needed for exectime functions
@@ -147,7 +147,4 @@ prompt_zshgod_setup() {
     # Return 0 exit code to indicate that noting went wrong
     return 0
 }
-
-# And actually run setup function
-prompt_zshgod_setup "$@"
 
