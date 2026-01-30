@@ -23,6 +23,8 @@
 # They are used in 'prompt_zshgod_setup' function in end of this file
 # Each of functions are written inside of $() to evaluate its functionality
 # instead of just printing its name
+# NOTE: I am NOT going to use `` for substitution because it is BAD
+
 # TODO: make '--help' or 'prompt_zshgod_help' function for help
 
 # [ Sourcing and Loading extra stuff ]
