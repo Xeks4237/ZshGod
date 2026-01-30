@@ -45,9 +45,9 @@ autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
 # Files with functions to use in prompt
-source "${0:h}/functions_rectangular.zsh"
-source "${0:h}/functions_right-to-left_arrowed.zsh"
-source "${0:h}/functions_left-to-right_arrowed.zsh"
+source ${0:h}/functions_rectangular.zsh
+source ${0:h}/functions_right-to-left_arrowed.zsh
+source ${0:h}/functions_left-to-right_arrowed.zsh
 
 # [ Functions left to right in arrow style ]
 # Function for checking git repos if they are dirty
