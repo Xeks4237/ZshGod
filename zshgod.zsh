@@ -35,6 +35,9 @@
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
+# Set variable to be equal to directory with prompt files using argzero
+ZSHGOD_HOME="${0:h}"
+
 # Allows using command substitutions in prompt
 setopt PROMPT_SUBST
 
@@ -45,9 +48,9 @@ autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
 # Files with functions to use in prompt
-source ${0:h}/functions_rectangular.zsh
-source ${0:h}/functions_right-to-left_arrowed.zsh
-source ${0:h}/functions_left-to-right_arrowed.zsh
+source $ZSHGOD_HOME/functions_rectangular.zsh
+source $ZSHGOD_HOME/functions_right-to-left_arrowed.zsh
+source $ZSHGOD_HOME/functions_left-to-right_arrowed.zsh
 
 # [ Functions left to right in arrow style ]
 # Function for checking git repos if they are dirty
