@@ -36,7 +36,7 @@
 0="${${(M)0:#/*}:-$PWD/$0}"
 
 # Set variable to be equal to directory with prompt files using argzero
-ZSHGOD_HOME="${0:h}"
+ZSHGOD_HOME="${0:A:h}"
 
 # Adds directory with extra files needed for funxtions to fpath
 # fpath=($fpath $ZSHGOD_HOME/prompt_zshgod_setup)
