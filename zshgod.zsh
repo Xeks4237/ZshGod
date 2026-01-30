@@ -34,6 +34,12 @@
 # Allows using command substitutions in prompt
 setopt PROMPT_SUBST
 
+# Zsh module related to zsh hooks
+autoload -Uz add-zsh-hook
+
+# Builtin zsh module for getting basic info from vcs systems
+autoload -Uz vcs_info
+
 # Files with functions to use in prompt
 source functions_rectangular.zsh
 source functions_right-to-left_arrowed.zsh
@@ -525,15 +531,6 @@ prompt_zshgod_exectime_precmd() {
 # [ Prompt Scructure ]
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
-    # Allows using command substitutions in prompt
-    prompt_opts=(subst)
-
-    # Zsh module related to zsh hooks
-    autoload -Uz add-zsh-hook
-
-    # Builtin zsh module for getting basic info from vcs systems
-    autoload -Uz vcs_info
-
     # Echo nothing before setting up prompt to make it sparce
     echo ''
 
@@ -549,3 +546,4 @@ prompt_zshgod_setup() {
 
 # And actually run setup function
 prompt_zshgod_setup "$@"
+
