@@ -38,6 +38,9 @@
 # Set variable to be equal to directory with prompt files using argzero
 export ZSHGOD_HOME="${0:h}"
 
+# Adds directory with extra files needed for funxtions to fpath
+fpath=$($fpath $ZSHGOD_HOME/lib/)
+
 # [ Global Usage Variables ]
 # Variable which sets amount of exectime after exectime is not hided
 export ZSHGOD_EXECTIME_MIN=5
