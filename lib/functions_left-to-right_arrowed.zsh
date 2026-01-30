@@ -101,7 +101,7 @@ prompt_zshgod_left-to-right_sshonly_userandhostname() {
 }
 
 # Function which shows colored arrow with different color if current user is root
-local function prompt_zshgod_left-to-right_root-indicator () {
+prompt_zshgod_left-to-right_root-indicator() {
     print "%(!,%F{$ZSH_THM_RED}%S %K{$ZSH_THM_CRUST}#%k %s%f,%F{$ZSH_THM_GREEN}%S %K{$ZSH_THM_CRUST}\$%k %s%f)"
 }
 
