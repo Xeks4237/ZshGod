@@ -110,6 +110,13 @@ prompt_zshgod_exectime_precmd() {
     fi
 }
 
+# Function which is used mainly for making multiline prompt
+# It works by printing prompt segments on line before drowing actuall prompt
+prompt_zshgod_multiline() {
+    # Prints same segments as in actuall prompt
+    print '%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
+}
+
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
     # Allows using command substitutions in prompt
@@ -135,6 +142,39 @@ prompt_zshgod_setup() {
 
     # vcs_info function for gettings info about current vcs
     add-zsh-hook precmd vcs_info
+
+    for arg in "$@"; do
+        case "$arg" in
+            --multilined|-M)
+                print -P "$(prompt_zshgod_multiline)"
+                ;;
+
+            --color-rosewater=*)
+                ZSH_THM_ROSEWATER="${arg#--color-rosewater=}"
+                ;;
+
+            --color-green=*)
+                ZSH_THM_GREEN="${arg#--color-green=}"
+                ;;
+
+                # --color1|--color2)
+                #     # Error if someone wrote --color1 without =value or space-separated value
+                #     print -u2 "Error: $arg requires a value ( Use --color1=#rrggbb or --color1 #rrggbb )" >&2
+                #     exit 2
+                #     ;;
+
+            --*)
+                print -u2 "Unknown option: $arg" >&2
+                exit 1
+                ;;
+
+            *)
+                # If you still want to collect remaining positional arguments
+                # (but they must come AFTER all options in this style)
+                positional+=("$arg")
+                ;;
+        esac
+    done
 
     # [ Prompt Scructure ]
     # Print nothing before setting up prompt to make it sparce
