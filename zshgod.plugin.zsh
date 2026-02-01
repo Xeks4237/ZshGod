@@ -91,16 +91,7 @@ zstyle ':vcs_info:*' actionformats '%b|%a'
 zstyle ':vcs_info:*' formats '%b'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
-# [ Main Functions ]
-# Function which is used mainly for making multiline prompt
-# It works by printing prompt segments on line before drawing actuall prompt
-prompt_zshgod_multiline() {
-    if [[ $ZSHGOD_MULTILINED == true ]]; then
-        # Prints same segments as in actuall prompt
-        print -P '%B$(prompt_zshgod_left-to-right_sshonly_userandhostname)$(prompt_zshgod_left-to-right_current-pwd)$(prompt_zshgod_left-to-right_vcs-info)$(prompt_zshgod_left-to-right_git_info)$(prompt_zshgod_left-to-right_exectime)%b'
-    fi
-}
-
+# [ Main Structure ]
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
     # [ Prompt specific opts and Hooks for Functions ]
@@ -122,15 +113,9 @@ prompt_zshgod_setup() {
     # vcs_info function for gettings info about current vcs
     add-zsh-hook precmd vcs_info
 
-    # precmd hook for multilined prompt
-    add-zsh-hook precmd prompt_zshgod_multiline
-
     # Checks passed flags/args to function to make easy fast configuration
     for arg in "$@"; do
         case "$arg" in
-                # Makes '--multilined' flag to enable multilined prompt
-            --multilined|-M) export ZSHGOD_MULTILINED=true ;;
-
                 # [ Flags used to overwrite existing colors ]
             --color-rosewater=*) export ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
 
