@@ -123,6 +123,19 @@ prompt_zshgod_multiline() {
     print '%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
 }
 
+# [ Main Functions ]
+# Function which promptinit calls when changing prompt to something else
+prompt_cleanup() {
+    # Remove added hooks
+    add-zsh-hook -d prompt_zshgod_exectime_preexec
+    add-zsh-hook -d prompt_zshgod_exectime_precmd
+    add-zsh-hook -d vcs_info
+
+    # Clear prompt variables
+    PS1=''
+    RPS1=''
+}
+
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
     # Allows using command substitutions in prompt
