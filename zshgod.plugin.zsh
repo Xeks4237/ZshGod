@@ -17,53 +17,35 @@
 # %# => Shows '#' if shell is privileged, if not '%', its same as %(!,#,%%)
 # %(?,,) => prompt condition for doing some logic, %(condition,true,false)
 
-# [ List of custom functions ]
-# These are functions which are after being called or evaluated
-# will return one of the customly made pieces of prompt
-# They are used in 'prompt_zshgod_setup' function in end of this file
-# Each of functions are written inside of $() to evaluate its functionality
-# instead of just printing its name
-# NOTE: I am NOT going to use `` for substitution because it is BAD
-
 # TODO: make '--help' or 'prompt_zshgod_help' function for help
 
 # [ Sourcing and Loading extra stuff ]
-# Standarized way of handling finding plugin dir,
+# Standarized way of handling plugin directory,
 # regardless of functionargzero and posixargzero,
 # and with an option for a plugin manager to alter
 # the plugin directory (i.e. set ZERO parameter)
-# Allows using ${0:h} to get path of plugin
+# Allows using ${0:A:h} to get path of plugin
 # https://zdharma-continuum.github.io/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
-# Set variable to be equal to directory with prompt files using argzero
+# Set variable to absolute path to the directory containing this file
 ZSHGOD_HOME="${0:A:h}"
 
-# Files with functions to use in prompt
+# Source files with functions to use in prompt
 source $ZSHGOD_HOME/lib/functions_rectangular.zsh
 source $ZSHGOD_HOME/lib/functions_right-to-left_arrowed.zsh
 source $ZSHGOD_HOME/lib/functions_left-to-right_arrowed.zsh
 
-# Add files to fpath
-# NOTE: 'export' command here is not used, so do duplicates of current directory
+# Add prompt files to fpath variable
 fpath+=( $ZSHGOD_HOME/lib )
 
-# [ Global Usage Variables ]
+# [ Configuration Variables ]
 # Variable which sets amount of exectime after exectime is not hided
 export ZSHGOD_EXECTIME_MIN=5
 
 # Builtin variable which sets indentation for prompts right side
 export ZLE_RPROMPT_INDENT=0
-
-# zstyle options to enable or disable some vcs systems which you don't use
-zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
-# zstyle ':vcs_info:*' disable git svn
-
-# zstyle options to customize look of vcs_info
-zstyle ':vcs_info:*' actionformats '%b|%a'
-zstyle ':vcs_info:*' formats '%b'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
 # INFO: I used Catppuccin Mocha Colors from: https://github.com/catppuccin
 # Main colors
@@ -96,58 +78,35 @@ export ZSH_THM_MANTLE='#181825'
 export ZSH_THM_CRUST='#11111B'
 export ZSH_THM_BACKGROUND='#1E1E2E'
 
-# [ Functions needed for other functions which don't have visual look ]
-# Function which captures exectime before executing every command
-prompt_zshgod_exectime_preexec() {
-    # Saves value of $EPOCHSECONDS before executing command to variable
-    # Its for prompt_zshgod_exectime function
-    ZSHGOD_EXECTIME_START=$EPOCHSECONDS
-}
+# zstyle options to enable or disable some vcs systems which you don't use
+# zstyle ':vcs_info:*' disable git svn
+zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
-# Function which calculates exectime before drowing prompt
-prompt_zshgod_exectime_precmd() {
-    # Piece of code which calculated exectime before displaying prompt
-    # Its for prompt_zshgod_exectime function
-    if (( ${+ZSHGOD_EXECTIME_START} )); then
-        ZSHGOD_EXECTIME_DURATION=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
-        unset ZSHGOD_EXECTIME_START
-    else
-        unset ZSHGOD_EXECTIME_DURATION
-    fi
-}
-
-# Function which is used mainly for making multiline prompt
-# It works by printing prompt segments on line before drowing actuall prompt
-prompt_zshgod_multiline() {
-    # Prints same segments as in actuall prompt
-    print '%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
-}
+# zstyle options to customize look of vcs_info
+zstyle ':vcs_info:*' actionformats '%b|%a'
+zstyle ':vcs_info:*' formats '%b'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
 # [ Main Functions ]
-# Function which promptinit calls when changing prompt to something else
-prompt_cleanup() {
-    # Remove added hooks
-    add-zsh-hook -d prompt_zshgod_exectime_preexec
-    add-zsh-hook -d prompt_zshgod_exectime_precmd
-    add-zsh-hook -d vcs_info
-
-    # Clear prompt variables
-    PS1=''
-    RPS1=''
+# Function which is used mainly for making multiline prompt
+# It works by printing prompt segments on line before drawing actuall prompt
+prompt_zshgod_multiline() {
+    # Prints same segments as in actuall prompt
+    print -P '%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
 }
 
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
-    # Allows using command substitutions in prompt
-    prompt_opts=(bang cr percent sp subst)
+    # [ Prompt specific opts and Hooks for Functions ]
+    # Sets prompt specific zsh opts like prompt substitution
+    prompt_opts=( bang cr percent sp subst )
 
-    # Zsh module related to zsh hooks
+    # Load Zsh module related to zsh hooks
     autoload -Uz add-zsh-hook
 
     # Builtin zsh module for getting basic info from vcs systems
     autoload -Uz vcs_info
 
-    # [ Prompt specific opts and Hooks for Functions ]
     # preexec hook for recording time when any command was runned, needed for exectime functions
     add-zsh-hook preexec prompt_zshgod_exectime_preexec
 
@@ -161,66 +120,36 @@ prompt_zshgod_setup() {
     for arg in "$@"; do
         case "$arg" in
                 # Makes '--multilined' flag to enable multilined prompt
-            --multilined|-M)
-                export ZSHGOD_MULTILINED=true
-                ;;
+            --multilined|-M) export ZSHGOD_MULTILINED=true ;;
 
                 # [ Flags used to overwrite existing colors ]
-            --color-rosewater=*)
-                export ZSH_THM_ROSEWATER="${arg#--color-rosewater=}"
-                ;;
+            --color-rosewater=*) export ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
 
-            --color-flamingo=*)
-                export ZSH_THM_FLAMINGO="${arg#--color-flamingo=}"
-                ;;
+            --color-flamingo=*) export ZSH_THM_FLAMINGO="${arg#--color-flamingo=}" ;;
 
-            --color-pink=*)
-                export ZSH_THM_PINK="${arg#--color-pink=}"
-                ;;
+            --color-pink=*) export ZSH_THM_PINK="${arg#--color-pink=}" ;;
 
-            --color-mauve=*)
-                export ZSH_THM_MAUVE="${arg#--color-mauve=}"
-                ;;
+            --color-mauve=*) export ZSH_THM_MAUVE="${arg#--color-mauve=}" ;;
 
-            --color-red=*)
-                export ZSH_THM_RED="${arg#--color-red=}"
-                ;;
+            --color-red=*) export ZSH_THM_RED="${arg#--color-red=}" ;;
 
-            --color-maroon=*)
-                export ZSH_THM_MAROON="${arg#--color-maroon=}"
-                ;;
+            --color-maroon=*) export ZSH_THM_MAROON="${arg#--color-maroon=}" ;;
 
-            --color-peach=*)
-                export ZSH_THM_PEACH="${arg#--color-peach=}"
-                ;;
+            --color-peach=*) export ZSH_THM_PEACH="${arg#--color-peach=}" ;;
 
-            --color-yellow=*)
-                export ZSH_THM_YELLOW="${arg#--color-yellow=}"
-                ;;
+            --color-yellow=*) export ZSH_THM_YELLOW="${arg#--color-yellow=}" ;;
 
-            --color-green=*)
-                export ZSH_THM_GREEN="${arg#--color-green=}"
-                ;;
+            --color-green=*) export ZSH_THM_GREEN="${arg#--color-green=}" ;;
 
-            --color-teal=*)
-                export ZSH_THM_TEAL="${arg#--color-teal=}"
-                ;;
+            --color-teal=*) export ZSH_THM_TEAL="${arg#--color-teal=}" ;;
 
-            --color-sky=*)
-                export ZSH_THM_SKY="${arg#--color-sky=}"
-                ;;
+            --color-sky=*) export ZSH_THM_SKY="${arg#--color-sky=}" ;;
 
-            --color-sapphire=*)
-                export ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}"
-                ;;
+            --color-sapphire=*) export ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}" ;;
 
-            --color-blue=*)
-                export ZSH_THM_BLUE="${arg#--color-blue=}"
-                ;;
+            --color-blue=*) export ZSH_THM_BLUE="${arg#--color-blue=}" ;;
 
-            --color-lavender=*)
-                export ZSH_THM_LAVENDER="${arg#--color-lavender=}"
-                ;;
+            --color-lavender=*) export ZSH_THM_LAVENDER="${arg#--color-lavender=}" ;;
 
             --*)
                 print -u2 "Unknown option(s): $arg" >&2
