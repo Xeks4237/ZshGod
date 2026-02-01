@@ -41,9 +41,9 @@
 ZSHGOD_HOME="${0:A:h}"
 
 # Files with functions to use in prompt
-source $ZSHGOD_HOME/functions_rectangular.zsh
-source $ZSHGOD_HOME/functions_right-to-left_arrowed.zsh
-source $ZSHGOD_HOME/functions_left-to-right_arrowed.zsh
+source $ZSHGOD_HOME/lib/functions_rectangular.zsh
+source $ZSHGOD_HOME/lib/functions_right-to-left_arrowed.zsh
+source $ZSHGOD_HOME/lib/functions_left-to-right_arrowed.zsh
 
 fpath+=( $ZSHGOD_HOME )
 
