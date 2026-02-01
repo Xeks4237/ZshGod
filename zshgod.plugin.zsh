@@ -120,7 +120,7 @@ prompt_zshgod_setup() {
     for arg in "$@"; do
         case "$arg" in
                 # Flag which makes prompt sparse
-            --sparse=*) ZSHGOD_SPARSE=true ;;
+            --sparse) ZSHGOD_SPARSE=true ;;
 
                 # [ Flags used to overwrite existing colors ]
             --color-rosewater=*) ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
