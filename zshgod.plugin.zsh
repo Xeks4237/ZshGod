@@ -97,7 +97,7 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 prompt_zshgod_multiline() {
     if [[ $ZSHGOD_MULTILINED == true ]]; then
         # Prints same segments as in actuall prompt
-        print -P '%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
+        print -P '$(prompt_zshgod_left-to-right_sshonly_userandhostname)$(prompt_zshgod_left-to-right_current-pwd)$(prompt_zshgod_left-to-right_vcs-info)$(prompt_zshgod_left-to-right_git_info)$(prompt_zshgod_left-to-right_exectime)%b'
     fi
 }
 
