@@ -40,13 +40,10 @@
 # Set variable to be equal to directory with prompt files using argzero
 ZSHGOD_HOME="${0:A:h}"
 
-# Checks if plugin is loaded or added to fpath
-if [[ ${zsh_loaded_plugins[-1]} != */ZshGod && -z ${fpath[(r)${0:h}/functions]} ]]; then
-    fpath+=( "${0:h}/functions" )
-fi
-
-# Adds directory with extra files needed for funxtions to fpath
-# fpath=($fpath $ZSHGOD_HOME/prompt_zshgod_setup)
+# Files with functions to use in prompt
+source $ZSHGOD_HOME/functions/functions_rectangular.zsh
+source $ZSHGOD_HOME/functions/functions_right-to-left_arrowed.zsh
+source $ZSHGOD_HOME/functions/functions_left-to-right_arrowed.zsh
 
 # [ Global Usage Variables ]
 # Variable which sets amount of exectime after exectime is not hided
@@ -132,11 +129,6 @@ prompt_zshgod_setup() {
 
     # Builtin zsh module for getting basic info from vcs systems
     autoload -Uz vcs_info
-
-    # Files with functions to use in prompt
-    # source $ZSHGOD_HOME/functions/functions_rectangular.zsh
-    # source $ZSHGOD_HOME/functions/functions_right-to-left_arrowed.zsh
-    # source $ZSHGOD_HOME/functions/functions_left-to-right_arrowed.zsh
 
     # [ Prompt specific opts and Hooks for Functions ]
     # preexec hook for recording time when any command was runned, needed for exectime functions
