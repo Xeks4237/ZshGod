@@ -40,6 +40,12 @@
 # Set variable to be equal to directory with prompt files using argzero
 ZSHGOD_HOME="${0:A:h}"
 
+# Checks if plugin is loaded or added to fpath
+if [[ ${zsh_loaded_plugins[-1]-} != */ZshGod && -z ${fpath[(r)${0:h}]-} ]]
+then
+    fpath+=( "${0:h}" )
+fi
+
 # Adds directory with extra files needed for funxtions to fpath
 # fpath=($fpath $ZSHGOD_HOME/prompt_zshgod_setup)
 
@@ -143,25 +149,75 @@ prompt_zshgod_setup() {
     # vcs_info function for gettings info about current vcs
     add-zsh-hook precmd vcs_info
 
+    # Checks passed flags/args to function to make easy fast configuration
     for arg in "$@"; do
         case "$arg" in
+                # Makes '--multilined' flag to enable multilined prompt
             --multilined|-M)
-                print -P "$(prompt_zshgod_multiline)"
+                export ZSHGOD_MULTILINED=true
                 ;;
 
+                # [ Flags used to overwrite existing colors ]
             --color-rosewater=*)
-                ZSH_THM_ROSEWATER="${arg#--color-rosewater=}"
+                export ZSH_THM_ROSEWATER="${arg#--color-rosewater=}"
+                ;;
+
+            --color-flamingo=*)
+                export ZSH_THM_FLAMINGO="${arg#--color-flamingo=}"
+                ;;
+
+            --color-pink=*)
+                export ZSH_THM_PINK="${arg#--color-pink=}"
+                ;;
+
+            --color-mauve=*)
+                export ZSH_THM_MAUVE="${arg#--color-mauve=}"
+                ;;
+
+            --color-red=*)
+                export ZSH_THM_RED="${arg#--color-red=}"
+                ;;
+
+            --color-maroon=*)
+                export ZSH_THM_MAROON="${arg#--color-maroon=}"
+                ;;
+
+            --color-peach=*)
+                export ZSH_THM_PEACH="${arg#--color-peach=}"
+                ;;
+
+            --color-yellow=*)
+                export ZSH_THM_YELLOW="${arg#--color-yellow=}"
                 ;;
 
             --color-green=*)
-                ZSH_THM_GREEN="${arg#--color-green=}"
+                export ZSH_THM_GREEN="${arg#--color-green=}"
                 ;;
 
-                # --color1|--color2)
-                #     # Error if someone wrote --color1 without =value or space-separated value
-                #     print -u2 "Error: $arg requires a value ( Use --color1=#rrggbb or --color1 #rrggbb )" >&2
-                #     exit 2
-                #     ;;
+            --color-teal=*)
+                export ZSH_THM_TEAL="${arg#--color-teal=}"
+                ;;
+
+            --color-sky=*)
+                export ZSH_THM_SKY="${arg#--color-sky=}"
+                ;;
+
+            --color-sapphire=*)
+                export ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}"
+                ;;
+
+            --color-blue=*)
+                export ZSH_THM_BLUE="${arg#--color-blue=}"
+                ;;
+
+            --color-lavender=*)
+                export ZSH_THM_LAVENDER="${arg#--color-lavender=}"
+                ;;
+
+            --color-*)
+                print -Pu2 "Error: $arg was not found or was written incorrectly, please check help message for flags: prompt --help" >&2
+                exit 2
+                ;;
 
             --*)
                 print -u2 "Unknown option: $arg" >&2
@@ -179,6 +235,10 @@ prompt_zshgod_setup() {
     # [ Prompt Scructure ]
     # Print nothing before setting up prompt to make it sparce
     print ''
+
+    if [[ $ZSHGOD_MULTILINED == true ]]; then
+        print -P "$(prompt_zshgod_multiline)"
+    fi
 
     # Variable which sets left side of prompt
     PS1='%B$(prompt_zshgod_left-to-right_time)$(prompt_zshgod_left-to-right_root-indicator)%b '
