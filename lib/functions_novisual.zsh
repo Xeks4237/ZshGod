@@ -21,7 +21,7 @@ prompt_zshgod_precmd() {
 # Function which echos empty line for making prompt sparse
 prompt_zshgod_sparse-prompt() {
     if [[ ZSHGOD_SPARSE == true ]]; then
-        echo ''
+        echo "\n"
     fi
 }
 
