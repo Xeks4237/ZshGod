@@ -214,21 +214,16 @@ prompt_zshgod_setup() {
                 export ZSH_THM_LAVENDER="${arg#--color-lavender=}"
                 ;;
 
-            --color-*)
-                print -u2 "Error: $arg was not found or was written incorrectly, please check help message for flags: prompt --help" >&2
-                exit 2
-                ;;
-
             --*)
-                print -u2 "Unknown option: $arg" >&2
-                exit 1
+                print -u2 "Unknown option(s): $arg" >&2
+                return 1
                 ;;
 
             *)
-                # If you still want to collect remaining positional arguments
-                # (but they must come AFTER all options in this style)
-                positional+=("$arg")
+                print -u2 "Unknown option(s): $arg" >&2
+                return 1
                 ;;
+
         esac
     done
 
