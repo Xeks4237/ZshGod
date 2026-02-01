@@ -41,10 +41,7 @@
 ZSHGOD_HOME="${0:A:h}"
 
 # Checks if plugin is loaded or added to fpath
-if [[ ${zsh_loaded_plugins[-1]-} != */ZshGod && -z ${fpath[(r)${0:h}]-} ]]
-then
-    fpath+=( "${0:h}" )
-fi
+# fpath+=( "${0:A:h}" )
 
 # Adds directory with extra files needed for funxtions to fpath
 # fpath=($fpath $ZSHGOD_HOME/prompt_zshgod_setup)
