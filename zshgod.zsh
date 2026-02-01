@@ -237,3 +237,6 @@ prompt_zshgod_setup() {
     RPS1='%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
 }
 
+# Run promptinit to refresh themes list
+promptinit
+
