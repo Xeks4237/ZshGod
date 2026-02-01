@@ -1,13 +1,13 @@
 # [ Functions only needed to be used in other functions ]
 # Function which captures exectime before executing every command
-prompt_zshgod_exectime_preexec() {
+prompt_zshgod_preexec() {
     # Saves value of $EPOCHSECONDS before executing command to variable
     # Its for prompt_zshgod_exectime function
     ZSHGOD_EXECTIME_START=$EPOCHSECONDS
 }
 
 # Function which calculates exectime before drowing prompt
-prompt_zshgod_exectime_precmd() {
+prompt_zshgod_precmd() {
     # Piece of code which calculated exectime before displaying prompt
     # Its for prompt_zshgod_exectime function
     if (( ${+ZSHGOD_EXECTIME_START} )); then
