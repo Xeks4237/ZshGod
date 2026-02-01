@@ -1,1 +1,1 @@
-lib/zshgod.zsh
+zshgod.zsh

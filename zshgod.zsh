@@ -45,6 +45,8 @@ source $ZSHGOD_HOME/functions_rectangular.zsh
 source $ZSHGOD_HOME/functions_right-to-left_arrowed.zsh
 source $ZSHGOD_HOME/functions_left-to-right_arrowed.zsh
 
+fpath+=( $ZSHGOD_HOME )
+
 # [ Global Usage Variables ]
 # Variable which sets amount of exectime after exectime is not hided
 export ZSHGOD_EXECTIME_MIN=5
