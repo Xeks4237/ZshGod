@@ -105,10 +105,10 @@ prompt_zshgod_setup() {
     autoload -Uz vcs_info
 
     # preexec hook for recording time when any command was runned, needed for exectime functions
-    add-zsh-hook preexec prompt_zshgod_exectime_preexec
+    add-zsh-hook preexec prompt_zshgod_preexec
 
     # precmd hook for recording time when any command was finished, needed for exectime functions
-    add-zsh-hook precmd prompt_zshgod_exectime_precmd
+    add-zsh-hook precmd prompt_zshgod_precmd
 
     # vcs_info function for gettings info about current vcs
     add-zsh-hook precmd vcs_info
