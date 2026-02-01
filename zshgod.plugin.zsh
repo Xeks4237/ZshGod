@@ -122,7 +122,7 @@ prompt_zshgod_multiline() {
 # Function where all other functions are used to make prompt
 prompt_zshgod_setup() {
     # Allows using command substitutions in prompt
-    prompt_opts=(subst)
+    prompt_opts=(bang cr percent sp subst)
 
     # Zsh module related to zsh hooks
     autoload -Uz add-zsh-hook
