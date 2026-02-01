@@ -18,3 +18,10 @@ prompt_zshgod_precmd() {
     fi
 }
 
+# Function which echos empty line for making prompt sparse
+prompt_zshgod_sparse-prompt() {
+    if [[ ZSHGOD_SPARSE == true ]]; then
+        echo ''
+    fi
+}
+

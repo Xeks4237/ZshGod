@@ -113,37 +113,43 @@ prompt_zshgod_setup() {
     # vcs_info function for gettings info about current vcs
     add-zsh-hook precmd vcs_info
 
+    # prcmd hook for making prompt sparse
+    add-zsh-hook precmd prompt_zshgod_sparse-prompt
+
     # Checks passed flags/args to function to make easy fast configuration
     for arg in "$@"; do
         case "$arg" in
+                # Flag which makes prompt sparse
+            --sparse=*) ZSHGOD_SPARSE=true ;;
+
                 # [ Flags used to overwrite existing colors ]
-            --color-rosewater=*) export ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
+            --color-rosewater=*) ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
 
-            --color-flamingo=*) export ZSH_THM_FLAMINGO="${arg#--color-flamingo=}" ;;
+            --color-flamingo=*) ZSH_THM_FLAMINGO="${arg#--color-flamingo=}" ;;
 
-            --color-pink=*) export ZSH_THM_PINK="${arg#--color-pink=}" ;;
+            --color-pink=*) ZSH_THM_PINK="${arg#--color-pink=}" ;;
 
-            --color-mauve=*) export ZSH_THM_MAUVE="${arg#--color-mauve=}" ;;
+            --color-mauve=*) ZSH_THM_MAUVE="${arg#--color-mauve=}" ;;
 
-            --color-red=*) export ZSH_THM_RED="${arg#--color-red=}" ;;
+            --color-red=*) ZSH_THM_RED="${arg#--color-red=}" ;;
 
-            --color-maroon=*) export ZSH_THM_MAROON="${arg#--color-maroon=}" ;;
+            --color-maroon=*) ZSH_THM_MAROON="${arg#--color-maroon=}" ;;
 
-            --color-peach=*) export ZSH_THM_PEACH="${arg#--color-peach=}" ;;
+            --color-peach=*) ZSH_THM_PEACH="${arg#--color-peach=}" ;;
 
-            --color-yellow=*) export ZSH_THM_YELLOW="${arg#--color-yellow=}" ;;
+            --color-yellow=*) ZSH_THM_YELLOW="${arg#--color-yellow=}" ;;
 
-            --color-green=*) export ZSH_THM_GREEN="${arg#--color-green=}" ;;
+            --color-green=*) ZSH_THM_GREEN="${arg#--color-green=}" ;;
 
-            --color-teal=*) export ZSH_THM_TEAL="${arg#--color-teal=}" ;;
+            --color-teal=*) ZSH_THM_TEAL="${arg#--color-teal=}" ;;
 
-            --color-sky=*) export ZSH_THM_SKY="${arg#--color-sky=}" ;;
+            --color-sky=*) ZSH_THM_SKY="${arg#--color-sky=}" ;;
 
-            --color-sapphire=*) export ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}" ;;
+            --color-sapphire=*) ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}" ;;
 
-            --color-blue=*) export ZSH_THM_BLUE="${arg#--color-blue=}" ;;
+            --color-blue=*) ZSH_THM_BLUE="${arg#--color-blue=}" ;;
 
-            --color-lavender=*) export ZSH_THM_LAVENDER="${arg#--color-lavender=}" ;;
+            --color-lavender=*) ZSH_THM_LAVENDER="${arg#--color-lavender=}" ;;
 
             --*)
                 print -u2 "Unknown option(s): $arg" >&2
