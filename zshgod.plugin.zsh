@@ -33,10 +33,10 @@
 ZSHGOD_HOME="${0:A:h}"
 
 # Source files with functions to use in prompt
-source $ZSHGOD_HOME/lib/functions_rectangular.zsh
-source $ZSHGOD_HOME/lib/functions_right-to-left_arrowed.zsh
-source $ZSHGOD_HOME/lib/functions_left-to-right_arrowed.zsh
-source $ZSHGOD_HOME/lib/functions_novisual.zsh
+source $ZSHGOD_HOME/functions/functions_rectangular.zsh
+source $ZSHGOD_HOME/functions/functions_right-to-left_arrowed.zsh
+source $ZSHGOD_HOME/functions/functions_left-to-right_arrowed.zsh
+source $ZSHGOD_HOME/functions/functions_novisual.zsh
 
 # Add prompt files to fpath variable
 fpath+=( $ZSHGOD_HOME/lib )
