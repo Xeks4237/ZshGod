@@ -39,7 +39,7 @@ source $ZSHGOD_HOME/functions/functions_left-to-right_arrowed.zsh
 source $ZSHGOD_HOME/functions/functions_novisual.zsh
 
 # Add prompt files to fpath variable
-fpath+=( $ZSHGOD_HOME/lib )
+fpath+=( $ZSHGOD_HOME/functions )
 
 # [ Configuration Variables ]
 # Variable which sets amount of exectime after exectime is not hided
