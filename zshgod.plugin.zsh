@@ -38,7 +38,7 @@ ZSHGOD_HOME="${0:A:h}"
 fpath+=( $ZSHGOD_HOME/functions )
 
 # Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
-autoload -U \
+autoload -Uz \
 	prompt_zshgod_setup \
 	zshgod_functions_rectangular.zsh \
 	zshgod_functions_right-to-left_arrowed.zsh \
