@@ -32,13 +32,14 @@
 # Set variable to absolute path to the directory containing this file
 # ${0} Gives path to this file
 # :A in ${0} makes it to be absolute without path through symlinks
-ZSHGOD_HOME="${0:A}"
+ZSHGOD_HOME="${0:A:h}"
 
-# Add directory prompt lib files to fpath variable
+# Add directory with prompt files to fpath
 fpath+=( $ZSHGOD_HOME/functions )
 
-# Autoload lib files to make usage of builtin to zsh lazy loading for functions
+# Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
 autoload -U \
+	prompt_zshgod_setup \
 	zshgod_functions_rectangular.zsh \
 	zshgod_functions_right-to-left_arrowed.zsh \
 	zshgod_functions_left-to-right_arrowed.zsh \
