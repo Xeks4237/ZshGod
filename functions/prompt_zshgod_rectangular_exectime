@@ -1,0 +1,6 @@
+# Function which returns exectime for commands after it's been called
+prompt_zshgod_rectangular_exectime() {
+	if (( ${+PROMPT_ZSHGOD_CMD_DURATION} && PROMPT_ZSHGOD_CMD_DURATION >= PROMPT_ZSHGOD_EXECTIME_MIN )); then
+		print "%F{$ZSH_THM_CRUST}%K{$ZSH_THM_YELLOW} ${PROMPT_ZSHGOD_CMD_DURATION}s %f%k"
+	fi
+}

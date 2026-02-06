@@ -1,0 +1,4 @@
+# Function for showing arrow with current working directory
+prompt_zshgod_left-to-right_current-pwd() {
+	print "%F{$ZSH_THM_BLUE}%S %K{$ZSH_THM_CRUST}%~%k %s%f"
+}

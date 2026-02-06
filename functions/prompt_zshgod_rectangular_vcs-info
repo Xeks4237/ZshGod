@@ -1,0 +1,6 @@
+# Function which returns basic info about current vcs
+prompt_zshgod_rectangular_vcs-info() {
+	if [[ -n $vcs_info_msg_0_ ]]; then
+		print '%F{$ZSH_THM_CRUST}%K{$ZSH_THM_GREEN} $vcs_info_msg_0_ %k%f'
+	fi
+}

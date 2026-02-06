@@ -1,0 +1,6 @@
+# Function which returns prompt_zshgod_left-to-right_userandhostname only when connected to ssh
+prompt_zshgod_left-to-right_sshonly_userandhostname() {
+	if [[ -n $SSH_CONNECTION ]]; then
+		prompt_zshgod_left-to-right_userandhostname
+	fi
+}

@@ -1,0 +1,5 @@
+# Function which shows arrow with current username@hostname
+prompt_zshgod_left-to-right_userandhostname() {
+	print "%(!,%F{$ZSH_THM_RED}%S %K{$ZSH_THM_CRUST}%n%k %s%f,%F{$ZSH_THM_GREEN}%S %K{$ZSH_THM_CRUST}%n%k %s%f)%F{$ZSH_THM_YELLOW}%S %K{$ZSH_THM_CRUST}@%k %s%f%F{$ZSH_THM_SKY}%S %K%m%k %s%f"
+
+}

@@ -1,0 +1,4 @@
+# Function which shows arrow with current username@hostname
+prompt_zshgod_rectangular_userandhostname() {
+	print "%(!,%F{$ZSH_THM_CRUST}%K{$ZSH_THM_RED} %n %k%f,%F{$ZSH_THM_CRUST}%K{$ZSH_THM_GREEN} %n %k%f) %F{$ZSH_THM_CRUST}%K{$ZSH_THM_YELLOW} @ %f%k %F{$ZSH_THM_CRUST}%K{$ZSH_THM_SKY} %m %k%f"
+}

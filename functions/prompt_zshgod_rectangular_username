@@ -1,0 +1,4 @@
+# Function which returns colored arrow with current username with different color if current user is root
+prompt_zshgod_rectangular_username() {
+	print "%(!,%F{$ZSH_THM_CRUST}%K{$ZSH_THM_RED} %n %k%f,%F{$ZSH_THM_CRUST}%K{$ZSH_THM_GREEN} %n %k%f)"
+}

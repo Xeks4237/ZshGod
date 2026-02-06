@@ -1,0 +1,4 @@
+# Function which returns colored arrow with current hostname
+prompt_zshgod_rectangular_hostname() {
+	print "%F{$ZSH_THM_CRUST}%K{$ZSH_THM_SKY} %m %k%f"
+}

@@ -1,0 +1,4 @@
+# Function which shows colored arrow with different color if current user is root
+prompt_zshgod_right-to-left_root-indicator () {
+	print "%(!,%F{$ZSH_THM_RED}%S %K{$ZSH_THM_CRUST}#%k %s%f,%F{$ZSH_THM_GREEN}%S %K{$ZSH_THM_CRUST}\$%k %s%f)"
+}

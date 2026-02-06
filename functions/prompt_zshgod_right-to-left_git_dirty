@@ -1,0 +1,12 @@
+# Function for checking git repos if they are dirty
+prompt_zshgod_right-to-left_git_dirty() {
+	# Checks if we're in a git repo
+	command git rev-parse --is-inside-work-tree &>/dev/null || return
+
+	# Checks if it's dirty
+	local umode="-uno"
+	command test -n "$(git status --porcelain --ignore-submodules ${umode} 2>/dev/null | head -100)"
+
+	# Prints "*" if repo is dirty
+	(($? == 0)) && print "%F{$ZSH_THM_PEACH}%S %K{$ZSH_THM_CRUST}*%k %s%f"
+}
