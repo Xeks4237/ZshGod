@@ -37,14 +37,6 @@ ZSHGOD_HOME="${0:A:h}"
 # Add directory with prompt files to fpath
 fpath+=( $ZSHGOD_HOME/functions )
 
-# Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
-autoload -Uz \
-	prompt_zshgod_setup \
-	zshgod_functions_rectangular.zsh \
-	zshgod_functions_right-to-left_arrowed.zsh \
-	zshgod_functions_left-to-right_arrowed.zsh \
-	zshgod_functions_novisual.zsh
-
 # [ Configuration Variables ]
 # Variable which sets amount of exectime after exectime is not hided
 export ZSHGOD_EXECTIME_MIN=5
@@ -91,89 +83,12 @@ export ZSH_THM_BACKGROUND='#1E1E2E'
 zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
 # zstyle options to customize look of vcs_info
-zstyle ':vcs_info:*' actionformats '%b|%a'
-zstyle ':vcs_info:*' formats '%b'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
+# zstyle ':vcs_info:*' actionformats '%b|%a'
+# zstyle ':vcs_info:*' formats '%b'
+# zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
-# [ Main Structure ]
-# Function where all other functions are used to make prompt
-prompt_zshgod_setup() {
-	# [ Prompt specific opts and Hooks for Functions ]
-	# Sets prompt specific zsh opts like prompt substitution
-	prompt_opts=( bang cr percent sp subst )
-
-	# Load Zsh module related to zsh hooks
-	autoload -Uz add-zsh-hook
-
-	# Builtin zsh module for getting basic info from vcs systems
-	autoload -Uz vcs_info
-
-	# preexec hook for recording time when any command was runned, needed for exectime functions
-	add-zsh-hook preexec prompt_zshgod_preexec
-
-	# precmd hook for recording time when any command was finished, needed for exectime functions
-	add-zsh-hook precmd prompt_zshgod_precmd
-
-	# vcs_info function for gettings info about current vcs
-	add-zsh-hook precmd vcs_info
-
-	# prcmd hook for making prompt sparse
-	add-zsh-hook precmd prompt_zshgod_sparse-prompt
-
-	# Checks passed flags/args to function to make easy fast configuration
-	for arg in "$@"; do
-		case "$arg" in
-				# [ Flags used to overwrite existing colors ]
-			--color-rosewater=*) ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
-
-			--color-flamingo=*) ZSH_THM_FLAMINGO="${arg#--color-flamingo=}" ;;
-
-			--color-pink=*) ZSH_THM_PINK="${arg#--color-pink=}" ;;
-
-			--color-mauve=*) ZSH_THM_MAUVE="${arg#--color-mauve=}" ;;
-
-			--color-red=*) ZSH_THM_RED="${arg#--color-red=}" ;;
-
-			--color-maroon=*) ZSH_THM_MAROON="${arg#--color-maroon=}" ;;
-
-			--color-peach=*) ZSH_THM_PEACH="${arg#--color-peach=}" ;;
-
-			--color-yellow=*) ZSH_THM_YELLOW="${arg#--color-yellow=}" ;;
-
-			--color-green=*) ZSH_THM_GREEN="${arg#--color-green=}" ;;
-
-			--color-teal=*) ZSH_THM_TEAL="${arg#--color-teal=}" ;;
-
-			--color-sky=*) ZSH_THM_SKY="${arg#--color-sky=}" ;;
-
-			--color-sapphire=*) ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}" ;;
-
-			--color-blue=*) ZSH_THM_BLUE="${arg#--color-blue=}" ;;
-
-			--color-lavender=*) ZSH_THM_LAVENDER="${arg#--color-lavender=}" ;;
-
-				# [ Hardlers for weird scenarios ]
-			--*)
-				print -u2 "Unknown option(s): $arg" >&2
-				return 1
-				;;
-
-			*)
-				print -u2 "Unknown option(s): $arg" >&2
-				return 1
-				;;
-
-		esac
-	done
-
-	# [ Prompt Scructure ]
-	# Variable which sets left side of prompt
-	PS1='%B$(prompt_zshgod_left-to-right_time)$(prompt_zshgod_left-to-right_root-indicator)%b '
-
-	# Variable which sets right side of prompt
-	RPS1='%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs-info)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
-}
-
-# Run promptinit to refresh themes list
-promptinit
+# Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
+autoload -Uz \
+	prompt_zshgod_setup \
+	zshgod_functions_* \
 
