@@ -37,22 +37,22 @@ prompt_zshgod_left-to-right_git_info() {
 	local parts=()
 
 	# Check if staged count is zero or not and add it to the parts[] array
-	(( staged_count > 0 )) && parts+=("%K{$ZSH_THM_GREEN}${staged_count}+%k")
+	(( staged_count > 0 )) && parts+=("%K{$ZSHGOD_THM_CATPPUCCIN_GREEN}${staged_count}+%k")
 
 	# Check if modified count is zero or not and add it to the parts[] array
-	(( modified_count > 0 )) && parts+=("%K{$ZSH_THM_YELLOW}${modified_count}*%k")
+	(( modified_count > 0 )) && parts+=("%K{$ZSHGOD_THM_CATPPUCCIN_YELLOW}${modified_count}*%k")
 
 	# Check if deleted count is zero or not and add it to the parts[] array
-	(( deleted_count > 0 )) && parts+=("%K{$ZSH_THM_RED}${deleted_count}-%k")
+	(( deleted_count > 0 )) && parts+=("%K{$ZSHGOD_THM_CATPPUCCIN_RED}${deleted_count}-%k")
 
 	# Check if untracked count is zero or not and add it to the parts[] array
-	(( untracked_count > 0 )) && parts+=("%K{$ZSH_THM_SKY}${untracked_count}?%k")
+	(( untracked_count > 0 )) && parts+=("%K{$ZSHGOD_THM_CATPPUCCIN_SKY}${untracked_count}?%k")
 
 	# Check if ahead count is zero or not and add it to the parts[] array
-	(( ahead_count > 0 )) && parts+=("%K{$ZSH_THM_LAVENDER}${ahead_count}↑%k")
+	(( ahead_count > 0 )) && parts+=("%K{$ZSHGOD_THM_CATPPUCCIN_LAVENDER}${ahead_count}↑%k")
 
 	# If there's anything to show, join the parts and do some customization
 	if (( ${#parts[@]} > 0 )); then
-		print "%F{$ZSH_THM_OVERLAY_0}%S ${parts[*]} %s%f"
+		print "%F{$ZSHGOD_THM_CATPPUCCIN_OVERLAY_0}%S ${parts[*]} %s%f"
 	fi
 }

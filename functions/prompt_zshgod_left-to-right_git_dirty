@@ -8,5 +8,5 @@ prompt_zshgod_left-to-right_git_dirty() {
 	command test -n "$(git status --porcelain --ignore-submodules ${umode} 2>/dev/null | head -100)"
 
 	# Prints "*" if repo is dirty
-	(($? == 0)) && print "%F{$ZSH_THM_PEACH}%S %K{$ZSH_THM_CRUST}*%k %s%f"
+	(($? == 0)) && print "%F{$ZSHGOD_THM_CATPPUCCIN_PEACH}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}*%k %s%f"
 }

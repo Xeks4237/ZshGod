@@ -30,33 +30,33 @@ prompt_zshgod_setup() {
 	for arg in "$@"; do
 		case "$arg" in
 				# [ Flags used to overwrite existing colors ]
-			--color-rosewater=*) ZSH_THM_ROSEWATER="${arg#--color-rosewater=}" ;;
+			--color-rosewater=*) ZSHGOD_THM_CATPPUCCIN_ROSEWATER="${arg#--color-rosewater=}" ;;
 
-			--color-flamingo=*) ZSH_THM_FLAMINGO="${arg#--color-flamingo=}" ;;
+			--color-flamingo=*) ZSHGOD_THM_CATPPUCCIN_FLAMINGO="${arg#--color-flamingo=}" ;;
 
-			--color-pink=*) ZSH_THM_PINK="${arg#--color-pink=}" ;;
+			--color-pink=*) ZSHGOD_THM_CATPPUCCIN_PINK="${arg#--color-pink=}" ;;
 
-			--color-mauve=*) ZSH_THM_MAUVE="${arg#--color-mauve=}" ;;
+			--color-mauve=*) ZSHGOD_THM_CATPPUCCIN_MAUVE="${arg#--color-mauve=}" ;;
 
-			--color-red=*) ZSH_THM_RED="${arg#--color-red=}" ;;
+			--color-red=*) ZSHGOD_THM_CATPPUCCIN_RED="${arg#--color-red=}" ;;
 
-			--color-maroon=*) ZSH_THM_MAROON="${arg#--color-maroon=}" ;;
+			--color-maroon=*) ZSHGOD_THM_CATPPUCCIN_MAROON="${arg#--color-maroon=}" ;;
 
-			--color-peach=*) ZSH_THM_PEACH="${arg#--color-peach=}" ;;
+			--color-peach=*) ZSHGOD_THM_CATPPUCCIN_PEACH="${arg#--color-peach=}" ;;
 
-			--color-yellow=*) ZSH_THM_YELLOW="${arg#--color-yellow=}" ;;
+			--color-yellow=*) ZSHGOD_THM_CATPPUCCIN_YELLOW="${arg#--color-yellow=}" ;;
 
-			--color-green=*) ZSH_THM_GREEN="${arg#--color-green=}" ;;
+			--color-green=*) ZSHGOD_THM_CATPPUCCIN_GREEN="${arg#--color-green=}" ;;
 
-			--color-teal=*) ZSH_THM_TEAL="${arg#--color-teal=}" ;;
+			--color-teal=*) ZSHGOD_THM_CATPPUCCIN_TEAL="${arg#--color-teal=}" ;;
 
-			--color-sky=*) ZSH_THM_SKY="${arg#--color-sky=}" ;;
+			--color-sky=*) ZSHGOD_THM_CATPPUCCIN_SKY="${arg#--color-sky=}" ;;
 
-			--color-sapphire=*) ZSH_THM_SAPPHIRE="${arg#--color-sapphire=}" ;;
+			--color-sapphire=*) ZSHGOD_THM_CATPPUCCIN_SAPPHIRE="${arg#--color-sapphire=}" ;;
 
-			--color-blue=*) ZSH_THM_BLUE="${arg#--color-blue=}" ;;
+			--color-blue=*) ZSHGOD_THM_CATPPUCCIN_BLUE="${arg#--color-blue=}" ;;
 
-			--color-lavender=*) ZSH_THM_LAVENDER="${arg#--color-lavender=}" ;;
+			--color-lavender=*) ZSHGOD_THM_CATPPUCCIN_LAVENDER="${arg#--color-lavender=}" ;;
 
 				# [ Hardlers for weird scenarios ]
 			--*)

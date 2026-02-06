@@ -1,4 +1,4 @@
 # Function which shows arrow with current username@hostname
 prompt_zshgod_rectangular_userandhostname() {
-	print "%(!,%F{$ZSH_THM_CRUST}%K{$ZSH_THM_RED} %n %k%f,%F{$ZSH_THM_CRUST}%K{$ZSH_THM_GREEN} %n %k%f) %F{$ZSH_THM_CRUST}%K{$ZSH_THM_YELLOW} @ %f%k %F{$ZSH_THM_CRUST}%K{$ZSH_THM_SKY} %m %k%f"
+	print "%(!,%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_RED} %n %k%f,%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_GREEN} %n %k%f) %F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_YELLOW} @ %f%k %F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_SKY} %m %k%f"
 }

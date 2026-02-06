@@ -1,4 +1,4 @@
 # Function which returns colored arrow with current username with different color if current user is root
 prompt_zshgod_left-to-right_username() {
-	print "%(!,%F{$ZSH_THM_RED}%S %K{$ZSH_THM_CRUST}%n%k %s%f,%F{$ZSH_THM_GREEN}%S %K{$ZSH_THM_CRUST}%n%k %s%f)"
+	print "%(!,%F{$ZSHGOD_THM_CATPPUCCIN_RED}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}%n%k %s%f,%F{$ZSHGOD_THM_CATPPUCCIN_GREEN}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}%n%k %s%f)"
 }

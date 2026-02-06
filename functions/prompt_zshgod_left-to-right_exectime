@@ -2,6 +2,6 @@
 # This function uses environment variables from two other functions to work correctly
 prompt_zshgod_left-to-right_exectime() {
 	if (( ${+ZSHGOD_EXECTIME_DURATION} && ZSHGOD_EXECTIME_DURATION >= ZSHGOD_EXECTIME_MIN )); then
-		print "%F{$ZSH_THM_YELLOW}%S %K{$ZSH_THM_CRUST}${ZSHGOD_EXECTIME_DURATION}s%k %s%f"
+		print "%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}${ZSHGOD_EXECTIME_DURATION}s%k %s%f"
 	fi
 }
