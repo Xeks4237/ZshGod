@@ -83,21 +83,23 @@ export ZSH_THM_BACKGROUND='#1E1E2E'
 zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
 # zstyle options to customize look of vcs_info
-# zstyle ':vcs_info:*' actionformats '%b|%a'
-# zstyle ':vcs_info:*' formats '%b'
-# zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
+# TODO: make it customizable through prompt flags/args in setup function
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
 # Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
 # Every file contains one function with same name as file name
 # NOTE: always use '-Uz' to supress alias expansion and to use zsh styly autoloading
-# [ Main setup function ] (I don't know is it good/bad to autoload it)
-autoload -Uz prompt_zshgod_setup
-# [ Functions with no styling ]
+# [ Source setup function ]
+source $ZSHGOD_HOME/functions/prompt_zshgod_setup
+
+# [ Autoload functions with no styling ]
 autoload -Uz \
 	prompt_zshgod_preexec \
 	prompt_zshgod_precmd \
 	prompt_zshgod_sparse-prompt
-# [ Rectangle/Square styled functions ]
+# [ Autoload rectangle/square styled functions ]
 autoload -Uz \
 	prompt_zshgod_rectangular_git_dirty \
 	prompt_zshgod_rectangular_git_info \
@@ -112,7 +114,7 @@ autoload -Uz \
 	prompt_zshgod_rectangular_hostname \
 	prompt_zshgod_rectangular_sshonly_hostname \
 	prompt_zshgod_rectangular_vcs-info
-# [ Left to right pointing arrow styled functions ]
+# [ Autoload left to right pointing arrow styled functions ]
 autoload -Uz \
 	prompt_zshgod_left-to-right_git_dirty \
 	prompt_zshgod_left-to-right_git_info \
@@ -127,7 +129,7 @@ autoload -Uz \
 	prompt_zshgod_left-to-right_hostname \
 	prompt_zshgod_left-to-right_sshonly_hostname \
 	prompt_zshgod_left-to-right_vcs-info
-# [ Right to left pointing arrow styled functions ]
+# [ Autoload right to left pointing arrow styled functions ]
 autoload -Uz \
 	prompt_zshgod_right-to-left_git_dirty \
 	prompt_zshgod_right-to-left_git_info \
@@ -143,3 +145,5 @@ autoload -Uz \
 	prompt_zshgod_right-to-left_sshonly_hostname \
 	prompt_zshgod_right-to-left_vcs-info
 
+# Run promptinit in end to update list of themes
+promptinit
