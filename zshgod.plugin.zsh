@@ -91,8 +91,8 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 # Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
 # Every file contains one function with same name as file name
 # NOTE: always use '-Uz' to supress alias expansion and to use zsh styly autoloading
-# [ Source setup function ]
-source $ZSHGOD_HOME/functions/prompt_zshgod_setup
+# [ Autoload setup function ]
+autoload -Uz prompt_zshgod_setup
 
 # [ Autoload functions with no styling ]
 autoload -Uz \
