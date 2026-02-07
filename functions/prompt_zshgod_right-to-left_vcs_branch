@@ -1,5 +1,5 @@
 # Function which returns basic info about current vcs
-prompt_zshgod_right-to-left_vcs-info() {
+prompt_zshgod_right-to-left_vcs_branch() {
 	if [[ -n $vcs_info_msg_0_ ]]; then
 		print "%F{$ZSHGOD_THM_CATPPUCCIN_GREEN}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}$vcs_info_msg_0_%k %s%f"
 	fi
