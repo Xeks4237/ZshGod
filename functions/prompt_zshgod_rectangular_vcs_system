@@ -1,8 +1,8 @@
 # Function which returns name of current vcs
 prompt_zshgod_rectangular_vcs_system() {
 	# zstyle options to customize look of vcs_info
-	zstyle ':vcs_info:*' actionformats '%s'
-	zstyle ':vcs_info:*' formats '%s'
+	zstyle ':vcs_info:prompt_zshgod_rectangular_vcs_system:*' actionformats '%s'
+	zstyle ':vcs_info:prompt_zshgod_rectangular_vcs_system:*' formats '%s'
 
 	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
 	if [[ -n $vcs_info_msg_0_ ]]; then
