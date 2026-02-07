@@ -82,12 +82,6 @@ export ZSHGOD_THM_CATPPUCCIN_BACKGROUND='#1E1E2E'
 # zstyle ':vcs_info:*' disable git svn
 zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
-# zstyle options to customize look of vcs_info
-# TODO: make it customizable through prompt flags/args in setup function
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
-
 # Autoload prompt files with its lib files to make usage of builtin zsh lazy loading for functions
 # Every file contains one function with same name as file name
 # NOTE: always use '-Uz' to supress alias expansion and to use zsh styly autoloading

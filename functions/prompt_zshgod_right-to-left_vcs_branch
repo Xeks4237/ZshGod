@@ -1,5 +1,11 @@
 # Function which returns basic info about current vcs
 prompt_zshgod_right-to-left_vcs_branch() {
+	# zstyle options to customize look of vcs_info
+	zstyle ':vcs_info:*' actionformats '%b|%a'
+	zstyle ':vcs_info:*' formats '%b'
+	zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
+
+	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
 	if [[ -n $vcs_info_msg_0_ ]]; then
 		print "%F{$ZSHGOD_THM_CATPPUCCIN_GREEN}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}$vcs_info_msg_0_%k %s%f"
 	fi
