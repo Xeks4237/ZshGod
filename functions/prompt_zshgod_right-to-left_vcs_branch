@@ -1,9 +1,9 @@
 # Function which returns branch/subversion info about current vcs
 prompt_zshgod_right-to-left_vcs_branch() {
 	# zstyle options to customize look of vcs_info
-	zstyle ':vcs_info:prompt_zshgod_right-to-left_vcs_branch:*' actionformats '%b|%a'
-	zstyle ':vcs_info:prompt_zshgod_right-to-left_vcs_branch:*' formats '%b'
-	zstyle ':vcs_info:prompt_zshgod_right-to-left_vcs_branch:(sv[nk]|bzr):*' branchformat '%b:%r'
+	zstyle ':vcs_info:*:prompt_zshgod_right-to-left_vcs_branch:*' actionformats '%b|%a'
+	zstyle ':vcs_info:*:prompt_zshgod_right-to-left_vcs_branch:*' formats '%b'
+	zstyle ':vcs_info:*:prompt_zshgod_right-to-left_vcs_branch:(sv[nk]|bzr):*' branchformat '%b:%r'
 
 	# Run vcs_info with user string to don't make collision of variables
 	vcs_info prompt_zshgod_right-to-left_vcs_branch

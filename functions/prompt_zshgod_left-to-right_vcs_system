@@ -1,8 +1,8 @@
 # Function which returns name of current vcs
 prompt_zshgod_left-to-right_vcs_system() {
 	# zstyle options to customize look of vcs_info
-	zstyle ':vcs_info:prompt_zshgod_left-to-right_vcs_system:*' actionformats '%s'
-	zstyle ':vcs_info:prompt_zshgod_left-to-right_vcs_system:*' formats '%s'
+	zstyle ':vcs_info:*:prompt_zshgod_left-to-right_vcs_system:*' actionformats '%s'
+	zstyle ':vcs_info:*:prompt_zshgod_left-to-right_vcs_system:*' formats '%s'
 
 	# Run vcs_info with user string to don't make collision of variables
 	vcs_info prompt_zshgod_left-to-right_vcs_system
