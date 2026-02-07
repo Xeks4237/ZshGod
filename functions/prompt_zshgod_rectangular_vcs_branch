@@ -11,6 +11,6 @@ prompt_zshgod_rectangular_vcs_branch() {
 	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
 	if [[ -n $vcs_info_msg_0_ ]]; then
 		local msg=$vcs_info_msg_0_
-		print '%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_GREEN} $msg %k%f'
+		print "%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_GREEN} $msg %k%f"
 	fi
 }
