@@ -1,15 +1,16 @@
 # Function which returns branch/subversion info about current vcs
 prompt_zshgod_rectangular_vcs_branch() {
 	# zstyle options to customize look of vcs_info
-	zstyle ':vcs_info:*:prompt_zshgod_rectangular_vcs_branch:*' actionformats '%b|%a'
-	zstyle ':vcs_info:*:prompt_zshgod_rectangular_vcs_branch:*' formats '%b'
-	zstyle ':vcs_info:*:prompt_zshgod_rectangular_vcs_branch:(sv[nk]|bzr):*' branchformat '%b:%r'
+	zstyle ':vcs_info:*' actionformats '%b|%a'
+	zstyle ':vcs_info:*' formats '%b'
+	zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
-	# Run vcs_info with user string to don't make collision of variables
-	vcs_info prompt_zshgod_rectangular_vcs_branch
+	# Run vcs_info to get/update vcs info
+	vcs_info
 
 	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
 	if [[ -n $vcs_info_msg_0_ ]]; then
-		print '%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_GREEN} $vcs_info_msg_0_ %k%f'
+		local msg=$vcs_info_msg_0_
+		print '%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_GREEN} $msg %k%f'
 	fi
 }
