@@ -113,7 +113,7 @@ autoload -Uz \
 	prompt_zshgod_rectangular_sshonly_username \
 	prompt_zshgod_rectangular_hostname \
 	prompt_zshgod_rectangular_sshonly_hostname \
-	prompt_zshgod_rectangular_vcs-info
+	prompt_zshgod_rectangular_vcs_branch
 # [ Autoload left to right pointing arrow styled functions ]
 autoload -Uz \
 	prompt_zshgod_left-to-right_git_dirty \
@@ -128,7 +128,7 @@ autoload -Uz \
 	prompt_zshgod_left-to-right_sshonly_username \
 	prompt_zshgod_left-to-right_hostname \
 	prompt_zshgod_left-to-right_sshonly_hostname \
-	prompt_zshgod_left-to-right_vcs-info
+	prompt_zshgod_left-to-right_vcs_branch
 # [ Autoload right to left pointing arrow styled functions ]
 autoload -Uz \
 	prompt_zshgod_right-to-left_git_dirty \
@@ -143,7 +143,7 @@ autoload -Uz \
 	prompt_zshgod_right-to-left_sshonly_username \
 	prompt_zshgod_right-to-left_hostname \
 	prompt_zshgod_right-to-left_sshonly_hostname \
-	prompt_zshgod_right-to-left_vcs-info
+	prompt_zshgod_right-to-left_vcs_branch
 
 # Run promptinit in end to update list of themes
 promptinit
