@@ -20,9 +20,6 @@ prompt_zshgod_setup() {
 	# precmd hook for recording time when any command was finished, needed for exectime functions
 	add-zsh-hook precmd prompt_zshgod_precmd
 
-	# vcs_info function for gettings info about current vcs
-	add-zsh-hook precmd vcs_info
-
 	# prcmd hook for making prompt sparse
 	add-zsh-hook precmd prompt_zshgod_sparse-prompt
 
