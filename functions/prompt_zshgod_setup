@@ -77,4 +77,3 @@ prompt_zshgod_setup() {
 	# Variable which sets right side of prompt
 	RPS1='%B$(prompt_zshgod_right-to-left_exectime)$(prompt_zshgod_right-to-left_git_info)$(prompt_zshgod_right-to-left_vcs_branch)$(prompt_zshgod_right-to-left_vcs_system)$(prompt_zshgod_right-to-left_current-pwd)$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
 }
-
