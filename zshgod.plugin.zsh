@@ -99,6 +99,7 @@ autoload -Uz \
 	prompt_zshgod_rectangular_git_info \
 	prompt_zshgod_rectangular_time \
 	prompt_zshgod_rectangular_exectime \
+	prompt_zshgod_rectangular_exectime_human-readable \
 	prompt_zshgod_rectangular_current-pwd \
 	prompt_zshgod_rectangular_userandhostname \
 	prompt_zshgod_rectangular_sshonly_userandhostname \
