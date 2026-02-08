@@ -20,9 +20,6 @@ prompt_zshgod_setup() {
 	# precmd hook for recording time when any command was finished, needed for exectime functions
 	add-zsh-hook precmd prompt_zshgod_precmd
 
-	# prcmd hook for making prompt sparse
-	add-zsh-hook precmd prompt_zshgod_sparse-prompt
-
 	# Checks passed flags/args to function to make easy fast configuration
 	for arg in "$@"; do
 		case "$arg" in
