@@ -27,6 +27,8 @@ function prompt_zshgod_setup() {
 	# Checks passed flags/args to function to make easy fast configuration
 	for arg in "$@"; do
 		case "$arg" in
+				# Flag which triggers/activates vi mode indicator
+			--vimode-indicator) prompt_zshgod_vimode ;;
 				# [ Flags used to overwrite existing colors ]
 			--color-rosewater=*) ZSHGOD_THM_CATPPUCCIN_ROSEWATER="${arg#--color-rosewater=}" ;;
 
@@ -66,7 +68,6 @@ function prompt_zshgod_setup() {
 				print -u2 "Unknown option(s): $arg" >&2
 				return 1
 				;;
-
 		esac
 	done
 
