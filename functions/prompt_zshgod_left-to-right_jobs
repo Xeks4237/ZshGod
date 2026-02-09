@@ -1,0 +1,5 @@
+# Function which returns current amount of jobs if there at least 1 job
+# Uses builtin %j to get number of jobs
+function prompt_zshgod_left-to-right_jobs() {
+	print "%(1j,%F{$ZSHGOD_THM_CATPPUCCIN_MAUVE}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}jobs: [%j]%k %s%f,)"
+}

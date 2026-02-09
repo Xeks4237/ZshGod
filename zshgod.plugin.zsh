@@ -99,7 +99,6 @@ autoload -Uz \
 	prompt_zshgod_rectangular_git_info \
 	prompt_zshgod_rectangular_time \
 	prompt_zshgod_rectangular_exectime \
-	prompt_zshgod_rectangular_exectime_human-readable \
 	prompt_zshgod_rectangular_current-pwd \
 	prompt_zshgod_rectangular_userandhostname \
 	prompt_zshgod_rectangular_sshonly_userandhostname \
@@ -109,7 +108,8 @@ autoload -Uz \
 	prompt_zshgod_rectangular_hostname \
 	prompt_zshgod_rectangular_sshonly_hostname \
 	prompt_zshgod_rectangular_vcs_branch \
-	prompt_zshgod_rectangular_vcs_system
+	prompt_zshgod_rectangular_vcs_system \
+	prompt_zshgod_rectangular_jobs
 # [ Autoload left to right pointing arrow styled functions ]
 autoload -Uz \
 	prompt_zshgod_left-to-right_git_dirty \
@@ -125,7 +125,8 @@ autoload -Uz \
 	prompt_zshgod_left-to-right_hostname \
 	prompt_zshgod_left-to-right_sshonly_hostname \
 	prompt_zshgod_left-to-right_vcs_branch \
-	prompt_zshgod_left-to-right_vcs_system
+	prompt_zshgod_left-to-right_vcs_system \
+	prompt_zshgod_left-to-right_jobs
 # [ Autoload right to left pointing arrow styled functions ]
 autoload -Uz \
 	prompt_zshgod_right-to-left_git_dirty \
@@ -141,7 +142,8 @@ autoload -Uz \
 	prompt_zshgod_right-to-left_hostname \
 	prompt_zshgod_right-to-left_sshonly_hostname \
 	prompt_zshgod_right-to-left_vcs_branch \
-	prompt_zshgod_right-to-left_vcs_system
+	prompt_zshgod_right-to-left_vcs_system \
+	prompt_zshgod_right-to-left_jobs
 
 # Run promptinit in end to update list of themes
 promptinit
