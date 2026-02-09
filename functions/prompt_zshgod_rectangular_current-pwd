@@ -1,4 +1,4 @@
 # Function for showing arrow with current working directory
-prompt_zshgod_rectangular_current-pwd() {
+function prompt_zshgod_rectangular_current-pwd() {
 	print "%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_BLUE} %~ %k%f"
 }

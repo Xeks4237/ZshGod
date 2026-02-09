@@ -3,7 +3,7 @@
 # This functions name is important it should be 'prompt_<name_of_prompt>_setup'
 # And this function also accepts args through 'prompt' command, like:
 # prompt zshgod --color-green=#00ff00
-prompt_zshgod_setup() {
+function prompt_zshgod_setup() {
 	# [ Prompt specific opts and Hooks for Functions ]
 	# Sets prompt specific zsh opts like prompt substitution
 	prompt_opts=( bang cr percent sp subst )

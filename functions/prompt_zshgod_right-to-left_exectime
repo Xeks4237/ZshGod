@@ -1,6 +1,6 @@
 # Function which returns exectime for last executed command
 # This function uses environment variables from two other functions to work correctly
-prompt_zshgod_right-to-left_exectime() {
+function prompt_zshgod_right-to-left_exectime() {
 	if (( ${+ZSHGOD_EXECTIME_DURATION} && ZSHGOD_EXECTIME_DURATION >= ZSHGOD_EXECTIME_MIN )); then
 		print "%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}${ZSHGOD_EXECTIME_DURATION}s%k %s%f"
 	fi

@@ -1,4 +1,4 @@
 # Function for showing arrow with customly formatted current time
-prompt_zshgod_left-to-right_time() {
+function prompt_zshgod_left-to-right_time() {
 	print "%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}%D{%H:%M:%S}%k %s%f"
 }

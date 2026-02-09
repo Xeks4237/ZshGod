@@ -1,5 +1,5 @@
 # Function which returns verbose git info formatted shortly
-prompt_zshgod_left-to-right_git_info() {
+function prompt_zshgod_left-to-right_git_info() {
 	# Silently exit if not inside a git repository
 	command git rev-parse --is-inside-work-tree &>/dev/null || return
 

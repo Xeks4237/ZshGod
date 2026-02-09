@@ -1,5 +1,5 @@
 # Function for checking git repos if they are dirty
-prompt_zshgod_rectangular_git_dirty() {
+function prompt_zshgod_rectangular_git_dirty() {
 	# Checks if we're in a git repo
 	command git rev-parse --is-inside-work-tree &>/dev/null || return
 

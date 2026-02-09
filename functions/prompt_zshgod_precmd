@@ -1,5 +1,5 @@
 # Function which calculates exectime before drowing prompt
-prompt_zshgod_precmd() {
+function prompt_zshgod_precmd() {
 	# Piece of code which calculated exectime before displaying prompt
 	# Its for prompt_zshgod_exectime function
 	if (( ${+ZSHGOD_EXECTIME_START} )); then

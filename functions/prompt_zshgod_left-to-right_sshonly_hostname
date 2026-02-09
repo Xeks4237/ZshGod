@@ -1,5 +1,5 @@
 # Same function as prompt_zshgod_left-to-right_hostname but shown only through ssh
-prompt_zshgod_left-to-right_sshonly_hostname() {
+function prompt_zshgod_left-to-right_sshonly_hostname() {
 	if [[ -n $SSH_CONNECTION ]]; then
 		prompt_zshgod_left-to-right_hostname
 	fi

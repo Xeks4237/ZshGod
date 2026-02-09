@@ -1,5 +1,5 @@
 # Function which returns exectime for commands after it's been called
-prompt_zshgod_rectangular_exectime() {
+function prompt_zshgod_rectangular_exectime() {
 	if (( ${+PROMPT_ZSHGOD_CMD_DURATION} && PROMPT_ZSHGOD_CMD_DURATION >= PROMPT_ZSHGOD_EXECTIME_MIN )); then
 		print "%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_YELLOW} ${PROMPT_ZSHGOD_CMD_DURATION}s %f%k"
 	fi

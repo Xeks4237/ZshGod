@@ -1,4 +1,4 @@
 # Function which returns colored arrow with current hostname
-prompt_zshgod_right-to-left_hostname() {
+function prompt_zshgod_right-to-left_hostname() {
 	print "%F{$ZSHGOD_THM_CATPPUCCIN_SKY}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}%m%k %s%f"
 }
