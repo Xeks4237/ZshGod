@@ -1,9 +1,0 @@
-# Function which gets called every time when prompt is redrawn by special case
-function zle-line-pre-redraw() {
-	[[ $KEYMAP != vicmd ]] && return
-
-	local is_visual=$(( REGION_ACTIVE > 0 ))
-	local was_visual=$([[ $ZSHGOD_VIMODE == 'V' || $ZSHGOD_VIMODE == 'L' ]] && echo 1 || echo 0)
-
-	(( is_visual != was_visual )) && prompt_zshgod_vimode && zle reset-prompt && zle -R
-}

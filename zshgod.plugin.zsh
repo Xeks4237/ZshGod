@@ -91,10 +91,7 @@ autoload -Uz prompt_zshgod_setup
 # [ Autoload functions with no styling ]
 autoload -Uz \
 	prompt_zshgod_preexec \
-	prompt_zshgod_precmd \
-	prompt_zshgod_vimode \
-	zle-keymap-select \
-	zle-line-pre-redraw
+	prompt_zshgod_precmd
 # [ Autoload rectangle/square styled functions ]
 autoload -Uz \
 	prompt_zshgod_rectangular_git_dirty \
