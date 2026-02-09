@@ -1,0 +1,10 @@
+function prompt_zshgod_vimode() {
+	ZSHGOD_VIMODE='I'
+
+	[[ $ZLE_STATE == *overwrite* ]] && ZSHGOD_VIMODE='R' && return
+	[[ $KEYMAP != vicmd ]] && return
+
+	(( REGION_ACTIVE == 1 )) && ZSHGOD_VIMODE='V' && return
+	(( REGION_ACTIVE == 2 )) && ZSHGOD_VIMODE='L'  && return
+	ZSHGOD_VIMODE='N'
+}

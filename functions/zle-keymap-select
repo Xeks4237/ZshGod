@@ -1,0 +1,6 @@
+# Function which gets called when text is selected using visual mods of zsh
+function zle-keymap-select() {
+	prompt_zshgod_vimode
+	zle reset-prompt
+	zle -R
+}
