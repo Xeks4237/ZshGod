@@ -20,10 +20,6 @@ function prompt_zshgod_setup() {
 	# precmd hook for recording time when any command was finished, needed for exectime functions
 	add-zsh-hook precmd prompt_zshgod_precmd
 
-	# Make zle widgets aout of some functions
-	zle -N zle-keymap-select
-	zle -N zle-line-pre-redraw
-
 	# Checks passed flags/args to function to make easy fast configuration
 	for arg in "$@"; do
 		case "$arg" in
