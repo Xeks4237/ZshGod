@@ -26,9 +26,6 @@ function prompt_zshgod_setup() {
 	# Variable which sets amount of exectime after exectime is not hided
 	export ZSHGOD_EXECTIME_MIN=5
 
-	# Builtin variable which sets indentation for prompts right side
-	export ZLE_RPROMPT_INDENT=0
-
 	# Disable multilined prompt by default
 	export ZSHGOD_MULTILINED=false
 
