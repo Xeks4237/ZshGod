@@ -1,7 +1,7 @@
 # Function which returns exectime for commands after it's been called
 # This function works properly only with its parts from precmd and preexec functions
 function prompt_zshgod_exectime() {
-	if (( ${+PROMPT_ZSHGOD_CMD_DURATION} && PROMPT_ZSHGOD_CMD_DURATION >= PROMPT_ZSHGOD_EXECTIME_MIN )); then
-		print "$PROMPT_ZSHGOD_CMD_DURATION"
+	if (( ${+PROMPT_ZSHGOD_EXECTIME_DURATION} && PROMPT_ZSHGOD_EXECTIME_DURATION >= PROMPT_ZSHGOD_EXECTIME_MIN )); then
+		print "$PROMPT_ZSHGOD_EXECTIME_DURATION"
 	fi
 }
