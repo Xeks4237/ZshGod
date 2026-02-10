@@ -14,10 +14,12 @@ function prompt_zshgod_setup() {
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
-	# preexec hook for recording time when any command was runned, needed for exectime functions
+	# preexec hook gets called before you run any command, like when you press enter
+	# Needed for stuff like exectime functions and etc
 	add-zsh-hook preexec prompt_zshgod_preexec
 
-	# precmd hook for recording time when any command was finished, needed for exectime functions
+	# precmd hook gets called when running command finishes and before prompt is drown
+	# Needed for stuff like exectime functions and etc
 	add-zsh-hook precmd prompt_zshgod_precmd
 
 	# [ Configuration Variables ]
