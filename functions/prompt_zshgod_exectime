@@ -1,7 +1,7 @@
 # Function which returns exectime for commands after it's been called
 # This function works properly only with its parts from precmd and preexec functions
 function prompt_zshgod_exectime() {
-	[[ -n $PROMPT_ZSHGOD_EXECTIME_START && -n $PROMPT_ZSHGOD_EXECTIME_END ]] || return
-	PROMPT_ZSHGOD_EXECTIME=$(( PROMPT_ZSHGOD_EXECTIME_END - PROMPT_ZSHGOD_EXECTIME_START))
-	print "$PROMPT_ZSHGOD_EXECTIME"
+	[[ -n $ZSHGOD_EXECTIME_START && -n $ZSHGOD_EXECTIME_END ]] || return
+	ZSHGOD_EXECTIME=$(( ZSHGOD_EXECTIME_END - ZSHGOD_EXECTIME_START))
+	print "$ZSHGOD_EXECTIME"
 }
