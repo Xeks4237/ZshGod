@@ -20,6 +20,47 @@ function prompt_zshgod_setup() {
 	# precmd hook for recording time when any command was finished, needed for exectime functions
 	add-zsh-hook precmd prompt_zshgod_precmd
 
+	# [ Configuration Variables ]
+	# Variable which sets amount of exectime after exectime is not hided
+	export ZSHGOD_EXECTIME_MIN=5
+
+	# Builtin variable which sets indentation for prompts right side
+	export ZLE_RPROMPT_INDENT=0
+
+	# Disable multilined prompt by default
+	export ZSHGOD_MULTILINED=false
+
+	# INFO: I used Catppuccin Mocha Colors from: https://github.com/catppuccin
+	# Main colors
+	ZSHGOD_THM_CATPPUCCIN_ROSEWATER='#F5E0DC'
+	ZSHGOD_THM_CATPPUCCIN_FLAMINGO='#F2CDCD'
+	ZSHGOD_THM_CATPPUCCIN_PINK='#F5C2E7'
+	ZSHGOD_THM_CATPPUCCIN_MAUVE='#CBA6F7'
+	ZSHGOD_THM_CATPPUCCIN_RED='#F38BA8'
+	ZSHGOD_THM_CATPPUCCIN_MAROON='#EBA0AC'
+	ZSHGOD_THM_CATPPUCCIN_PEACH='#FAB387'
+	ZSHGOD_THM_CATPPUCCIN_YELLOW='#F9E2AF'
+	ZSHGOD_THM_CATPPUCCIN_GREEN='#A6E3A1'
+	ZSHGOD_THM_CATPPUCCIN_TEAL='#94E2D5'
+	ZSHGOD_THM_CATPPUCCIN_SKY='#89DCEB'
+	ZSHGOD_THM_CATPPUCCIN_SAPPHIRE='#74C7EC'
+	ZSHGOD_THM_CATPPUCCIN_BLUE='#89B4FA'
+	ZSHGOD_THM_CATPPUCCIN_LAVENDER='#B4BEFE'
+
+	# Main surface and overlay colors
+	ZSHGOD_THM_CATPPUCCIN_SUBTEXT_1='#A6ADC8'
+	ZSHGOD_THM_CATPPUCCIN_SUBTEXT_0='#BAC2DE'
+	ZSHGOD_THM_CATPPUCCIN_FOREGROUND='#CDD6F4'
+	ZSHGOD_THM_CATPPUCCIN_OVERLAY_2='#9399B2'
+	ZSHGOD_THM_CATPPUCCIN_OVERLAY_1='#7F849C'
+	ZSHGOD_THM_CATPPUCCIN_OVERLAY_0='#6C7086'
+	ZSHGOD_THM_CATPPUCCIN_SURFACE_2='#585B70'
+	ZSHGOD_THM_CATPPUCCIN_SURFACE_1='#45475A'
+	ZSHGOD_THM_CATPPUCCIN_SURFACE_0='#313244'
+	ZSHGOD_THM_CATPPUCCIN_MANTLE='#181825'
+	ZSHGOD_THM_CATPPUCCIN_CRUST='#11111B'
+	ZSHGOD_THM_CATPPUCCIN_BACKGROUND='#1E1E2E'
+
 	# Checks passed flags/args to function to make easy fast configuration
 	for arg in "$@"; do
 		case "$arg" in
