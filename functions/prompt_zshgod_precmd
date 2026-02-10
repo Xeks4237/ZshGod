@@ -1,11 +1,6 @@
-# Function which calculates exectime before drowing prompt
+# Function which gets called after running command finishes and before prompt is drown
 function prompt_zshgod_precmd() {
-	# Piece of code which calculated exectime before displaying prompt
+	# Piece of code which captures finish time of command in variable
 	# Its for prompt_zshgod_exectime function
-	if (( ${+ZSHGOD_EXECTIME_START} )); then
-		ZSHGOD_EXECTIME_DURATION=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
-		unset ZSHGOD_EXECTIME_START
-	else
-		unset ZSHGOD_EXECTIME_DURATION
-	fi
+	ZSHGOD_EXECTIME_END=$EPOCHSECONDS
 }
