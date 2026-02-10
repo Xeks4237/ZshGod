@@ -2,7 +2,7 @@
 # For example: 165392 => 1d 21h 56m 32s
 function prompt_zshgod_right-to-left_exectime_human-readable() {
 	# Check if exectime isn't empty, like less that 5 or else
-	[[ -n $(prompt_zshgod_exectime) ]] && return
+	[[ -n $(prompt_zshgod_exectime) ]] || return
 
 	# Do calculations and output human readable exectime
 	local tmp="$(prompt_zshgod_exectime)"
