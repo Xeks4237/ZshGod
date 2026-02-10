@@ -1,0 +1,4 @@
+# Function which returns exectime for commands after it's been called
+function prompt_zshgod_rectangular_exectime_seconds-only() {
+	print "%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_YELLOW} $(prompt_zshgod_exectime)s %f%k"
+}

@@ -1,0 +1,15 @@
+# Function which returns exectime seconds into human readable time
+# For example: 165392 => 1d 21h 56m 32s
+function prompt_zshgod_rectangular_exectime_human-readable() {
+	local tmp="$(prompt_zshgod_exectime)"
+	local days="$(( tmp / 60 / 60 / 24 ))"
+	local hours="$(( tmp / 60 / 60 % 24 ))"
+	local minutes="$(( tmp / 60 % 60 ))"
+	local seconds="$(( tmp % 60 ))"
+	local output
+	(( $days > 0 )) && output+="${days}d "
+	(( $hours > 0 )) && output+="${hours}h "
+	(( $minutes > 0 )) && output+="${minutes}m "
+	(( $seconds > 0 )) && output+="${seconds}s"
+	print "%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_YELLOW} $output %k%f"
+}

@@ -88,16 +88,18 @@ zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 # [ Autoload setup function ]
 autoload -Uz prompt_zshgod_setup
 
-# [ Autoload functions with no styling ]
+# [ Autoload functions with no styling ] (backend only or raw text)
 autoload -Uz \
 	prompt_zshgod_preexec \
-	prompt_zshgod_precmd
+	prompt_zshgod_precmd \
+	prompt_zshgod_exectime
 # [ Autoload rectangle/square styled functions ]
 autoload -Uz \
 	prompt_zshgod_rectangular_git_dirty \
 	prompt_zshgod_rectangular_git_info \
 	prompt_zshgod_rectangular_time \
-	prompt_zshgod_rectangular_exectime \
+	prompt_zshgod_rectangular_exectime_seconds-only \
+	prompt_zshgod_rectangular_exectime_human-readable \
 	prompt_zshgod_rectangular_current-pwd \
 	prompt_zshgod_rectangular_userandhostname \
 	prompt_zshgod_rectangular_sshonly_userandhostname \
@@ -114,7 +116,8 @@ autoload -Uz \
 	prompt_zshgod_left-to-right_git_dirty \
 	prompt_zshgod_left-to-right_git_info \
 	prompt_zshgod_left-to-right_time \
-	prompt_zshgod_left-to-right_exectime \
+	prompt_zshgod_left-to-right_exectime_seconds-only \
+	prompt_zshgod_left-to-right_exectime_human-readable \
 	prompt_zshgod_left-to-right_current-pwd \
 	prompt_zshgod_left-to-right_userandhostname \
 	prompt_zshgod_left-to-right_sshonly_userandhostname \
@@ -131,7 +134,8 @@ autoload -Uz \
 	prompt_zshgod_right-to-left_git_dirty \
 	prompt_zshgod_right-to-left_git_info \
 	prompt_zshgod_right-to-left_time \
-	prompt_zshgod_right-to-left_exectime \
+	prompt_zshgod_right-to-left_exectime_seconds-only \
+	prompt_zshgod_right-to-left_exectime_human-readable \
 	prompt_zshgod_right-to-left_current-pwd \
 	prompt_zshgod_right-to-left_userandhostname \
 	prompt_zshgod_right-to-left_sshonly_userandhostname \
