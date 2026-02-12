@@ -1,7 +1,10 @@
 # Function which gets called after running command finishes and before prompt is drown
 function prompt_zshgod_precmd() {
 	# Snippet used for prompt_zshgod_exectime function
-	[[ -v $ZSHGOD_EXECTIME_START ]] || unset ZSHGOD_EXECTIME
-	ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
-	unset ZSHGOD_EXECTIME_START
+	if (( ${+ZSHGOD_EXECTIME_START} )); then
+		ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
+		unset ZSHGOD_EXECTIME_START
+	else
+		unset ZSHGOD_EXECTIME
+	fi
 }
