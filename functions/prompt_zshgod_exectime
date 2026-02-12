@@ -18,4 +18,7 @@ function prompt_zshgod_exectime() {
 
 	# Output/Return exectime
 	print "$ZSHGOD_EXECTIME"
+
+	# Unset $ZSHGOD_EXECTIME_START because preexec not always gets called
+	unset ZSHGOD_EXECTIME_START
 }
