@@ -2,16 +2,15 @@
 # This function works properly only with its parts from precmd and preexec functions
 function prompt_zshgod_exectime() {
 	# Check if variables needed for calculating exectime is set
-	[[ -n $ZSHGOD_EXECTIME_START ]] || return
+	[[ -n $ZSHGOD_EXECTIME_START && $ZSHGOD_EXECTIME_START!=$ZSHGOD_EXECTIME_START_OLD ]] || return
+	[[ -n $ZSHGOD_EXECTIME_END ]] || return
 
-	# Capture time when prompt starts to be drown
-	# NOTE: I don't added it in precmd because precmd gets called always in difference to preexec
-	# Even when no commands were runned precmd gets called, like if user
-	# just pressed enter without any command, but preexec gets called only before command
-	# local ZSHGOD_EXECTIME_END=$EPOCHSECONDS
+	# Capture old state of $ZSHGOD_EXECTIME_START
+	# Because preexec not always gets called
+	ZSHGOD_EXECTIME_START_OLD=$ZSHGOD_EXECTIME_START
 
 	# Calculate exectime
-	ZSHGOD_EXECTIME=$(( ZSHGOD_EXECTIME_END - ZSHGOD_EXECTIME_START))
+	ZSHGOD_EXECTIME="$(( ZSHGOD_EXECTIME_END - ZSHGOD_EXECTIME_START ))"
 
 	# Check if exectime is bigger or equal to $ZSHGOD_EXECTIME_MIN
 	# Its needed to customize minimal amount of seconds to show,
@@ -21,7 +20,4 @@ function prompt_zshgod_exectime() {
 
 	# Output/Return exectime
 	print "$ZSHGOD_EXECTIME"
-
-	# Unset ZSHGOD_EXECTIME_START because preexec not always gets called
-	ZSHGOD_EXECTIME_START=''
 }
