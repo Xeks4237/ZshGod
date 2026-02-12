@@ -3,14 +3,12 @@
 function prompt_zshgod_exectime() {
 	# Check if variables needed for calculating exectime is set
 	[[ -n $ZSHGOD_EXECTIME_START ]] || return
-	[[ -n $ZSHGOD_EXECTIME_END && $ZSHGOD_EXECTIME_END!=$ZSHGOD_EXECTIME_END_OLD ]] || return
 
-	# Capture old state of $ZSHGOD_EXECTIME_END
-	# Because preexec not always gets called
-	ZSHGOD_EXECTIME_END_OLD=$ZSHGOD_EXECTIME_END
+	# Capture end time of commands
+	ZSHGOD_EXECTIME_END=$EPOCHSECONDS
 
 	# Calculate exectime
-	ZSHGOD_EXECTIME="$(( ZSHGOD_EXECTIME_END - ZSHGOD_EXECTIME_START ))"
+	ZSHGOD_EXECTIME=$(( ZSHGOD_EXECTIME_END - ZSHGOD_EXECTIME_START ))
 
 	# Check if exectime is bigger or equal to $ZSHGOD_EXECTIME_MIN
 	# Its needed to customize minimal amount of seconds to show,

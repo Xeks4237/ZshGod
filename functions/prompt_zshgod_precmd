@@ -1,6 +1,2 @@
 # Function which gets called after running command finishes and before prompt is drown
-function prompt_zshgod_precmd() {
-	# [ Code needed for exectime functions ]
-	# Capture time before prompt gets drown
-	ZSHGOD_EXECTIME_END=$EPOCHSECONDS
-}
+function prompt_zshgod_precmd() {}
