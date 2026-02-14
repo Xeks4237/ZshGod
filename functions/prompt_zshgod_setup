@@ -107,7 +107,8 @@ function prompt_zshgod_setup() {
 
 	# [ Prompt Scructure ]
 	# Tmp multiline prompt, layout
-	PS1='$(prompt_zshgod_left-to-right_current-pwd)$(prompt_zshgod_left-to-right_jobs)$(prompt_zshgod_left-to-right_vcs_system)$(prompt_zshgod_left-to-right_vcs_branch)$(prompt_zshgod_left-to-right_git_info)$(prompt_zshgod_left-to-right_exectime_human-readable)\n$(prompt_zshgod_left-to-right_time)$(prompt_zshgod_left-to-right_root-indicator)%b '
+	PS1='%B$(prompt_zshgod_left-to-right_current-pwd)$(prompt_zshgod_left-to-right_jobs)$(prompt_zshgod_left-to-right_vcs_system)$(prompt_zshgod_left-to-right_vcs_branch)$(prompt_zshgod_left-to-right_git_info)$(prompt_zshgod_left-to-right_exectime_human-readable)
+$(prompt_zshgod_left-to-right_time)$(prompt_zshgod_left-to-right_root-indicator)%b '
 	RPS1='%B$(prompt_zshgod_right-to-left_sshonly_userandhostname)%b'
 
 	# TODO: Make this variables to fully configurable through args/flags in this function
