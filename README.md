@@ -3,8 +3,8 @@ ZshGod is the simple and flexible zsh prompt
 # Instruction
 
 This prompt is made by me Xeks4237 when I was tinkering with my zsh config
-I wanted some cool and flexible in side of customization prompt like powerlevel10k but easier to manually configure
-So I made this zshgod prompt, it just consists of a lot of functions where each of them are different section of prompt and all of them duplicate couple of times for different look, like git info in arrow or cube, or mirrorev versions of them
+I wanted some cool and flexible in prompt similar in look to powerlevel10k but easier to manually configure
+So I made this zshgod prompt, it just consists of a lot of functions where each of them are different section of prompt and all of them duplicate couple of times for different look, like git info in arrow or cube style, or mirrored versions of them
 
 Mostly I putted this prompt here and not in my dotfiles because, it is easier for me to add plugin with this prompt to my zsh config using some plugin manager
 
@@ -18,7 +18,7 @@ For example here is the way how it's made using Zinit:
 zinit light Xeks4237/ZshGod
 ```
 
-Then after installing it, just put run this code or put it in .zshrc:
+Then after installing it, just run/put this code in your zshrc:
 
 ```sh
 prompt zshgod
