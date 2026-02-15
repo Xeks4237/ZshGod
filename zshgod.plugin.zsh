@@ -43,6 +43,7 @@ zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 # [ Autoload technical functions ]
 autoload -Uz \
 	prompt_zshgod_setup \
+	prompt_zshgod_configure \
 	prompt_zshgod_preexec \
 	prompt_zshgod_precmd \
 	prompt_zshgod_exectime
