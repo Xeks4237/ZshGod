@@ -1,7 +1,7 @@
 # Function which returns exectime seconds into human readable time
 # For example: 165392 => 1d 21h 56m 32s
 function prompt_zshgod_exectime_human-readable() {
-	# Check if exectime isn't empty, like less that 5 or else
+	# Check if exectime isn't empty, like less that 5 or else like stuff
 	[[ -n $(prompt_zshgod_exectime) ]] || return
 
 	# Do calculations and output human readable exectime

@@ -14,9 +14,7 @@ function prompt_zshgod_git_info() {
 
 	# Count how many commits are ahead of upstream (not pushed)
 	local ahead_count=0
-	if [[ $branch_line =~ "ahead ([0-9]+)" ]]; then
-		ahead_count=${match[1]}
-	fi
+	[[ $branch_line =~ "ahead ([0-9]+)" ]] && ahead_count=${match[1]}
 
 	# Remove branch line to leave only file status lines
 	local status_lines=$(echo "$git_info" | grep -v "^##")
@@ -43,7 +41,5 @@ function prompt_zshgod_git_info() {
 	(( ahead_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_LAVENDER}${ahead_count}↑%f")
 
 	# If there's anything to show, join the parts add do some customization
-	if (( ${#parts[@]} > 0 )); then
-		print "${parts[*]}"
-	fi
+	(( ${#parts[@]} > 0 )) && print "${parts[*]}"
 }
