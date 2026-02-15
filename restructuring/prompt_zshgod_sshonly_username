@@ -1,4 +1,4 @@
-# Same function as prompt_zshgod_rectangular_username but shown only through ssh
+# Function which returns username only if connected through ssh
 function prompt_zshgod_sshonly_username() {
-	[[ -n $SSH_CONNECTION ]] && prompt_zshgod_rectangular_username
+	[[ -n $SSH_CONNECTION ]] && print '%n'
 }

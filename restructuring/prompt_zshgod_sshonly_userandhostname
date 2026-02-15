@@ -1,4 +1,0 @@
-# Function which returns prompt_zshgod_rectangular_userandhostname only when connected to ssh
-function prompt_zshgod_sshonly_userandhostname() {
-	[[ -n $SSH_CONNECTION ]] && prompt_zshgod_rectangular_userandhostname
-}

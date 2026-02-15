@@ -1,4 +1,4 @@
-# Same function as prompt_zshgod_rectangular_hostname but shown only through ssh
+# Function which returns hostname only if connected through ssh
 function prompt_zshgod_sshonly_hostname() {
-	[[ -n $SSH_CONNECTION ]] && prompt_zshgod_rectangular_hostname
+	[[ -n $SSH_CONNECTION ]] && print '%m'
 }
