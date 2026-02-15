@@ -7,7 +7,7 @@ function prompt_zshgod_vcs_system() {
 	# Run vcs_info to get/update vcs info
 	vcs_info
 
-	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
+	# Check if $vcs_info_msg_0_ is empty and if not prints vcs branch info
 	if [[ -n $vcs_info_msg_0_ ]]; then
 		local msg=$vcs_info_msg_0_
 		print "%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_LAVENDER} $msg %k%f"

@@ -44,6 +44,6 @@ function prompt_zshgod_git_info() {
 
 	# If there's anything to show, join the parts add do some customization
 	if (( ${#parts[@]} > 0 )); then
-		print "%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}%K{$ZSHGOD_THEME_CATPPUCCIN_OVERLAY_0} ${parts[*]} %k%f"
+		print "${parts[*]}"
 	fi
 }
