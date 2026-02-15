@@ -1,6 +1,10 @@
 # Function which returns exectime seconds into human readable time
 # For example: 165392 => 1d 21h 56m 32s
 function prompt_zshgod_rectangular_exectime_human-readable() {
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
 	# Check if exectime isn't empty, like less that 5 or else
 	[[ -n $(prompt_zshgod_exectime) ]] || return
 
@@ -15,5 +19,5 @@ function prompt_zshgod_rectangular_exectime_human-readable() {
 	(( $hours > 0 )) && output+="${hours}h "
 	(( $minutes > 0 )) && output+="${minutes}m "
 	(( $seconds > 0 )) && output+="${seconds}s"
-	print "%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_YELLOW} $output %k%f"
+	print "%F{$fg_color}%K{$bg_color} $output %k%f"
 }

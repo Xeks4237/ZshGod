@@ -1,4 +1,8 @@
 # Function for showing arrow with current working directory
 function prompt_zshgod_rectangular_current-pwd() {
-	print "%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_BLUE} %~ %k%f"
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	print "%F{$fg_color}%K{$bg_color} %~ %k%f"
 }

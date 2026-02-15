@@ -1,5 +1,9 @@
 # Function which shows arrow with current username@hostname
 function prompt_zshgod_left-to-right_userandhostname() {
-	print "%(!,%F{$ZSHGOD_THEME_CATPPUCCIN_RED}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%n%k %s%f,%F{$ZSHGOD_THEME_CATPPUCCIN_GREEN}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%n%k %s%f)%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}@%k %s%f%F{$ZSHGOD_THEME_CATPPUCCIN_SKY}%S %K%m%k %s%f"
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	print "%(!,%F{$bg_color}%S %K{$fg_color}%n%k %s%f,%F{$bg_color}%S %K{$fg_color}%n%k %s%f)%F{$bg_color}%S %K{$fg_color}@%k %s%f%F{$bg_color}%S %K%m%k %s%f"
 
 }

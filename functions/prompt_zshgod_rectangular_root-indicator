@@ -1,4 +1,8 @@
 # Function which shows colored arrow with different color if current user is root
 function prompt_zshgod_rectangular_root-indicator () {
-	print "%(!,%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_RED} # %k%f,%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_GREEN} \$ %k%f)"
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	print "%(!,%F{$fg_color}%K{$bg_color} # %k%f,%F{$fg_color}%K{$bg_color} \$ %k%f)"
 }

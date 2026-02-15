@@ -1,4 +1,8 @@
 # Function which returns colored arrow with current username with different color if current user is root
 function prompt_zshgod_rectangular_username() {
-	print "%(!,%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_RED} %n %k%f,%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_GREEN} %n %k%f)"
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	print "%(!,%F{$fg_color}%K{$bg_color} %n %k%f,%F{$fg_color}%K{$bg_color} %n %k%f)"
 }
