@@ -29,7 +29,9 @@ function prompt_zshgod_setup() {
 	# Disable multilined prompt by default
 	export ZSHGOD_MULTILINED=false
 
-	# INFO: I used Catppuccin Mocha Colors from: https://github.com/catppuccin
+	# INFO: I used Catppuccin Mocha Colors as default colors
+	# https://github.com/catppuccin
+
 	# Main colors
 	ZSHGOD_THEME_CATPPUCCIN_ROSEWATER='#F5E0DC'
 	ZSHGOD_THEME_CATPPUCCIN_FLAMINGO='#F2CDCD'
@@ -66,6 +68,7 @@ function prompt_zshgod_setup() {
 				# [ Flags to configure prompt ]
 				# Flag to open simple configuration wizard/editor
 			configure) prompt_zshgod_configure ;;
+
 				# [ Flags used to overwrite existing colors ]
 			--color-rosewater=*) ZSHGOD_THEME_CATPPUCCIN_ROSEWATER="${arg#--color-rosewater=}" ;;
 
