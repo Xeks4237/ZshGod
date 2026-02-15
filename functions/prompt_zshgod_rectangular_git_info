@@ -36,14 +36,14 @@ function prompt_zshgod_rectangular_git_info() {
 	# Build the output parts only if the count is greater than 0
 	local parts=()
 
-	(( staged_count > 0 )) && parts+=("%F{$ZSHGOD_THM_CATPPUCCIN_GREEN}${staged_count}+%f")
-	(( modified_count > 0 )) && parts+=("%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}${modified_count}*%f")
-	(( deleted_count > 0 )) && parts+=("%F{$ZSHGOD_THM_CATPPUCCIN_RED}${deleted_count}-%f")
-	(( untracked_count > 0 )) && parts+=("%F{$ZSHGOD_THM_CATPPUCCIN_SKY}${untracked_count}?%f")
-	(( ahead_count > 0 )) && parts+=("%F{$ZSHGOD_THM_CATPPUCCIN_LAVENDER}${ahead_count}↑%f")
+	(( staged_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_GREEN}${staged_count}+%f")
+	(( modified_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}${modified_count}*%f")
+	(( deleted_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_RED}${deleted_count}-%f")
+	(( untracked_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_SKY}${untracked_count}?%f")
+	(( ahead_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_LAVENDER}${ahead_count}↑%f")
 
 	# If there's anything to show, join the parts add do some customization
 	if (( ${#parts[@]} > 0 )); then
-		print "%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}%K{$ZSHGOD_THM_CATPPUCCIN_OVERLAY_0} ${parts[*]} %k%f"
+		print "%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}%K{$ZSHGOD_THEME_CATPPUCCIN_OVERLAY_0} ${parts[*]} %k%f"
 	fi
 }

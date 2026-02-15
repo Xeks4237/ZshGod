@@ -1,4 +1,4 @@
 # Function which returns colored arrow with current hostname
 function prompt_zshgod_rectangular_hostname() {
-	print "%F{$ZSHGOD_THM_CATPPUCCIN_CRUST}%K{$ZSHGOD_THM_CATPPUCCIN_SKY} %m %k%f"
+	print "%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_SKY} %m %k%f"
 }

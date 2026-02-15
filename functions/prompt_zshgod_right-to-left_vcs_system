@@ -10,6 +10,6 @@ function prompt_zshgod_right-to-left_vcs_system() {
 	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
 	if [[ -n $vcs_info_msg_0_ ]]; then
 		local msg=$vcs_info_msg_0_
-		print "%F{$ZSHGOD_THM_CATPPUCCIN_LAVENDER}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}$msg%k %s%f"
+		print "%F{$ZSHGOD_THEME_CATPPUCCIN_LAVENDER}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}$msg%k %s%f"
 	fi
 }

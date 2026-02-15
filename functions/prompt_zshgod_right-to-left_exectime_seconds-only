@@ -1,5 +1,5 @@
 # Function which returns exectime for commands after it's been called
 function prompt_zshgod_right-to-left_exectime_seconds-only() {
 	# Check if exectime isn't empty and output exectime
-	[[ -n $(prompt_zshgod_exectime) ]] && print "%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}$(prompt_zshgod_exectime)s%k %s%f"
+	[[ -n $(prompt_zshgod_exectime) ]] && print "%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}$(prompt_zshgod_exectime)s%k %s%f"
 }

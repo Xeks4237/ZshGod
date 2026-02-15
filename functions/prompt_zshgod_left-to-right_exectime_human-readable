@@ -15,5 +15,5 @@ function prompt_zshgod_left-to-right_exectime_human-readable() {
 	(( $hours > 0 )) && output+="${hours}h "
 	(( $minutes > 0 )) && output+="${minutes}m "
 	(( $seconds > 0 )) && output+="${seconds}s"
-	print "%F{$ZSHGOD_THM_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}$output%k %s%f"
+	print "%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}$output%k %s%f"
 }

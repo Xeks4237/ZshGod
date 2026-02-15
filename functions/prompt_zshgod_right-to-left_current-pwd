@@ -1,4 +1,4 @@
 # Function for showing arrow with current working directory
 function prompt_zshgod_right-to-left_current-pwd() {
-	print "%F{$ZSHGOD_THM_CATPPUCCIN_BLUE}%S %K{$ZSHGOD_THM_CATPPUCCIN_CRUST}%~%k %s%f"
+	print "%F{$ZSHGOD_THEME_CATPPUCCIN_BLUE}%S %K{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%~%k %s%f"
 }

@@ -31,66 +31,69 @@ function prompt_zshgod_setup() {
 
 	# INFO: I used Catppuccin Mocha Colors from: https://github.com/catppuccin
 	# Main colors
-	ZSHGOD_THM_CATPPUCCIN_ROSEWATER='#F5E0DC'
-	ZSHGOD_THM_CATPPUCCIN_FLAMINGO='#F2CDCD'
-	ZSHGOD_THM_CATPPUCCIN_PINK='#F5C2E7'
-	ZSHGOD_THM_CATPPUCCIN_MAUVE='#CBA6F7'
-	ZSHGOD_THM_CATPPUCCIN_RED='#F38BA8'
-	ZSHGOD_THM_CATPPUCCIN_MAROON='#EBA0AC'
-	ZSHGOD_THM_CATPPUCCIN_PEACH='#FAB387'
-	ZSHGOD_THM_CATPPUCCIN_YELLOW='#F9E2AF'
-	ZSHGOD_THM_CATPPUCCIN_GREEN='#A6E3A1'
-	ZSHGOD_THM_CATPPUCCIN_TEAL='#94E2D5'
-	ZSHGOD_THM_CATPPUCCIN_SKY='#89DCEB'
-	ZSHGOD_THM_CATPPUCCIN_SAPPHIRE='#74C7EC'
-	ZSHGOD_THM_CATPPUCCIN_BLUE='#89B4FA'
-	ZSHGOD_THM_CATPPUCCIN_LAVENDER='#B4BEFE'
+	ZSHGOD_THEME_CATPPUCCIN_ROSEWATER='#F5E0DC'
+	ZSHGOD_THEME_CATPPUCCIN_FLAMINGO='#F2CDCD'
+	ZSHGOD_THEME_CATPPUCCIN_PINK='#F5C2E7'
+	ZSHGOD_THEME_CATPPUCCIN_MAUVE='#CBA6F7'
+	ZSHGOD_THEME_CATPPUCCIN_RED='#F38BA8'
+	ZSHGOD_THEME_CATPPUCCIN_MAROON='#EBA0AC'
+	ZSHGOD_THEME_CATPPUCCIN_PEACH='#FAB387'
+	ZSHGOD_THEME_CATPPUCCIN_YELLOW='#F9E2AF'
+	ZSHGOD_THEME_CATPPUCCIN_GREEN='#A6E3A1'
+	ZSHGOD_THEME_CATPPUCCIN_TEAL='#94E2D5'
+	ZSHGOD_THEME_CATPPUCCIN_SKY='#89DCEB'
+	ZSHGOD_THEME_CATPPUCCIN_SAPPHIRE='#74C7EC'
+	ZSHGOD_THEME_CATPPUCCIN_BLUE='#89B4FA'
+	ZSHGOD_THEME_CATPPUCCIN_LAVENDER='#B4BEFE'
 
 	# Main surface and overlay colors
-	ZSHGOD_THM_CATPPUCCIN_SUBTEXT_1='#A6ADC8'
-	ZSHGOD_THM_CATPPUCCIN_SUBTEXT_0='#BAC2DE'
-	ZSHGOD_THM_CATPPUCCIN_FOREGROUND='#CDD6F4'
-	ZSHGOD_THM_CATPPUCCIN_OVERLAY_2='#9399B2'
-	ZSHGOD_THM_CATPPUCCIN_OVERLAY_1='#7F849C'
-	ZSHGOD_THM_CATPPUCCIN_OVERLAY_0='#6C7086'
-	ZSHGOD_THM_CATPPUCCIN_SURFACE_2='#585B70'
-	ZSHGOD_THM_CATPPUCCIN_SURFACE_1='#45475A'
-	ZSHGOD_THM_CATPPUCCIN_SURFACE_0='#313244'
-	ZSHGOD_THM_CATPPUCCIN_MANTLE='#181825'
-	ZSHGOD_THM_CATPPUCCIN_CRUST='#11111B'
-	ZSHGOD_THM_CATPPUCCIN_BACKGROUND='#1E1E2E'
+	ZSHGOD_THEME_CATPPUCCIN_SUBTEXT_1='#A6ADC8'
+	ZSHGOD_THEME_CATPPUCCIN_SUBTEXT_0='#BAC2DE'
+	ZSHGOD_THEME_CATPPUCCIN_FOREGROUND='#CDD6F4'
+	ZSHGOD_THEME_CATPPUCCIN_OVERLAY_2='#9399B2'
+	ZSHGOD_THEME_CATPPUCCIN_OVERLAY_1='#7F849C'
+	ZSHGOD_THEME_CATPPUCCIN_OVERLAY_0='#6C7086'
+	ZSHGOD_THEME_CATPPUCCIN_SURFACE_2='#585B70'
+	ZSHGOD_THEME_CATPPUCCIN_SURFACE_1='#45475A'
+	ZSHGOD_THEME_CATPPUCCIN_SURFACE_0='#313244'
+	ZSHGOD_THEME_CATPPUCCIN_MANTLE='#181825'
+	ZSHGOD_THEME_CATPPUCCIN_CRUST='#11111B'
+	ZSHGOD_THEME_CATPPUCCIN_BACKGROUND='#1E1E2E'
 
 	# Checks passed flags/args to function to make easy fast configuration
 	for arg in "$@"; do
 		case "$arg" in
+				# [ Flags to configure prompt ]
+				# Flag to open simple configuration wizard/editor
+			configure) prompt_zshgod_configure ;;
 				# [ Flags used to overwrite existing colors ]
-			--color-rosewater=*) ZSHGOD_THM_CATPPUCCIN_ROSEWATER="${arg#--color-rosewater=}" ;;
+			--color-rosewater=*) ZSHGOD_THEME_CATPPUCCIN_ROSEWATER="${arg#--color-rosewater=}" ;;
 
-			--color-flamingo=*) ZSHGOD_THM_CATPPUCCIN_FLAMINGO="${arg#--color-flamingo=}" ;;
+			--color-flamingo=*) ZSHGOD_THEME_CATPPUCCIN_FLAMINGO="${arg#--color-flamingo=}" ;;
 
-			--color-pink=*) ZSHGOD_THM_CATPPUCCIN_PINK="${arg#--color-pink=}" ;;
+			--color-pink=*) ZSHGOD_THEME_CATPPUCCIN_PINK="${arg#--color-pink=}" ;;
 
-			--color-mauve=*) ZSHGOD_THM_CATPPUCCIN_MAUVE="${arg#--color-mauve=}" ;;
+			--color-mauve=*) ZSHGOD_THEME_CATPPUCCIN_MAUVE="${arg#--color-mauve=}" ;;
 
-			--color-red=*) ZSHGOD_THM_CATPPUCCIN_RED="${arg#--color-red=}" ;;
+			--color-red=*) ZSHGOD_THEME_CATPPUCCIN_RED="${arg#--color-red=}" ;;
 
-			--color-maroon=*) ZSHGOD_THM_CATPPUCCIN_MAROON="${arg#--color-maroon=}" ;;
+			--color-maroon=*) ZSHGOD_THEME_CATPPUCCIN_MAROON="${arg#--color-maroon=}" ;;
 
-			--color-peach=*) ZSHGOD_THM_CATPPUCCIN_PEACH="${arg#--color-peach=}" ;;
+			--color-peach=*) ZSHGOD_THEME_CATPPUCCIN_PEACH="${arg#--color-peach=}" ;;
 
-			--color-yellow=*) ZSHGOD_THM_CATPPUCCIN_YELLOW="${arg#--color-yellow=}" ;;
+			--color-yellow=*) ZSHGOD_THEME_CATPPUCCIN_YELLOW="${arg#--color-yellow=}" ;;
 
-			--color-green=*) ZSHGOD_THM_CATPPUCCIN_GREEN="${arg#--color-green=}" ;;
+			--color-green=*) ZSHGOD_THEME_CATPPUCCIN_GREEN="${arg#--color-green=}" ;;
 
-			--color-teal=*) ZSHGOD_THM_CATPPUCCIN_TEAL="${arg#--color-teal=}" ;;
+			--color-teal=*) ZSHGOD_THEME_CATPPUCCIN_TEAL="${arg#--color-teal=}" ;;
 
-			--color-sky=*) ZSHGOD_THM_CATPPUCCIN_SKY="${arg#--color-sky=}" ;;
+			--color-sky=*) ZSHGOD_THEME_CATPPUCCIN_SKY="${arg#--color-sky=}" ;;
 
-			--color-sapphire=*) ZSHGOD_THM_CATPPUCCIN_SAPPHIRE="${arg#--color-sapphire=}" ;;
+			--color-sapphire=*) ZSHGOD_THEME_CATPPUCCIN_SAPPHIRE="${arg#--color-sapphire=}" ;;
 
-			--color-blue=*) ZSHGOD_THM_CATPPUCCIN_BLUE="${arg#--color-blue=}" ;;
+			--color-blue=*) ZSHGOD_THEME_CATPPUCCIN_BLUE="${arg#--color-blue=}" ;;
 
-			--color-lavender=*) ZSHGOD_THM_CATPPUCCIN_LAVENDER="${arg#--color-lavender=}" ;;
+			--color-lavender=*) ZSHGOD_THEME_CATPPUCCIN_LAVENDER="${arg#--color-lavender=}" ;;
 
 				# [ Hardlers for weird scenarios ]
 			--*)
