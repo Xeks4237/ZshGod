@@ -1,0 +1,4 @@
+# Function which returns colored arrow with current username with different color if current user is root
+function prompt_zshgod_username() {
+	print "%(!,%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_RED} %n %k%f,%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_GREEN} %n %k%f)"
+}

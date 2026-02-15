@@ -1,0 +1,15 @@
+# Function which returns name of current vcs
+function prompt_zshgod_vcs_system() {
+	# zstyle options to customize look of vcs_info
+	zstyle ':vcs_info:*' actionformats '%s'
+	zstyle ':vcs_info:*' formats '%s'
+
+	# Run vcs_info to get/update vcs info
+	vcs_info
+
+	# Check if $vcs_info_msg_0_ is emplty and if not prints vcs branch info
+	if [[ -n $vcs_info_msg_0_ ]]; then
+		local msg=$vcs_info_msg_0_
+		print "%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_LAVENDER} $msg %k%f"
+	fi
+}

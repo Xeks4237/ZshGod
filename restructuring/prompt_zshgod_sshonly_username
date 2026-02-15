@@ -1,0 +1,6 @@
+# Same function as prompt_zshgod_rectangular_username but shown only through ssh
+function prompt_zshgod_sshonly_username() {
+	if [[ -n $SSH_CONNECTION ]]; then
+		prompt_zshgod_rectangular_username
+	fi
+}

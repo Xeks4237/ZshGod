@@ -1,0 +1,4 @@
+# Function for showing current working directory
+function prompt_zshgod_current-pwd() {
+	print "%F{$ZSHGOD_THEME_CATPPUCCIN_CRUST}%K{$ZSHGOD_THEME_CATPPUCCIN_BLUE} %~ %k%f"
+}
