@@ -1,5 +1,0 @@
-# Function which returns exectime for commands after it's been called
-function prompt_zshgod_exectime_seconds-only() {
-	# Check if exectime isn't empty and output exectime
-	[[ -n $(prompt_zshgod_exectime) ]] && print "$(prompt_zshgod_exectime)s"
-}

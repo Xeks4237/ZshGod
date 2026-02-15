@@ -1,7 +1,7 @@
 # Function for checking git repos if they are dirty
 function prompt_zshgod_git_info() {
-	# Silently exit if not inside a git repository
-	command git rev-parse --is-inside-work-tree &>/dev/null || return
+	# Checks if we're in a git repo
+	[[ $(prompt_zshgod_vcs_system) == 'git' ]] || return
 
 	# Fetch machine-readable git status with branch info (includes ahead/behind)
 	local git_info="$(command git status --porcelain --branch 2>/dev/null)"
