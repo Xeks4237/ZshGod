@@ -2,7 +2,11 @@
 function prompt_zshgod_rectangular_git_info() {
 	# Allow passing args to function for changing foreground and background colors
 	local bg_color=$1
-	local fg_color=$2
+	local fg_color_staged_count=$2
+	local fg_color_modified_count=$3
+	local fg_color_deleted_count=$4
+	local fg_color_untracked_count=$5
+	local fg_color_ahead_count=$6
 
 	# Check if we're in a git repo
 	[[ $(prompt_zshgod_vcs_system) == 'git' ]] || return
@@ -38,12 +42,12 @@ function prompt_zshgod_rectangular_git_info() {
 	# Build the output parts only if the count is greater than 0
 	local parts=()
 
-	(( staged_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_GREEN}${staged_count}+%f")
-	(( modified_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_YELLOW}${modified_count}*%f")
-	(( deleted_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_RED}${deleted_count}-%f")
-	(( untracked_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_SKY}${untracked_count}?%f")
-	(( ahead_count > 0 )) && parts+=("%F{$ZSHGOD_THEME_CATPPUCCIN_LAVENDER}${ahead_count}↑%f")
+	(( staged_count > 0 )) && parts+=("%F{$fg_color_staged_count}${staged_count}+%f")
+	(( modified_count > 0 )) && parts+=("%F{$fg_color_modified_count}${modified_count}*%f")
+	(( deleted_count > 0 )) && parts+=("%F{$fg_color_deleted_count}${deleted_count}-%f")
+	(( untracked_count > 0 )) && parts+=("%F{$fg_color_untracked_count}${untracked_count}?%f")
+	(( ahead_count > 0 )) && parts+=("%F{$fg_color_ahead_count}${ahead_count}↑%f")
 
 	# If there's anything to show, join the parts add do some customization
-	(( ${#parts[@]} > 0 )) && print "%F{$fg_color}%K{$bg_color} ${parts[*]} %k%f"
+	(( ${#parts[@]} > 0 )) && print "%K{$bg_color} ${parts[*]} %k%f"
 }
