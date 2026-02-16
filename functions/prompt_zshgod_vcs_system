@@ -1,5 +1,5 @@
 # Function which returns name of current vcs
-function prompt_zshgod_rectangular_vcs_system() {
+function prompt_zshgod_vcs_system() {
 	# zstyle options to customize look of vcs_info
 	zstyle ':vcs_info:*' actionformats '%s'
 	zstyle ':vcs_info:*' formats '%s'
