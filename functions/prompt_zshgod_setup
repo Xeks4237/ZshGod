@@ -69,7 +69,8 @@ function prompt_zshgod_setup() {
 				# Flag to specify config file for prompt
 			--config-file=*)
 				# Source given config file
-				source "${arg#--config-file=}"
+				local config_file="${arg#--config-file=}"
+				source $config_file
 
 				# Initialize zsh-async library
 				async_init
