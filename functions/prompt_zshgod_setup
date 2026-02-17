@@ -69,6 +69,11 @@ function prompt_zshgod_setup() {
 	for arg in "$@"; do
 		case "$arg" in
 				# [ Flags to configure prompt ]
+				# Flag to specify config file for prompt
+			--config-file=*)
+				source "${arg#--config-file=}"
+				;;
+
 				# Flag to open simple configuration wizard/editor
 			configure) prompt_zshgod_configure ;;
 
