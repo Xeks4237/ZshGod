@@ -27,10 +27,10 @@ function prompt_zshgod_setup() {
 
 	# [ Configuration Variables ]
 	# Variable which sets amount of exectime after exectime is not hided
-	export ZSHGOD_EXECTIME_MIN=5
+	ZSHGOD_EXECTIME_MIN=5
 
 	# Disable multilined prompt by default
-	export ZSHGOD_MULTILINED=false
+	ZSHGOD_MULTILINED=false
 
 	# INFO: I used Catppuccin Mocha Colors as default colors
 	# https://github.com/catppuccin
@@ -71,11 +71,22 @@ function prompt_zshgod_setup() {
 				# [ Flags to configure prompt ]
 				# Flag to specify config file for prompt
 			--config-file=*)
-				source "${arg#--config-file=}" && return 0 ;;
+				source "${arg#--config-file=}"
+				async_start_worker zshgod_async_worker
+				async_register_callback zshgod_async_worker prompt_zshgod_async-callback
+				async_job zshgod_async_worker $ZSHGOD_LEFT_PROMPT
+				async_job zshgod_async_worker $ZSHGOD_RIGHT_PROMPT
+				;;
 
 				# Flag to open simple configuration wizard/editor
 			configure)
-				prompt_zshgod_configure ;;
+				prompt_zshgod_configure && return 0
+				;;
+
+				# Flag to set minimal threshold for displaying exectime
+			--min-exectime=*)
+				ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
+				;;
 
 				# [ Hardlers for weird scenarios ]
 			--*)
@@ -87,32 +98,4 @@ function prompt_zshgod_setup() {
 				return 1 ;;
 		esac
 	done
-
-	for arg in "$ZSHGOD_LEFT_PROMPT[@]"; do
-		local worker_name=$EPOCHREALTIME
-		async_start_worker $worker_name
-		async_register_callback $worker_name prompt_zshgod_async-callback
-		async_job $worker_name "$arg"
-	done
-
-	# [ Prompt Scructure ]
-	# Tmp multiline prompt, layout
-	# TODO: Make this variables to fully configurable through args/flags in this function
-	# Variable which sets left side of prompt
-	PS1='%B'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_CURRENT_PWD}'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_JOBS}'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_VCS_SYSTEM}'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_VCS_BRANCH}'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO}'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_EXECTIME_HUMAN_READABLE}'
-	PS1+=$'\n'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_TIME}'
-	PS1+='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_ROOT_INDICATOR}'
-	PS1+='%b '
-
-	# Variable which sets right side of prompt
-	RPS1='%B'
-	RPS1+='${PROMPT_ZSHGOD_RIGHT_TO_LEFT_SSHONLY_USERANDHOSTNAME}'
-	RPS1+='%b'
 }
