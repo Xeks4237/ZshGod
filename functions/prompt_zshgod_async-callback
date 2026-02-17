@@ -2,9 +2,9 @@
 # of zshgod prompt, when async worker finishes running it outputs results
 # to this function as arguments where:
 # First argument is th name of the function which was runned
-# Second argument is the return code(stdout) of the function which was runned
-# Third argument is the output of the function which was runned
+# Second argument is the return code of the function which was runned
+# Third argument is the output(stdout) of the function which was runned
 # Fourt argument is the execution time of the function which was runned
-# Fifth argument is the error output of the function which was runned
+# Fifth argument is the error output(stderr) of the function which was runned
 # Sixth argument has next result in buffer (0 = buffer empty, 1 = yes)
 function prompt_zshgod_async-callback() {}
