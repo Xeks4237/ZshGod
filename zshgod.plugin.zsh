@@ -48,7 +48,8 @@ autoload -Uz \
 	prompt_zshgod_precmd \
 	prompt_zshgod_exectime \
 	prompt_zshgod_vcs_branch \
-	prompt_zshgod_vcs_system
+	prompt_zshgod_vcs_system \
+	prompt_zshgod_zsh-async-lib
 # [ Autoload rectangle/square styled functions ]
 autoload -Uz \
 	prompt_zshgod_rectangular_git_dirty \

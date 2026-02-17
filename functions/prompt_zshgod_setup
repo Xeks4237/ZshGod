@@ -14,6 +14,9 @@ function prompt_zshgod_setup() {
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
+	# Initialize zsh-async library
+	async_init
+
 	# preexec hook gets called before you run any command, like when you press enter
 	# Needed for stuff like exectime functions and etc
 	add-zsh-hook preexec prompt_zshgod_preexec
