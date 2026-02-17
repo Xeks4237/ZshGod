@@ -65,7 +65,7 @@ function prompt_zshgod_setup() {
 	# ZSHGOD_THEME_CATPPUCCIN_CRUST='#11111B'
 	# ZSHGOD_THEME_CATPPUCCIN_BACKGROUND='#1E1E2E'
 
-	# Checks passed flags/args to function to make easy fast configuration
+	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
 				# [ Flags to configure prompt ]
@@ -86,6 +86,13 @@ function prompt_zshgod_setup() {
 				print -u2 "Unknown option(s): $arg" >&2
 				return 1 ;;
 		esac
+	done
+
+	for arg in "$ZSHGOD_LEFT_PROMPT[@]"; do
+		local worker_name=$EPOCHREALTIME
+		async_start_worker $worker_name
+		async_register_callback $worker_name prompt_zshgod_async-callback
+		async_job $worker_name "$arg"
 	done
 
 	# [ Prompt Scructure ]
