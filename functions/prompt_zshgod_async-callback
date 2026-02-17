@@ -12,8 +12,8 @@ function prompt_zshgod_async-callback() {
 
 	# Do specifice things depending on what $job_name has returned
 	case $job_name in
-		prompt_zshgod_left-to-right_git_info)
-			export PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO=$output
+		prompt_zshgod_left-to-right_git_info*)
+			PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO=$output
 			zle && zle redisplay && zle reset-prompt
 			;;
 	esac
