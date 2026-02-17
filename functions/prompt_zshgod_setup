@@ -71,22 +71,20 @@ function prompt_zshgod_setup() {
 				# [ Flags to configure prompt ]
 				# Flag to specify config file for prompt
 			--config-file=*)
-				source "${arg#--config-file=}"
-				;;
+				source "${arg#--config-file=}" && return 0 ;;
 
 				# Flag to open simple configuration wizard/editor
-			configure) prompt_zshgod_configure ;;
+			configure)
+				prompt_zshgod_configure ;;
 
 				# [ Hardlers for weird scenarios ]
 			--*)
 				print -u2 "Unknown option(s): $arg" >&2
-				return 1
-				;;
+				return 1 ;;
 
 			*)
 				print -u2 "Unknown option(s): $arg" >&2
-				return 1
-				;;
+				return 1 ;;
 		esac
 	done
 
