@@ -62,17 +62,17 @@ function prompt_zshgod_setup() {
 	# $ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
 	# [[ -e $ZSHGOD_CONFIG_FILE ]] || source "$ZSHGOD_CONFIG_FILE"
 
-	async_start_worker zshgod_async-worker
-	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
+	for async_work in "${ZSHGOD_LEFT_PROMPT[@]}"; do
+		async_start_worker zshgod_async-worker
+		async_register_callback zshgod_async-worker prompt_zshgod_async-callback
+		async_job zshgod_async-worker "$async_work"
+	done
 
-	# for async_work in ${ZSHGOD_LEFT_PROMPT[@]}; do
-	# 	async_job zshgod_async-worker "$async_work"
-	# done
-	# for async_work in ${ZSHGOD_RIGHT_PROMPT[@]}; do
-	# 	async_job zshgod_async-worker "$async_work"
-	# done
+	for async_work in "${ZSHGOD_RIGHT_PROMPT[@]}"; do
+		async_start_worker zshgod_async-worker
+		async_register_callback zshgod_async-worker prompt_zshgod_async-callback
+		async_job zshgod_async-worker "$async_work"
+	done
 
-	async_job zshgod_async-worker "${ZSHGOD_LEFT_PROMPT[5]}"
-
-	PS1='$PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO'
+	PS1+=$PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO
 }
