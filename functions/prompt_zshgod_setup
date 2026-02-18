@@ -66,10 +66,4 @@ function prompt_zshgod_setup() {
 	# Source config file if exists
 	# $ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
 	[[ -e $ZSHGOD_CONFIG_FILE ]] || source ~/Git/zshgod/zshgod-config.zsh
-
-	async_start_worker zshgod_async-worker
-	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
-	async_job zshgod_async-worker "${ZSHGOD_LEFT_PROMPT[5]}"
-
-	PS1+=$PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO
 }
