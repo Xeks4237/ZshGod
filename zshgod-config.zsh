@@ -99,7 +99,7 @@ ZSHGOD_LEFT_PROMPT=(
 	'prompt_zshgod_left-to-right_jobs "#CBA6F7" "#11111B"'
 	'prompt_zshgod_left-to-right_vcs_system "#B4BEFE" "#11111B"'
 	'prompt_zshgod_left-to-right_vcs_branch "#A6E3A1" "#11111B"'
-	'prompt_zshgod_left-to-right_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
+	"prompt_zshgod_left-to-right_git_info '#6C7086' '#A6E3A1' '#F9E2AF' '#F38BA8' '#89DCEB' '#B4BEFE'"
 	'prompt_zshgod_left-to-right_exectime_human-readable "#F9E2AF" "#11111B"'
 	$'\n'
 	'prompt_zshgod_left-to-right_time "#F9E2AF" "#11111B"'
