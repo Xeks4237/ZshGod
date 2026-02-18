@@ -48,15 +48,18 @@ function prompt_zshgod_setup() {
 				# Hardlers for weird scenarios
 			--*)
 				print -u2 "Unknown option(s): $arg" >&2
-				return 1 ;;
+				return 1
+				;;
 
 			*)
 				print -u2 "Unknown option(s): $arg" >&2
-				return 1 ;;
+				return 1
+				;;
 		esac
 	done
 
 	# Source config file if exists
+	$ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
 	[[ -e $ZSHGOD_CONFIG_FILE ]] || source "$ZSHGOD_CONFIG_FILE"
 
 	async_start_worker zshgod_async-worker
