@@ -65,10 +65,10 @@ function prompt_zshgod_setup() {
 	async_start_worker zshgod_async-worker
 	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
 
-	for async_work in "$ZSHGOD_LEFT_PROMPT[@]"; do
+	for async_work in ${ZSHGOD_LEFT_PROMPT[@]}; do
 		async_job zshgod_async-worker $async_work
 	done
-	for async_work in "$ZSHGOD_RIGHT_PROMPT[@]"; do
+	for async_work in ${ZSHGOD_RIGHT_PROMPT[@]}; do
 		async_job zshgod_async-worker $async_work
 	done
 }
