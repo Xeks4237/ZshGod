@@ -14,6 +14,9 @@ function prompt_zshgod_setup() {
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
+	# Initialize zsh-async library
+	async_init
+
 	# preexec hook gets called before you run any command, like when you press enter
 	# Needed for stuff like exectime functions and etc
 	add-zsh-hook preexec prompt_zshgod_preexec
@@ -29,46 +32,12 @@ function prompt_zshgod_setup() {
 	# Disable multilined prompt by default
 	ZSHGOD_MULTILINED=false
 
-	# INFO: I used Catppuccin Mocha Colors as default colors
-	# https://github.com/catppuccin
-
-	# Main colors
-	# ZSHGOD_THEME_CATPPUCCIN_ROSEWATER='#F5E0DC'
-	# ZSHGOD_THEME_CATPPUCCIN_FLAMINGO='#F2CDCD'
-	# ZSHGOD_THEME_CATPPUCCIN_PINK='#F5C2E7'
-	# ZSHGOD_THEME_CATPPUCCIN_MAUVE='#CBA6F7'
-	# ZSHGOD_THEME_CATPPUCCIN_RED='#F38BA8'
-	# ZSHGOD_THEME_CATPPUCCIN_MAROON='#EBA0AC'
-	# ZSHGOD_THEME_CATPPUCCIN_PEACH='#FAB387'
-	# ZSHGOD_THEME_CATPPUCCIN_YELLOW='#F9E2AF'
-	# ZSHGOD_THEME_CATPPUCCIN_GREEN='#A6E3A1'
-	# ZSHGOD_THEME_CATPPUCCIN_TEAL='#94E2D5'
-	# ZSHGOD_THEME_CATPPUCCIN_SKY='#89DCEB'
-	# ZSHGOD_THEME_CATPPUCCIN_SAPPHIRE='#74C7EC'
-	# ZSHGOD_THEME_CATPPUCCIN_BLUE='#89B4FA'
-	# ZSHGOD_THEME_CATPPUCCIN_LAVENDER='#B4BEFE'
-
-	# Main surface and overlay colors
-	# ZSHGOD_THEME_CATPPUCCIN_SUBTEXT_1='#A6ADC8'
-	# ZSHGOD_THEME_CATPPUCCIN_SUBTEXT_0='#BAC2DE'
-	# ZSHGOD_THEME_CATPPUCCIN_FOREGROUND='#CDD6F4'
-	# ZSHGOD_THEME_CATPPUCCIN_OVERLAY_2='#9399B2'
-	# ZSHGOD_THEME_CATPPUCCIN_OVERLAY_1='#7F849C'
-	# ZSHGOD_THEME_CATPPUCCIN_OVERLAY_0='#6C7086'
-	# ZSHGOD_THEME_CATPPUCCIN_SURFACE_2='#585B70'
-	# ZSHGOD_THEME_CATPPUCCIN_SURFACE_1='#45475A'
-	# ZSHGOD_THEME_CATPPUCCIN_SURFACE_0='#313244'
-	# ZSHGOD_THEME_CATPPUCCIN_MANTLE='#181825'
-	# ZSHGOD_THEME_CATPPUCCIN_CRUST='#11111B'
-	# ZSHGOD_THEME_CATPPUCCIN_BACKGROUND='#1E1E2E'
-
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
-				# [ Flags to configure prompt ]
 				# Flag to open simple configuration wizard/editor
 			configure)
-				prompt_zshgod_configure && return 0
+				prompt_zshgod_configure
 				;;
 
 				# Flag to set minimal threshold for displaying exectime
@@ -76,26 +45,23 @@ function prompt_zshgod_setup() {
 				ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
 				;;
 
-				# [ Hardlers for weird scenarios ]
-			--*)
-				print -u2 "Unknown option(s): $arg" >&2
-				return 1 ;;
-
-			*)
+				# Hardler for weird scenarios
+			*|--*)
 				print -u2 "Unknown option(s): $arg" >&2
 				return 1 ;;
 		esac
 	done
 
-	# Initialize zsh-async library
-	async_init
+	# Source config file if exists
+	[[ -e $ZSHGOD_CONFIG_FILE ]] || source "$ZSHGOD_CONFIG_FILE"
 
-	async_start_worker zshgod_async_worker
-	async_register_callback zshgod_async_worker prompt_zshgod_async-callback
+	async_start_worker zshgod_async-worker
+	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
+
 	for async_work in "$ZSHGOD_LEFT_PROMPT[@]"; do
-		async_job zshgod_async_worker $async_work
+		async_job zshgod_async-worker $async_work
 	done
 	for async_work in "$ZSHGOD_RIGHT_PROMPT[@]"; do
-		async_job zshgod_async_worker $async_work
+		async_job zshgod_async-worker $async_work
 	done
 }
