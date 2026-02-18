@@ -71,4 +71,6 @@ function prompt_zshgod_setup() {
 	for async_work in ${ZSHGOD_RIGHT_PROMPT[@]}; do
 		async_job zshgod_async-worker $async_work
 	done
+
+	PS1='${PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO}'
 }

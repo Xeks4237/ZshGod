@@ -16,7 +16,7 @@ function prompt_zshgod_async-callback() {
 	# For example function name zsh_git-info will create variable ZSH_GIT_INFO
 	local varname="${job_name//-/_}"
 	varname="${varname:u}"
-	"$varname"=$output
+	"$varname"="${output}"
 
 	# Redisplay/Update prompt
 	zle && zle redisplay && zle reset-prompt
