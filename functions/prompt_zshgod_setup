@@ -40,6 +40,11 @@ function prompt_zshgod_setup() {
 				prompt_zshgod_configure
 				;;
 
+				# Flag to specify config file
+			--config-file=*)
+				ZSHGOD_CONFIG_FILE="${arg#--config-file=}"
+				;;
+
 				# Flag to set minimal threshold for displaying exectime
 			--min-exectime=*)
 				ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
@@ -60,11 +65,11 @@ function prompt_zshgod_setup() {
 
 	# Source config file if exists
 	# $ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
-	# [[ -e $ZSHGOD_CONFIG_FILE ]] || source "$ZSHGOD_CONFIG_FILE"
+	[[ -e $ZSHGOD_CONFIG_FILE ]] || source ~/Git/zshgod/zshgod-config.zsh
 
 	async_start_worker zshgod_async-worker
 	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
-	async_job zshgod_async-worker "$ZSHGOD_LEFT_PROMPT[5]"
+	async_job zshgod_async-worker "${ZSHGOD_LEFT_PROMPT[5]}"
 
 	PS1+=$PROMPT_ZSHGOD_LEFT_TO_RIGHT_GIT_INFO
 }
