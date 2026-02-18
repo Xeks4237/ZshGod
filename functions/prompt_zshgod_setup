@@ -59,8 +59,8 @@ function prompt_zshgod_setup() {
 	done
 
 	# Source config file if exists
-	$ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
-	[[ -e $ZSHGOD_CONFIG_FILE ]] || source "$ZSHGOD_CONFIG_FILE"
+	# $ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
+	# [[ -e $ZSHGOD_CONFIG_FILE ]] || source "$ZSHGOD_CONFIG_FILE"
 
 	async_start_worker zshgod_async-worker
 	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
