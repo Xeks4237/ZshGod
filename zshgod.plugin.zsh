@@ -16,3 +16,8 @@
 # Add directory with prompt files to fpath
 fpath+=( ${0:A:h}/functions )
 
+# Autoload promptinit system in case it's not loaded
+autoload -Uz promptinit
+
+# Initialize/Update prompts list
+promptinit

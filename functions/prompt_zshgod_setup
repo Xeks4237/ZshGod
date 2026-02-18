@@ -66,4 +66,7 @@ function prompt_zshgod_setup() {
 	# Source config file if exists
 	# $ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
 	[[ -e $ZSHGOD_CONFIG_FILE ]] || source ~/Git/zshgod/zshgod-config.zsh
+
+	# Update prompts list
+	promptinit
 }
