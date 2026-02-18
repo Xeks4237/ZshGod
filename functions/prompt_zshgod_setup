@@ -45,8 +45,12 @@ function prompt_zshgod_setup() {
 				ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
 				;;
 
-				# Hardler for weird scenarios
-			*|--*)
+				# Hardlers for weird scenarios
+			--*)
+				print -u2 "Unknown option(s): $arg" >&2
+				return 1 ;;
+
+			*)
 				print -u2 "Unknown option(s): $arg" >&2
 				return 1 ;;
 		esac
