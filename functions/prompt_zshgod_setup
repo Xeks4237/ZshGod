@@ -32,17 +32,23 @@ function prompt_zshgod_setup() {
 	# Disable multilined prompt by default
 	ZSHGOD_MULTILINED=false
 
+	# Source default configuration before overwriting it with user defined options
+	source prompt_zshgod_default-config
+
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
 				# Flag to open simple configuration wizard/editor
 			configure)
+				autoload -Uz prompt_zshgod_configure
 				prompt_zshgod_configure
 				;;
 
 				# Flag to specify config file
 			--config-file=*)
 				ZSHGOD_CONFIG_FILE="${arg#--config-file=}"
+				# Source config file if it exists
+				[[ -f $ZSHGOD_CONFIG_FILE ]] && source "$ZSHGOD_CONFIG_FILE"
 				;;
 
 				# Flag to set minimal threshold for displaying exectime
@@ -62,10 +68,6 @@ function prompt_zshgod_setup() {
 				;;
 		esac
 	done
-
-	# Source config file if exists
-	# $ZSHGOD_CONFIG_FILE="~/Git/zshgod/zshgod-config.zsh"
-	[[ -e $ZSHGOD_CONFIG_FILE ]] || source ~/Git/zshgod/zshgod-config.zsh
 
 	# Update prompts list
 	promptinit
