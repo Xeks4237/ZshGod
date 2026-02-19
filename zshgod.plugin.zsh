@@ -13,8 +13,11 @@
 0="${${ZERO:-${0:#$ZSH_ARGZERO}}:-${(%):-%N}}"
 0="${${(M)0:#/*}:-$PWD/$0}"
 
+# Save location of this file in variable for easier use
+ZSHGOD_HOME="${0:A:h}"
+
 # Add directory with prompt files to fpath
-fpath+=( ${0:A:h}/functions )
+fpath+=( "$ZSHGOD_HOME/functions" )
 
 # Autoload promptinit system in case it's not loaded
 autoload -Uz promptinit

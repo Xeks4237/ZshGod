@@ -15,14 +15,17 @@ function prompt_zshgod_setup() {
 	autoload -Uz vcs_info
 
 	# Initialize zsh-async library
+	autoload -Uz prompt_zshgod_zsh-async-lib
 	async_init
 
 	# preexec hook gets called before you run any command, like when you press enter
 	# Needed for stuff like exectime functions and etc
+	autoload -Uz prompt_zshgod_preexec
 	add-zsh-hook preexec prompt_zshgod_preexec
 
 	# precmd hook gets called when running command finishes and before prompt is drown
 	# Needed for stuff like exectime functions and etc
+	autoload -Uz prompt_zshgod_precmd
 	add-zsh-hook precmd prompt_zshgod_precmd
 
 	# [ Configuration Variables ]
@@ -33,7 +36,7 @@ function prompt_zshgod_setup() {
 	ZSHGOD_MULTILINED=false
 
 	# Source default configuration before overwriting it with user defined options
-	source prompt_zshgod_default-config
+	source "$ZSHGOD_HOME/functions/prompt_zshgod_default-config"
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
