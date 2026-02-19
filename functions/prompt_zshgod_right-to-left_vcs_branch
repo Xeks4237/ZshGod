@@ -5,5 +5,5 @@ function prompt_zshgod_right-to-left_vcs_branch() {
 	local fg_color=$2
 
 	[[ -n $(prompt_zshgod_vcs_branch) ]] || return
-	print "%F{$bg_color}%S %K{$fg_color}$(prompt_zshgod_vcs_branch)%k %s%f"
+	PROMPT_ZSHGOD_RIGHT_TO_LEFT_VCS_BRANCH="%F{$bg_color}%S %K{$fg_color}$(prompt_zshgod_vcs_branch)%k %s%f"
 }

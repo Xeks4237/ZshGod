@@ -58,5 +58,5 @@ function prompt_zshgod_right-to-left_git_info() {
 	(( ahead_count > 0 )) && parts+=("%K{$fg_color_ahead_count}${ahead_count}↑%k")
 
 	# If there's anything to show, join the parts and do some customization
-	(( ${#parts[@]} > 0 )) && print "%F{$bg_color}%S ${parts[*]} %s%f"
+	(( ${#parts[@]} > 0 )) && PROMPT_ZSHGOD_RIGHT_TO_LEFT_GIT_INFO="%F{$bg_color}%S ${parts[*]} %s%f"
 }
