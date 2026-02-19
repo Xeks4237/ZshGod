@@ -110,7 +110,6 @@ function prompt_zshgod_setup() {
 		case "$arg" in
 				# Flag to open simple configuration wizard/editor
 			configure)
-				autoload -Uz prompt_zshgod_configure
 				prompt_zshgod_configure
 				;;
 
