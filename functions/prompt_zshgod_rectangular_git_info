@@ -49,5 +49,5 @@ function prompt_zshgod_rectangular_git_info() {
 	(( ahead_count > 0 )) && parts+=("%F{$fg_color_ahead_count}${ahead_count}↑%f")
 
 	# If there's anything to show, join the parts add do some customization
-	(( ${#parts[@]} > 0 )) && print "%K{$bg_color} ${parts[*]} %k%f"
+	(( ${#parts[@]} > 0 )) && PROMPT_ZSHGOD_RECTANGULAR_GIT_INFO="%K{$bg_color} ${parts[*]} %k%f"
 }

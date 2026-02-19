@@ -4,5 +4,5 @@ function prompt_zshgod_rectangular_time() {
 	local bg_color=$1
 	local fg_color=$2
 
-	print "%F{$fg_color}%K{$bg_color} %D{%H:%M:%S} %k%f"
+	PROMPT_ZSHGOD_RECTANGULAR_TIME="%F{$fg_color}%K{$bg_color} %D{%H:%M:%S} %k%f"
 }

@@ -5,5 +5,5 @@ function prompt_zshgod_left-to-right_vcs_system() {
 	local fg_color=$2
 
 	[[ -n $(prompt_zshgod_vcs_system) ]] || return
-	print "%F{$bg_color}%S %K{$fg_color}$(prompt_zshgod_vcs_system)%k %s%f"
+	PROMPT_ZSHGOD_LEFT_TO_RIGHT_VCS_SYSTEM="%F{$bg_color}%S %K{$fg_color}$(prompt_zshgod_vcs_system)%k %s%f"
 }

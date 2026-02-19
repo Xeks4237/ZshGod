@@ -19,5 +19,5 @@ function prompt_zshgod_rectangular_exectime_human-readable() {
 	(( $hours > 0 )) && output+="${hours}h "
 	(( $minutes > 0 )) && output+="${minutes}m "
 	(( $seconds > 0 )) && output+="${seconds}s"
-	print "%F{$fg_color}%K{$bg_color} $output %k%f"
+	PROMPT_ZSHGOD_RECTANGULAR_EXECTIME_HUMAN_READABLE="%F{$fg_color}%K{$bg_color} $output %k%f"
 }
