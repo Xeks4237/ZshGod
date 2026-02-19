@@ -5,11 +5,9 @@ function prompt_zshgod_precmd() {
 	ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
 	unset ZSHGOD_EXECTIME_START
 
-	# Code to update prompt related stuff asynchronously
-	async_start_worker zshgod_async-worker
-	async_register_callback zshgod_async-worker prompt_zshgod_async-callback
-
-	for async_work in "${ZSHGOD_LEFT_PROMPT[@]}"; do
+	# Cycle through and run all functions in
+	# $ZSHGOD_USED_FUNCTIONS array asynchronously
+	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
 		async_job zshgod_async-worker "$async_work"
 	done
 }
