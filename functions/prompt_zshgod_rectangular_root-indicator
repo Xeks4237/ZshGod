@@ -6,5 +6,5 @@ function prompt_zshgod_rectangular_root-indicator () {
 	local root_bg_color=$3
 	local root_fg_color=$4
 
-	PROMPT_ZSHGOD_RECTANGULAR_ROOT_INDICATOR="%(!,%F{$root_fg_color}%K{$root_bg_color} # %k%f,%F{$user_fg_color}%K{$user_bg_color} \$ %k%f)"
+	print "%(!,%F{$root_fg_color}%K{$root_bg_color} # %k%f,%F{$user_fg_color}%K{$user_bg_color} \$ %k%f)"
 }

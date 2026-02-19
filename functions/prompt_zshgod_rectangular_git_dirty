@@ -12,5 +12,5 @@ function prompt_zshgod_rectangular_git_dirty() {
 	command test -n "$(git status --porcelain --ignore-submodules ${umode} 2>/dev/null | head -100)"
 
 	# Prints "*" if repo is dirty
-	(($? == 0)) && PROMPT_ZSHGOD_RECTANGULAR_GIT_DIRTY="%F{$fg_color}%K{$bg_color} * %k%f"
+	(($? == 0)) && print "%F{$fg_color}%K{$bg_color} * %k%f"
 }

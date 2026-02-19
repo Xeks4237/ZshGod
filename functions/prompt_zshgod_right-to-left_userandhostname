@@ -10,6 +10,6 @@ function prompt_zshgod_right-to-left_userandhostname() {
 	local hostname_bg_color=$7
 	local hostname_fg_color=$8
 
-	PROMPT_ZSHGOD_RIGHT_TO_LEFT_USERANDHOSTNAME="%(!,%F{$root_bg_color}%S %K{$root_fg_color}%n%k %s%f,%F{$user_bg_color}%S %K{$user_fg_color}%n%k %s%f)%F{$dog_bg_color}%S %K{$dog_fg_color}@%k %s%f%F{$hostname_bg_color}%S %K{$hostname_fg_color}%m%k %s%f"
+	print "%(!,%F{$root_bg_color}%S %K{$root_fg_color}%n%k %s%f,%F{$user_bg_color}%S %K{$user_fg_color}%n%k %s%f)%F{$dog_bg_color}%S %K{$dog_fg_color}@%k %s%f%F{$hostname_bg_color}%S %K{$hostname_fg_color}%m%k %s%f"
 
 }
