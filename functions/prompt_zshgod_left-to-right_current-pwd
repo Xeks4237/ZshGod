@@ -4,5 +4,5 @@ function prompt_zshgod_left-to-right_current-pwd() {
 	local bg_color=$1
 	local fg_color=$2
 
-	print "%F{$bg_color}%S %K{$fg_color}%~%k %s%f"
+	$PROMPT_ZSHGOD_LEFT_TO_RIGHT_CURRENT_PWD="%F{$bg_color}%S %K{$fg_color}%~%k %s%f"
 }
