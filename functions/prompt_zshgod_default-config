@@ -25,12 +25,11 @@ autoload -Uz \
 
 # [ Autoload right to left pointing arrow styled functions ]
 autoload -Uz \
-	prompt_zshgod_right-to-left_sshonly_userandhostname \
+	prompt_zshgod_right-to-left_sshonly_userandhostname
 
-	# [ Functions related configuration ]
+# [ Functions related configuration ]
 # Array with used functions with args for them
-# This array will make variables to use in prompt with exact name as functions
-# but in uppercase and with _ instead of -
+# This functions going to be used asynchronously
 ZSHGOD_USED_FUNCTIONS=(
 	'prompt_zshgod_left-to-right_current-pwd "#89B4FA" "#11111B"'
 	'prompt_zshgod_left-to-right_jobs "#CBA6F7" "#11111B"'

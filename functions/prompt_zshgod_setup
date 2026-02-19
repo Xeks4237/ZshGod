@@ -38,6 +38,9 @@ function prompt_zshgod_setup() {
 	# Source default configuration before overwriting it with user defined options
 	source "$ZSHGOD_HOME/functions/prompt_zshgod_default-config"
 
+	# Load functions used ZSHGOD_USED_FUNCTIONS
+	autoload
+
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
