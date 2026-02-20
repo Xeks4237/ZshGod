@@ -17,8 +17,9 @@ function prompt_zshgod_async-callback() {
 	local varname="${${job_name//-/_}:u}"
 	typeset -g "${varname}"="${output}"
 
-	async_stop_worker zshgod_async_worker
-
 	# Redisplay/Update prompt
 	zle && zle redisplay && zle reset-prompt
+
+	async_stop_worker zshgod_async_worker
+
 }
