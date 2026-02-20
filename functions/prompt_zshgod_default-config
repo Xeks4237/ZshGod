@@ -21,6 +21,7 @@ function prompt_zshgod_default-config() {
 
 	# Array with items of prompts left side
 	ZSHGOD_LEFT_PROMPT=(
+		'%B'
 		'$PROMPT_ZSHGOD_LEFT_TO_RIGHT_CURRENT_PWD'
 		'$PROMPT_ZSHGOD_LEFT_TO_RIGHT_JOBS'
 		'$PROMPT_ZSHGOD_LEFT_TO_RIGHT_VCS_SYSTEM'
@@ -31,11 +32,14 @@ function prompt_zshgod_default-config() {
 		'$PROMPT_ZSHGOD_LEFT_TO_RIGHT_TIME'
 		'$PROMPT_ZSHGOD_LEFT_TO_RIGHT_ROOT_INDICATOR'
 		' '
+		'%b'
 	)
 
 	# Array with items of prompts right side
 	ZSHGOD_RIGHT_PROMPT=(
+		'%B'
 		'$PROMPT_ZSHGOD_RIGHT_TO_LEFT_SSHONLY_USERANDHOSTNAME'
+		'%b'
 	)
 
 	# promptinit in end to update list of prompt themes
