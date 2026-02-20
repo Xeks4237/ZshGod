@@ -17,4 +17,9 @@ function prompt_zshgod_precmd() {
 		# Run async job
 		async_job zshgod_async_worker "$async_work"
 	done
+
+	# Set right and left sides of the prompt using elements of arrays
+	# And join them to don't have extra spaces between elements
+	PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
+	RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
 }
