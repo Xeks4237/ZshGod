@@ -25,7 +25,6 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_exectime \
 		prompt_zshgod_vcs_branch \
 		prompt_zshgod_vcs_system \
-		prompt_zshgod_zsh-async-lib \
 		prompt_zshgod_async-callback
 	# [ Autoload rectangle/square styled functions ]
 	autoload -Uz \
@@ -83,6 +82,7 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_right-to-left_jobs
 
 	# Initialize zsh-async library
+	source "$ZSHGOD_HOME/functions/prompt_zshgod_zsh-async-lib"
 	async_init
 
 	# preexec hook gets called before you run any command, like when you press enter
