@@ -9,7 +9,7 @@ function prompt_zshgod_precmd() {
 	async_stop_worker zshgod_async_worker
 
 	# Start new async worker
-	async_start_worker zshgod_async_worker
+	async_start_worker zshgod_async_worker -n
 	async_register_callback zshgod_async_worker prompt_zshgod_async-callback
 
 	# Cycle through and run all functions in
