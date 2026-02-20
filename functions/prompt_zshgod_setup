@@ -86,6 +86,10 @@ function prompt_zshgod_setup() {
 	# Initialize zsh-async library
 	async_init
 
+	# Register async worker which will be running all async jobs
+	async_start_worker zshgod_async_worker -n
+	async_register_callback zshgod_async_worker prompt_zshgod_async-callback
+
 	# preexec hook gets called before you run any command, like when you press enter
 	# Needed for stuff like exectime functions and etc
 	add-zsh-hook preexec prompt_zshgod_preexec
@@ -137,10 +141,6 @@ function prompt_zshgod_setup() {
 				;;
 		esac
 	done
-
-	# Register async worker which will be running all async jobs
-	async_start_worker zshgod_async_worker -n
-	async_register_callback zshgod_async_worker prompt_zshgod_async-callback
 
 	# Update prompts list
 	promptinit
