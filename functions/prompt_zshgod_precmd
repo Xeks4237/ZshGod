@@ -10,6 +10,8 @@ function prompt_zshgod_precmd() {
 	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
 		# Start new async worker
 		async_start_worker zshgod_async_worker -n
+
+		# Register its callback function
 		async_register_callback zshgod_async_worker prompt_zshgod_async-callback
 
 		# Run async job
