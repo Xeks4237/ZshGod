@@ -18,8 +18,4 @@ function prompt_zshgod_precmd() {
 		# Run async job
 		async_job zshgod_async_worker "$async_work"
 	done
-
-	PS1='$ZSHGOD_LEFT_PROMPT[*]'
-	RPS1='$ZSHGOD_RIGHT_PROMPT[*]'
-	zle && zle reset-prompt
 }
