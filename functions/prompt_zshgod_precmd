@@ -1,10 +1,5 @@
 # Function which gets called after running command finishes and before prompt is drown
 function prompt_zshgod_precmd() {
-	# Snippet used for prompt_zshgod_exectime function
-	(( ${+ZSHGOD_EXECTIME_START} )) || unset ZSHGOD_EXECTIME && return
-	ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
-	unset ZSHGOD_EXECTIME_START
-
 	# Cycle through and run all functions in
 	# $ZSHGOD_USED_FUNCTIONS array asynchronously
 	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
@@ -17,6 +12,11 @@ function prompt_zshgod_precmd() {
 		# Run async job
 		async_job zshgod_async_worker "$async_work"
 	done
+
+	# Snippet used for prompt_zshgod_exectime function
+	(( ${+ZSHGOD_EXECTIME_START} )) || unset ZSHGOD_EXECTIME && return
+	ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
+	unset ZSHGOD_EXECTIME_START
 
 	# Set right and left sides of the prompt using elements of arrays
 	# And join them to don't have extra spaces between elements
