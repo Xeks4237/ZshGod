@@ -19,7 +19,4 @@ function prompt_zshgod_async-callback() {
 
 	# Redisplay/Update prompt
 	zle && zle redisplay && zle reset-prompt
-
-	async_stop_worker zshgod_async_worker
-
 }
