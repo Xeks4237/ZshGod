@@ -1,4 +1,5 @@
 # Function which gets called after running command finishes and before prompt is drown
+# This function gets unset automatically when you change to another prompt/theme
 function prompt_zshgod_precmd() {
 	# Cycle through and run all functions in
 	# $ZSHGOD_USED_FUNCTIONS array asynchronously

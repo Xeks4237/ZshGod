@@ -20,8 +20,9 @@ function prompt_zshgod_setup() {
 	# Always use '-Uz' to supress alias expansion and to use zsh styly autoloading
 	autoload -Uz \
 		prompt_zshgod_configure \
-		prompt_zshgod_preexec \
 		prompt_zshgod_precmd \
+		prompt_zshgod_chpwd \
+		prompt_zshgod_preexec \
 		prompt_zshgod_exectime \
 		prompt_zshgod_vcs_branch \
 		prompt_zshgod_vcs_system \
@@ -96,6 +97,9 @@ function prompt_zshgod_setup() {
 	# precmd hook gets called when running command finishes and before prompt is drown
 	# Needed for stuff like exectime functions and etc
 	add-zsh-hook precmd prompt_zshgod_precmd
+
+	# chpwd hook gets called when current working directory changes
+	add-zsh-hook chpwd prompt_zshgod_chpwd
 
 	# [ Configuration Variables ]
 	# Variable which sets amount of exectime after exectime is not hided

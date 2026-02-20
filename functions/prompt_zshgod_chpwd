@@ -1,0 +1,6 @@
+# Function which is getting runned every time current working directory changes
+# This function gets unset automatically when you change to another prompt/theme
+function prompt_zshgod_chpwd() {
+	# Stop previously running async worker
+	async_stop_worker zshgod_async_worker
+}
