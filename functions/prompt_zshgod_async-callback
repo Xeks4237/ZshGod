@@ -19,7 +19,7 @@ function prompt_zshgod_async-callback() {
 
 	case $job_name in
 		"$job_name")
-			"${${job_name//-/_}:u}"=$output
+			typeset "${${job_name//-/_}:u}"=$output
 			;;
 	esac
 
