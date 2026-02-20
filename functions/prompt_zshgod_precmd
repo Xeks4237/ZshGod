@@ -8,9 +8,6 @@ function prompt_zshgod_precmd() {
 	# Cycle through and run all functions in
 	# $ZSHGOD_USED_FUNCTIONS array asynchronously
 	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
-		# Stop old async worker
-		async_stop_worker zshgod_async_worker
-
 		# Start new async worker
 		async_start_worker zshgod_async_worker -n
 		async_register_callback zshgod_async_worker prompt_zshgod_async-callback
