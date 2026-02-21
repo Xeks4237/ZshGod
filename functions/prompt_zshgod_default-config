@@ -5,14 +5,17 @@ function prompt_zshgod_default-config() {
 	# zstyle ':vcs_info:*' disable git svn
 	zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
-	# Array with used functions with args for them
-	# This functions going to be used asynchronously
+	# Array with functions and args for them which are used in prompt
+	# This functions going to be used asynchronously in prompt
+	# And they will also create variables with same name as functions,
+	# but uppercase and with _ instead of -
+	# For Example zsh_info-get => ZSH_INFO_GET
 	ZSHGOD_USED_FUNCTIONS=(
+		'prompt_zshgod_left-to-right_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
 		'prompt_zshgod_left-to-right_current-pwd "#89B4FA" "#11111B"'
 		'prompt_zshgod_left-to-right_jobs "#CBA6F7" "#11111B"'
 		'prompt_zshgod_left-to-right_vcs_system "#B4BEFE" "#11111B"'
 		'prompt_zshgod_left-to-right_vcs_branch "#A6E3A1" "#11111B"'
-		'prompt_zshgod_left-to-right_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
 		'prompt_zshgod_left-to-right_exectime_human-readable "#F9E2AF" "#11111B"'
 		'prompt_zshgod_left-to-right_time "#F9E2AF" "#11111B"'
 		'prompt_zshgod_left-to-right_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111B"'
@@ -43,7 +46,4 @@ function prompt_zshgod_default-config() {
 		'$PROMPT_ZSHGOD_RIGHT_TO_LEFT_SSHONLY_USERANDHOSTNAME'
 		'%b'
 	)
-
-	# promptinit in end to update list of prompt themes
-	promptinit
 }
