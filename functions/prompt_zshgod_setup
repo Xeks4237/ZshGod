@@ -19,73 +19,73 @@ function prompt_zshgod_setup() {
 	# NOTE: Autoloaded functions are practically lazy loaded functions
 	# Always use '-Uz' to supress alias expansion and to use zsh styly autoloading
 	autoload -Uz \
-		prompt_zshgod_configure \
 		prompt_zshgod_precmd \
-		prompt_zshgod_chpwd \
 		prompt_zshgod_preexec \
-		prompt_zshgod_exectime \
-		prompt_zshgod_vcs_branch \
-		prompt_zshgod_vcs_system \
-		prompt_zshgod_zsh-async-lib \
-		prompt_zshgod_async-callback \
-		prompt_zshgod_default-config
+		prompt_zshgod_chpwd \
+		zshgod_exectime \
+		zshgod_configure \
+		zshgod_vcs_branch \
+		zshgod_vcs_system \
+		zshgod_lib_zsh-async \
+		zshgod_async-callback \
+		zshgod_default-config
 
 	# [ Autoload rectangle/square styled functions ]
 	autoload -Uz \
-		prompt_zshgod_rectangular_git_dirty \
-		prompt_zshgod_rectangular_git_info \
-		prompt_zshgod_rectangular_time \
-		prompt_zshgod_rectangular_exectime_seconds-only \
-		prompt_zshgod_rectangular_exectime_human-readable \
-		prompt_zshgod_rectangular_current-pwd \
-		prompt_zshgod_rectangular_userandhostname \
-		prompt_zshgod_rectangular_sshonly_userandhostname \
-		prompt_zshgod_rectangular_root-indicator \
-		prompt_zshgod_rectangular_username \
-		prompt_zshgod_rectangular_sshonly_username \
-		prompt_zshgod_rectangular_hostname \
-		prompt_zshgod_rectangular_sshonly_hostname \
-		prompt_zshgod_rectangular_vcs_branch \
-		prompt_zshgod_rectangular_vcs_system \
-		prompt_zshgod_rectangular_jobs
+		zshgod_rectangular_git_dirty \
+		zshgod_rectangular_git_info \
+		zshgod_rectangular_time \
+		zshgod_rectangular_exectime_seconds-only \
+		zshgod_rectangular_exectime_human-readable \
+		zshgod_rectangular_current-pwd \
+		zshgod_rectangular_userandhostname \
+		zshgod_rectangular_sshonly_userandhostname \
+		zshgod_rectangular_root-indicator \
+		zshgod_rectangular_username \
+		zshgod_rectangular_sshonly_username \
+		zshgod_rectangular_hostname \
+		zshgod_rectangular_sshonly_hostname \
+		zshgod_rectangular_vcs_branch \
+		zshgod_rectangular_vcs_system \
+		zshgod_rectangular_jobs
 
 	# [ Autoload left to right pointing arrow styled functions ]
 	autoload -Uz \
-		prompt_zshgod_left-to-right_git_dirty \
-		prompt_zshgod_left-to-right_git_info \
-		prompt_zshgod_left-to-right_time \
-		prompt_zshgod_left-to-right_exectime_seconds-only \
-		prompt_zshgod_left-to-right_exectime_human-readable \
-		prompt_zshgod_left-to-right_current-pwd \
-		prompt_zshgod_left-to-right_userandhostname \
-		prompt_zshgod_left-to-right_sshonly_userandhostname \
-		prompt_zshgod_left-to-right_root-indicator \
-		prompt_zshgod_left-to-right_username \
-		prompt_zshgod_left-to-right_sshonly_username \
-		prompt_zshgod_left-to-right_hostname \
-		prompt_zshgod_left-to-right_sshonly_hostname \
-		prompt_zshgod_left-to-right_vcs_branch \
-		prompt_zshgod_left-to-right_vcs_system \
-		prompt_zshgod_left-to-right_jobs
+		zshgod_left-to-right_git_dirty \
+		zshgod_left-to-right_git_info \
+		zshgod_left-to-right_time \
+		zshgod_left-to-right_exectime_seconds-only \
+		zshgod_left-to-right_exectime_human-readable \
+		zshgod_left-to-right_current-pwd \
+		zshgod_left-to-right_userandhostname \
+		zshgod_left-to-right_sshonly_userandhostname \
+		zshgod_left-to-right_root-indicator \
+		zshgod_left-to-right_username \
+		zshgod_left-to-right_sshonly_username \
+		zshgod_left-to-right_hostname \
+		zshgod_left-to-right_sshonly_hostname \
+		zshgod_left-to-right_vcs_branch \
+		zshgod_left-to-right_vcs_system \
+		zshgod_left-to-right_jobs
 
 	# [ Autoload right to left pointing arrow styled functions ]
 	autoload -Uz \
-		prompt_zshgod_right-to-left_git_dirty \
-		prompt_zshgod_right-to-left_git_info \
-		prompt_zshgod_right-to-left_time \
-		prompt_zshgod_right-to-left_exectime_seconds-only \
-		prompt_zshgod_right-to-left_exectime_human-readable \
-		prompt_zshgod_right-to-left_current-pwd \
-		prompt_zshgod_right-to-left_userandhostname \
-		prompt_zshgod_right-to-left_sshonly_userandhostname \
-		prompt_zshgod_right-to-left_root-indicator \
-		prompt_zshgod_right-to-left_username \
-		prompt_zshgod_right-to-left_sshonly_username \
-		prompt_zshgod_right-to-left_hostname \
-		prompt_zshgod_right-to-left_sshonly_hostname \
-		prompt_zshgod_right-to-left_vcs_branch \
-		prompt_zshgod_right-to-left_vcs_system \
-		prompt_zshgod_right-to-left_jobs
+		zshgod_right-to-left_git_dirty \
+		zshgod_right-to-left_git_info \
+		zshgod_right-to-left_time \
+		zshgod_right-to-left_exectime_seconds-only \
+		zshgod_right-to-left_exectime_human-readable \
+		zshgod_right-to-left_current-pwd \
+		zshgod_right-to-left_userandhostname \
+		zshgod_right-to-left_sshonly_userandhostname \
+		zshgod_right-to-left_root-indicator \
+		zshgod_right-to-left_username \
+		zshgod_right-to-left_sshonly_username \
+		zshgod_right-to-left_hostname \
+		zshgod_right-to-left_sshonly_hostname \
+		zshgod_right-to-left_vcs_branch \
+		zshgod_right-to-left_vcs_system \
+		zshgod_right-to-left_jobs
 
 	# Initialize zsh-async library
 	async_init
@@ -109,14 +109,14 @@ function prompt_zshgod_setup() {
 	ZSHGOD_MULTILINED=false
 
 	# Run function for setting up default config for prompt
-	prompt_zshgod_default-config
+	zshgod_default-config
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
 				# Flag to open simple configuration wizard/editor
 			configure)
-				prompt_zshgod_configure
+				zshgod_configure
 				;;
 
 				# Flag to specify config file

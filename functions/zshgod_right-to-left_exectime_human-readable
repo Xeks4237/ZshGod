@@ -1,0 +1,23 @@
+# Function which returns exectime seconds into human readable time
+# For example: 165392 => 1d 21h 56m 32s
+function zshgod_right-to-left_exectime_human-readable() {
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	# Check if exectime isn't empty, like less that 5 or else
+	[[ -n $(zshgod_exectime) ]] || return
+
+	# Do calculations and output human readable exectime
+	local tmp="$(zshgod_exectime)"
+	local days="$(( tmp / 60 / 60 / 24 ))"
+	local hours="$(( tmp / 60 / 60 % 24 ))"
+	local minutes="$(( tmp / 60 % 60 ))"
+	local seconds="$(( tmp % 60 ))"
+	local output
+	(( $days > 0 )) && output+="${days}d "
+	(( $hours > 0 )) && output+="${hours}h "
+	(( $minutes > 0 )) && output+="${minutes}m "
+	(( $seconds > 0 )) && output+="${seconds}s"
+	print "%F{$bg_color}%S %K{$fg_color}$output%k %s%f"
+}

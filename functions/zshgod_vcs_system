@@ -1,0 +1,13 @@
+# Function which returns name of current vcs
+function zshgod_vcs_system() {
+	# zstyle options to customize look of vcs_info
+	zstyle ':vcs_info:*' actionformats '%s'
+	zstyle ':vcs_info:*' formats '%s'
+
+	# Run vcs_info to get/update vcs info
+	vcs_info
+
+	# Check if $vcs_info_msg_0_ is empty and if not prints vcs branch info
+	local vcs_msg=$vcs_info_msg_0_
+	[[ -n $vcs_msg ]] && print "$vcs_msg"
+}

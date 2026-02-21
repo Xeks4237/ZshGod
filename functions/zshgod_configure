@@ -1,0 +1,2 @@
+# Function which opens simple configuration wizard
+function zshgod_configure() {}

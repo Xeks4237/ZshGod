@@ -2,6 +2,6 @@
 # This function gets unset automatically when you change to another prompt/theme
 function prompt_zshgod_preexec() {
 	# Saves value of $EPOCHSECONDS before executing command, to variable
-	# Its for prompt_zshgod_exectime function
+	# Its for zshgod_exectime function
 	ZSHGOD_EXECTIME_START=$EPOCHSECONDS
 }
