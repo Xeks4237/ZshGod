@@ -144,6 +144,9 @@ function prompt_zshgod_setup() {
 		esac
 	done
 
+	# Update prompts list
+	promptinit
+
 	# Set right and left sides of the prompt using elements of arrays
 	# And join them to don't have extra spaces between elements
 	PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
