@@ -20,10 +20,7 @@ function prompt_zshgod_precmd() {
 	RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
 
 	# Snippet used for zshgod_exectime function
-	if (( ${+ZSHGOD_EXECTIME_START} )); then
-		ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
-		unset ZSHGOD_EXECTIME_START
-	else
-		unset ZSHGOD_EXECTIME
-	fi
+	(( ${+ZSHGOD_EXECTIME_START} )) || unset ZSHGOD_EXECTIME && return
+	ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
+	unset ZSHGOD_EXECTIME_START
 }
