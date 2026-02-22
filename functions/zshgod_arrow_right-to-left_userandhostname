@@ -1,0 +1,15 @@
+# Function which shows arrow with current username@hostname
+function zshgod_arrow_right-to-left_userandhostname() {
+	# Allow passing args to function for changing foreground and background colors
+	local user_bg_color=$1
+	local user_fg_color=$2
+	local root_bg_color=$3
+	local root_fg_color=$4
+	local dog_bg_color=$5
+	local dog_fg_color=$6
+	local hostname_bg_color=$7
+	local hostname_fg_color=$8
+
+	print "%(!,%F{$root_bg_color}%S %K{$root_fg_color}%n%k %s%f,%F{$user_bg_color}%S %K{$user_fg_color}%n%k %s%f)%F{$dog_bg_color}%S %K{$dog_fg_color}@%k %s%f%F{$hostname_bg_color}%S %K{$hostname_fg_color}%m%k %s%f"
+
+}

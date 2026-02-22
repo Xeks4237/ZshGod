@@ -1,0 +1,10 @@
+# Function which shows colored arrow with different color if current user is root
+function zshgod_arrow_right-to-left_root-indicator () {
+	# Allow passing args to function for changing foreground and background colors
+	local user_bg_color=$1
+	local user_fg_color=$2
+	local root_bg_color=$3
+	local root_fg_color=$4
+
+	print "%(!,%F{$root_bg_color}%S %K{$root_fg_color}#%k %s%f,%F{$user_bg_color}%S %K{$user_fg_color}\$%k %s%f)"
+}

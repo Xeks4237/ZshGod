@@ -1,0 +1,9 @@
+# Function which returns current amount of jobs if there at least 1 job
+# Uses builtin %j to get number of jobs
+function zshgod_arrow_right-to-left_jobs() {
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	print "%(1j,%F{$bg_color}%S %K{$fg_color}jobs: [%j]%k %s%f,)"
+}
