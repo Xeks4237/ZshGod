@@ -22,7 +22,6 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_precmd \
 		prompt_zshgod_preexec \
 		prompt_zshgod_chpwd \
-		zshgod_exectime \
 		zshgod_configure \
 		zshgod_vcs_branch \
 		zshgod_vcs_system \
