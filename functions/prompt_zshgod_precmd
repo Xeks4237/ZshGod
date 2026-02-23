@@ -5,7 +5,6 @@ function prompt_zshgod_precmd() {
 	if (( ${+ZSHGOD_EXECTIME_START} )); then
 		ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
 		unset ZSHGOD_EXECTIME_START
-		(( ZSHGOD_EXECTIME >= ${ZSHGOD_EXECTIME_MIN:-5} )) || unset ZSHGOD_EXECTIME
 	else
 		unset ZSHGOD_EXECTIME
 	fi
