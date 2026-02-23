@@ -2,12 +2,11 @@
 # For example: 165392 => 1d 21h 56m 32s
 function zshgod_arrow_right-to-left_exectime_human-readable() {
 	# Allow passing args to function for changing foreground and background colors
-	local time="$(zshgod_exectime)"
 	local bg_color=$2
 	local fg_color=$3
 
 	# Check if exectime isn't empty, like less that 5 or else
-	[[ -n $time ]] || return
+	[[ -n $ZSHGOD_EXECTIME ]] || return
 
 	# Do calculations and output human readable exectime
 	local days="$(( time / 60 / 60 / 24 ))"

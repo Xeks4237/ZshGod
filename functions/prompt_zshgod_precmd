@@ -1,6 +1,23 @@
 # Function which gets called after running command finishes and before prompt is drown
 # This function gets unset automatically when you change to another prompt/theme
 function prompt_zshgod_precmd() {
+	# Snippet used for calculating exectime of commands
+	if (( ${+ZSHGOD_EXECTIME_START} )); then
+		# Calculate exectime
+		ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
+
+		# Check if exectime is bigger or equal to $ZSHGOD_EXECTIME_MIN
+		# Its needed to customize minimal amount of seconds to show,
+		# Like show exectime only if more then 5 seconds passed
+		# Also if $ZSHGOD_EXECTIME_MIN is not set, default to 5
+		(( ZSHGOD_EXECTIME >= ${ZSHGOD_EXECTIME_MIN:-5} )) || unset ZSHGOD_EXECTIME
+
+		# Unset start time variable after calculating exectime
+		unset ZSHGOD_EXECTIME_START
+	else
+		unset ZSHGOD_EXECTIME
+	fi
+
 	# Cycle through and run all functions in
 	# $ZSHGOD_USED_FUNCTIONS array asynchronously
 	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do

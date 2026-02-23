@@ -1,10 +1,9 @@
 # Function which returns exectime for commands after it's been called
 function zshgod_rectangular_exectime_seconds-only() {
 	# Allow passing args to function for changing foreground and background colors
-	local time="$(zshgod_exectime)"
 	local bg_color=$2
 	local fg_color=$3
 
 	# Check if exectime isn't empty and output exectime
-	[[ -n $time ]] && print "%F{$fg_color}%K{$bg_color} $(zshgod_exectime)s %f%k"
+	[[ -n $ZSHGOD_EXECTIME ]] && print "%F{$fg_color}%K{$bg_color} ${ZSHGOD_EXECTIME}s %f%k"
 }
