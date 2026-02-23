@@ -16,7 +16,7 @@ function zshgod_default-config() {
 		'zshgod_arrow_left-to-right_jobs "#CBA6F7" "#11111B"'
 		'zshgod_arrow_left-to-right_vcs_system "#B4BEFE" "#11111B"'
 		'zshgod_arrow_left-to-right_vcs_branch "#A6E3A1" "#11111B"'
-		'zshgod_arrow_left-to-right_exectime_human-readable "#F9E2AF" "#11111B"'
+		'zshgod_arrow_left-to-right_exectime_human-readable "$(zshgod_exectime)" "#F9E2AF" "#11111B"'
 		'zshgod_arrow_left-to-right_time "#F9E2AF" "#11111B"'
 		'zshgod_arrow_left-to-right_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111B"'
 		'zshgod_arrow_right-to-left_sshonly_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'

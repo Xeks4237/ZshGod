@@ -2,7 +2,7 @@
 # For example: 165392 => 1d 21h 56m 32s
 function zshgod_arrow_right-to-left_exectime_human-readable() {
 	# Allow passing args to function for changing foreground and background colors
-	local time=$1
+	local time="$(zshgod_exectime)"
 	local bg_color=$2
 	local fg_color=$3
 
