@@ -5,5 +5,5 @@ function zshgod_rectangular_exectime_seconds-only() {
 	local fg_color=$2
 
 	# Check if exectime isn't empty and output exectime
-	[[ -n $(zshgod_exectime) ]] && print "%F{$fg_color}%K{$bg_color} $(zshgod_exectime)s %f%k"
+	[[ -n $ZSHGOD_EXECTIME ]] && print "%F{$fg_color}%K{$bg_color} $(zshgod_exectime)s %f%k"
 }

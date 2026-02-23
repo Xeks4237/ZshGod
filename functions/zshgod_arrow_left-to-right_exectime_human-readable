@@ -6,7 +6,7 @@ function zshgod_arrow_left-to-right_exectime_human-readable() {
 	local fg_color=$2
 
 	# Check if exectime isn't empty, like less that 5 or else
-	[[ -n $(zshgod_exectime) ]] || return
+	[[ -n $ZSHGOD_EXECTIME ]] || return
 
 	# Do calculations and output human readable exectime
 	local tmp="$(zshgod_exectime)"
