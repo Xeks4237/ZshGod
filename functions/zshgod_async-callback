@@ -11,6 +11,22 @@ function zshgod_async-callback() {
 	# Local variables for each argument
 	local job_name=$1 exit_code=$2 output=$3 exec_time=$4 stderr=$5 next=$6
 
+	# Case statement to check if there are errors with worker
+	case $job_name in
+	\[async])
+			# Handle all the errors that could indicate a crashed async worker
+			# See zsh-async documentation for the definition of the exit codes.
+			if [[ $exit_code == 1 || $exit_code == 2 || $exit_code == 3 || $exit_code == 130 ]]; then
+				async_stop_worker zshgod_async_worker
+			fi
+			;;
+
+			# Handler for case in async_worker_eval failed
+		\[async/eval])
+			[[ $exit_code ]] && async_stop_worker zshgod_async_worker
+			;;
+	esac
+
 	# Dynamically create new variable based on the function name in $job_name
 	# and then put value in $output to the newly created variable
 	# For example $job_name with zsh_git-info will create variable ZSH_GIT_INFO
