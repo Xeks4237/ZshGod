@@ -1,0 +1,17 @@
+# Function which allows to set title of terminal where zsh is running
+function zshgod_set-title() {
+	# Emacs terminal does not support setting the title
+	(( ${+EMACS} || ${+INSIDE_EMACS} )) && return
+
+	# Don't set title over serial console
+	case $TTY in
+		/dev/ttyS[0-9]*) return ;;
+	esac
+
+	# Allows passing custom args to the print command of function
+	local -a opts
+	opts=($1)
+
+	# Set title in one print statement so that it works when XTRACE is enabled
+	print -n $opts $'\e]0;'"${2}"$'\a'
+}
