@@ -8,16 +8,30 @@ function prompt_zshgod_setup() {
 	# Sets prompt specific zsh opts like prompt substitution
 	prompt_opts=( bang cr percent sp subst )
 
+	# Ensures that variable $prompt_newline is availible
+	# This variable needs to be set, usually set by promptinit
+	[[ -z $prompt_newline ]] && typeset -g prompt_newline=$'\n%{\r%}'
+
+	# Load zsh modules used in prompt
+	zmodload zsh/datetime
+	zmodload zsh/zle
+	zmodload zsh/parameter
+	zmodload zsh/zutil
+
 	# Load Zsh module related to zsh hooks
 	autoload -Uz add-zsh-hook
 
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
-	# [ Autoload used/needed functions ]
-	# Autoload functions which are used in prompt, availible functions are mentioned in help page ( prompt -h zshgod )
-	# NOTE: Autoloaded functions are practically lazy loaded functions
-	# Always use '-Uz' to supress alias expansion and to use zsh styly autoloading
+	# Load zsh-async library if availible
+	autoload -Uz async && async
+	autoload -Uz zshgod_lib_zsh-async && async
+
+	# Autoload generally needed functions which are used in prompt
+	# Autoloading allows to have only used functions in memory
+	# INFO: availible functions are mentioned in help message of prompt: prompt -h zshgod
+	# WARN: Always use '-Uz' to supress alias expansion and to use zsh styly autoloading
 	autoload -Uz \
 		prompt_zshgod_precmd \
 		prompt_zshgod_preexec \
@@ -25,66 +39,8 @@ function prompt_zshgod_setup() {
 		zshgod_configure \
 		zshgod_vcs_branch \
 		zshgod_vcs_system \
-		zshgod_lib_zsh-async \
 		zshgod_async-callback \
 		zshgod_default-config
-
-	# [ Autoload rectangle/square styled functions ]
-	autoload -Uz \
-		zshgod_rectangular_git_dirty \
-		zshgod_rectangular_git_info \
-		zshgod_rectangular_time \
-		zshgod_rectangular_exectime_seconds-only \
-		zshgod_rectangular_exectime_human-readable \
-		zshgod_rectangular_current-pwd \
-		zshgod_rectangular_userandhostname \
-		zshgod_rectangular_sshonly_userandhostname \
-		zshgod_rectangular_root-indicator \
-		zshgod_rectangular_username \
-		zshgod_rectangular_sshonly_username \
-		zshgod_rectangular_hostname \
-		zshgod_rectangular_sshonly_hostname \
-		zshgod_rectangular_vcs_branch \
-		zshgod_rectangular_vcs_system \
-		zshgod_rectangular_jobs
-
-	# [ Autoload left to right pointing arrow styled functions ]
-	autoload -Uz \
-		zshgod_arrow_left-to-right_git_dirty \
-		zshgod_arrow_left-to-right_git_info \
-		zshgod_arrow_left-to-right_time \
-		zshgod_arrow_left-to-right_exectime_seconds-only \
-		zshgod_arrow_left-to-right_exectime_human-readable \
-		zshgod_arrow_left-to-right_current-pwd \
-		zshgod_arrow_left-to-right_userandhostname \
-		zshgod_arrow_left-to-right_sshonly_userandhostname \
-		zshgod_arrow_left-to-right_root-indicator \
-		zshgod_arrow_left-to-right_username \
-		zshgod_arrow_left-to-right_sshonly_username \
-		zshgod_arrow_left-to-right_hostname \
-		zshgod_arrow_left-to-right_sshonly_hostname \
-		zshgod_arrow_left-to-right_vcs_branch \
-		zshgod_arrow_left-to-right_vcs_system \
-		zshgod_arrow_left-to-right_jobs
-
-	# [ Autoload right to left pointing arrow styled functions ]
-	autoload -Uz \
-		zshgod_arrow_right-to-left_git_dirty \
-		zshgod_arrow_right-to-left_git_info \
-		zshgod_arrow_right-to-left_time \
-		zshgod_arrow_right-to-left_exectime_seconds-only \
-		zshgod_arrow_right-to-left_exectime_human-readable \
-		zshgod_arrow_right-to-left_current-pwd \
-		zshgod_arrow_right-to-left_userandhostname \
-		zshgod_arrow_right-to-left_sshonly_userandhostname \
-		zshgod_arrow_right-to-left_root-indicator \
-		zshgod_arrow_right-to-left_username \
-		zshgod_arrow_right-to-left_sshonly_username \
-		zshgod_arrow_right-to-left_hostname \
-		zshgod_arrow_right-to-left_sshonly_hostname \
-		zshgod_arrow_right-to-left_vcs_branch \
-		zshgod_arrow_right-to-left_vcs_system \
-		zshgod_arrow_right-to-left_jobs
 
 	# Initialize zsh-async library
 	async_init
@@ -100,12 +56,12 @@ function prompt_zshgod_setup() {
 	# chpwd hook gets called when current working directory changes
 	add-zsh-hook chpwd prompt_zshgod_chpwd
 
-	# [ Configuration Variables ]
-	# Variable which sets amount of exectime after exectime is not hided
+	# [ Default valies for variables ]
+	# Variable which sets minimal amount of exectime after its shown
 	ZSHGOD_EXECTIME_MIN=5
 
-	# Disable multilined prompt by default
-	ZSHGOD_MULTILINED=false
+	# Prevent percentage showing up if output doesn't end with a newline
+	PROMPT_EOL_MARK=''
 
 	# Run function for setting up default config for prompt
 	zshgod_default-config
@@ -145,9 +101,4 @@ function prompt_zshgod_setup() {
 
 	# Update prompts list
 	promptinit
-
-	# Set right and left sides of the prompt using elements of arrays
-	# And join them to don't have extra spaces between elements
-	PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
-	RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
 }
