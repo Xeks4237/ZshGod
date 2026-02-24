@@ -34,6 +34,18 @@ function zshgod_default-config() {
 	autoload -Uz \
 		zshgod_arrow_right-to-left_sshonly_userandhostname
 
+	# preexec function which gets called before every COMMAND
+	preexec() {
+		# Function/Command to set title of the terminal
+		zshgod_set-title -Pr '%~'
+	}
+
+	# precmd function which gets called before showing prompt
+	precmd() {
+		# Function/Command to set title of the terminal
+		zshgod_set-title -Pr '%1~: $2'
+	}
+
 	# Array with functions and args for them which are used in main prompt
 	# This functions going to be used asynchronously in prompt
 	# And they will also create variables with same name as functions,
