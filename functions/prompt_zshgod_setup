@@ -24,9 +24,11 @@ function prompt_zshgod_setup() {
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
-	# Load zsh-async library if availible
-	autoload -Uz async && async
-	autoload -Uz zshgod_lib_zsh-async && async
+	# Load zsh-async library if availible, else source source builtin one
+	autoload -Uz async || source "$ZSHGOD_HOME/functions/zshgod_lib_zsh-async"
+
+	# Initialize zsh-async library
+	async_init
 
 	# Autoload generally needed functions which are used in prompt
 	# Autoloading allows to have only used functions in memory
@@ -42,9 +44,6 @@ function prompt_zshgod_setup() {
 		zshgod_async-callback \
 		zshgod_configure \
 		zshgod_default-config
-
-	# Initialize zsh-async library
-	async_init
 
 	# preexec hook gets called before you run any command, like when you press enter
 	# Needed for stuff like exectime functions and etc
