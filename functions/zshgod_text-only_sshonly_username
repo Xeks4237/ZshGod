@@ -1,0 +1,8 @@
+# Same function as zshgod_rectangular_username but shown only through ssh
+function zshgod_text-only_sshonly_username() {
+	# Allow passing args to function for changing foreground color
+	local user_fg_color=$1
+	local root_fg_color=$2
+
+	[[ -n $SSH_CONNECTION ]] && zshgod_rectangular_username $user_fg_color $root_fg_color
+}

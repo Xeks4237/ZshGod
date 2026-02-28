@@ -1,0 +1,8 @@
+# Function which returns branch/subversion info about current vcs
+function zshgod_text-only_vcs_branch() {
+	# Allow passing args to function for changing foreground color
+	local fg_color=$1
+
+	[[ -n $(zshgod_vcs_branch) ]] || return
+	print "%F{$fg_color}$(zshgod_vcs_branch)%f"
+}

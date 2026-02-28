@@ -1,0 +1,8 @@
+# Function which returns colored arrow with current username with different color if current user is root
+function zshgod_text-only_username() {
+	# Allow passing args to function for changing foreground color
+	local user_fg_color=$1
+	local root_fg_color=$2
+
+	print "%(!,%F{$root_fg_color}%n%f,%F{$user_fg_color}%n%f)"
+}

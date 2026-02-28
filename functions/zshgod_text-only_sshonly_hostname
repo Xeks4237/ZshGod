@@ -1,0 +1,7 @@
+# Same function as zshgod_rectangular_hostname but shown only through ssh
+function zshgod_text-only_sshonly_hostname() {
+	# Allow passing args to function for changing foreground color
+	local fg_color=$1
+
+	[[ -n $SSH_CONNECTION ]] && zshgod_text-only_hostname $fg_color
+}

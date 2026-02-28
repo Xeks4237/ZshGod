@@ -1,0 +1,7 @@
+# Function for showing arrow with customly formatted current time
+function zshgod_text-only_time() {
+	# Allow passing args to function for changing foreground color
+	local fg_color=$1
+
+	print "%F{$fg_color}%D{%H:%M:%S}%f"
+}
