@@ -24,7 +24,7 @@ function zshgod_premade-config_xeks4237() {
 		zshgod_arrow_left-to-right_time \
 		zshgod_arrow_left-to-right_exectime_human-readable \
 		zshgod_arrow_left-to-right_current-pwd \
-		zshgod_arrow_left-to-right_sshonly_userandhostname \
+		zshgod_arrow_left-to-right_ssh-only_userandhostname \
 		zshgod_arrow_left-to-right_root-indicator \
 		zshgod_arrow_left-to-right_vcs_branch \
 		zshgod_arrow_left-to-right_vcs_system \
@@ -32,7 +32,7 @@ function zshgod_premade-config_xeks4237() {
 
 	# [ Right to left pointing arrow styled functions used in prompt ]
 	autoload -Uz \
-		zshgod_arrow_right-to-left_sshonly_userandhostname
+		zshgod_arrow_right-to-left_ssh-only_userandhostname
 
 	# preexec function which gets called before every COMMAND
 	preexec() {
@@ -60,7 +60,7 @@ function zshgod_premade-config_xeks4237() {
 		'zshgod_arrow_left-to-right_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF" "#11111B"'
 		'zshgod_arrow_left-to-right_time "#F9E2AF" "#11111B"'
 		'zshgod_arrow_left-to-right_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111B"'
-		'zshgod_arrow_right-to-left_sshonly_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'
+		'zshgod_arrow_right-to-left_ssh-only_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'
 	)
 
 	# Array with items of main prompts left side
@@ -83,7 +83,7 @@ function zshgod_premade-config_xeks4237() {
 	# Array with items of main prompts right side
 	ZSHGOD_RIGHT_PROMPT=(
 		'%B'
-		'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSHONLY_USERANDHOSTNAME'
+		'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
 		'%b'
 	)
 

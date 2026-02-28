@@ -1,5 +1,5 @@
 # Same function as zshgod_rectangular_hostname but shown only through ssh
-function zshgod_rectangular_sshonly_hostname() {
+function zshgod_rectangular_ssh-only_hostname() {
 	# Allow passing args to function for changing foreground and background colors
 	local bg_color=$1
 	local fg_color=$2

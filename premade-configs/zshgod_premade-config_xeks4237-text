@@ -24,12 +24,12 @@ function zshgod_premade-config_xeks4237-text() {
 		zshgod_text-only_time \
 		zshgod_text-only_exectime_human-readable \
 		zshgod_text-only_current-pwd \
-		zshgod_text-only_sshonly_userandhostname \
+		zshgod_text-only_ssh-only_userandhostname \
 		zshgod_text-only_root-indicator \
 		zshgod_text-only_vcs_branch \
 		zshgod_text-only_vcs_system \
 		zshgod_text-only_jobs \
-		zshgod_text-only_sshonly_userandhostname
+		zshgod_text-only_ssh-only_userandhostname
 
 	# preexec function which gets called before every COMMAND
 	preexec() {
@@ -57,7 +57,7 @@ function zshgod_premade-config_xeks4237-text() {
 		'zshgod_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF"'
 		'zshgod_text-only_time "#F9E2AF"'
 		'zshgod_text-only_root-indicator "#A6E3A1" "#F38BA8"'
-		'zshgod_text-only_sshonly_userandhostname "#A6E3A1" "#F38BA8" "#F9E2AF" "#89B4FA"'
+		'zshgod_text-only_ssh-only_userandhostname "#A6E3A1" "#F38BA8" "#F9E2AF" "#89B4FA"'
 	)
 
 	# Array with items of main prompts left side
@@ -78,7 +78,7 @@ function zshgod_premade-config_xeks4237-text() {
 		'%B'
 		' $ZSHGOD_TEXT_ONLY_JOBS'
 		' $ZSHGOD_TEXT_ONLY_TIME'
-		' $ZSHGOD_TEXT_ONLY_SSHONLY_USERANDHOSTNAME'
+		' $ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
 		'%b'
 	)
 
