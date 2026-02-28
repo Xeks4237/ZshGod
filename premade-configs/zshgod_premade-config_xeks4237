@@ -96,4 +96,4 @@ function zshgod_premade-config_xeks4237() {
 
 # Run config function so sourcing this file actually runs it
 # And also pass args to function in case function accepts them
-zshgod_premade-config_xeks423 "$@"
+zshgod_premade-config_xeks4237 "$@"
