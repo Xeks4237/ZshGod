@@ -78,7 +78,7 @@ function prompt_zshgod_setup() {
 			--config-file=*)
 				ZSHGOD_CONFIG_FILE="${arg#--config-file=}"
 				# Source config file if it exists
-				[[ -fr $ZSHGOD_CONFIG_FILE ]] && source "$ZSHGOD_CONFIG_FILE"
+				[[ -f $ZSHGOD_CONFIG_FILE ]] && source "$ZSHGOD_CONFIG_FILE"
 				;;
 
 				# Flag to set minimal threshold for displaying exectime
