@@ -10,7 +10,7 @@ function zshgod_default-config() {
 
 	# Secondry prompt shown when writing functions, loops and etc in prompt manually
 	# Expanded in same way as PS1
-	PS2='%B%F{#6C7086}%S %K{#11111B}%_%k %s%f%b '
+	PS2='%B%F{#B4BEFE}%S %K{#11111B}%_%k %s%f%b '
 
 	# Prompt used inside of select loop, expanded in same way as PS1
 	PS3='%F{#B4BEFE}?#%f '
