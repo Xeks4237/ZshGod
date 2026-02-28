@@ -62,32 +62,23 @@ function zshgod_premade-config_xeks4237-text() {
 
 	# Array with items of main prompts left side
 	ZSHGOD_LEFT_PROMPT=(
-		'%B'
-		' '
-		'$ZSHGOD_TEXT_ONLY_CURRENT_PWD'
-		' '
-		'$ZSHGOD_TEXT_ONLY_VCS_SYSTEM'
-		' '
-		'$ZSHGOD_TEXT_ONLY_VCS_BRANCH'
-		' '
-		'$ZSHGOD_TEXT_ONLY_GIT_INFO'
-		' '
-		'$ZSHGOD_TEXT_ONLY_EXECTIME_HUMAN_READABLE'
+		'%B '
+		'$ZSHGOD_TEXT_ONLY_CURRENT_PWD '
+		'$ZSHGOD_TEXT_ONLY_VCS_SYSTEM '
+		'$ZSHGOD_TEXT_ONLY_VCS_BRANCH '
+		'$ZSHGOD_TEXT_ONLY_GIT_INFO '
+		'$ZSHGOD_TEXT_ONLY_EXECTIME_HUMAN_READABLE '
 		'$prompt_newline'
-		' '
-		'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
-		' '
+		' $ZSHGOD_TEXT_ONLY_ROOT_INDICATOR '
 		'%b'
 	)
 
 	# Array with items of main prompts right side
 	ZSHGOD_RIGHT_PROMPT=(
 		'%B'
-		'$ZSHGOD_TEXT_ONLY_JOBS'
-		' '
-		'$ZSHGOD_TEXT_ONLY_TIME'
-		' '
-		'$ZSHGOD_TEXT_ONLY_SSHONLY_USERANDHOSTNAME'
+		' $ZSHGOD_TEXT_ONLY_JOBS'
+		' $ZSHGOD_TEXT_ONLY_TIME'
+		' $ZSHGOD_TEXT_ONLY_SSHONLY_USERANDHOSTNAME'
 		'%b'
 	)
 

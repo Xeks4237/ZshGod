@@ -76,8 +76,7 @@ function zshgod_premade-config_xeks4237() {
 		'$prompt_newline'
 		'└'
 		'$ZSHGOD_ARROW_LEFT_TO_RIGHT_TIME'
-		'$ZSHGOD_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR'
-		' '
+		'$ZSHGOD_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR '
 		'%b'
 	)
 
