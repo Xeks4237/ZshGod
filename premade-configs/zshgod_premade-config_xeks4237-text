@@ -93,3 +93,7 @@ function zshgod_premade-config_xeks4237-text() {
 	PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
 	RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
 }
+
+# Run config function so sourcing this file actually runs it
+# And also pass args to function in case function accepts them
+zshgod_premade-config_xeks4237-text "$@"
