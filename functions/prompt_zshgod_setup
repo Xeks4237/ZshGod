@@ -42,8 +42,7 @@ function prompt_zshgod_setup() {
 		zshgod_vcs_branch \
 		zshgod_vcs_system \
 		zshgod_async-callback \
-		zshgod_configure \
-		zshgod_default-config
+		zshgod_configure
 
 	# preexec hook gets called before you run any command, like when you press enter
 	# Needed for stuff like exectime functions and etc
@@ -64,6 +63,7 @@ function prompt_zshgod_setup() {
 	PROMPT_EOL_MARK=''
 
 	# Run function for setting up default config for prompt
+	source "$ZSHGOD_HOME/premade-configs/zshgod_default-config"
 	zshgod_default-config
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
