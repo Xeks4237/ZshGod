@@ -63,8 +63,8 @@ function prompt_zshgod_setup() {
 	PROMPT_EOL_MARK=''
 
 	# Run function for setting up default config for prompt
-	source "$ZSHGOD_HOME/premade-configs/zshgod_premade-configs_xeks4237"
-	zshgod_premade-configs_xeks4237
+	source "$ZSHGOD_HOME/premade-configs/zshgod_premade-config_xeks4237"
+	zshgod_premade-config_xeks4237
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
