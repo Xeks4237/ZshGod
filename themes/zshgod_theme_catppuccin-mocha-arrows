@@ -1,0 +1,97 @@
+# [ Info about theme ]
+# Author: Xeks4237
+# Its a default user config used if user don't specifies other one.
+# Configuration for zshgod which uses arrow elements and catppuccin mocha colors:
+# https://github.com/catppuccin
+
+# [ Configuration variables and Zstyle ]
+# zstyle options to enable or disable some vcs which you don't use
+# zstyle ':vcs_info:*' disable git svn
+zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
+
+# Variable which sets minimal amount of exectime after its shown
+ZSHGOD_EXECTIME_MIN=5
+
+# Left side of secondry prompt shown when writing multilined commands manually
+# Expanded in same way as PS1
+PS2='%B%F{#B4BEFE}%S %K{#11111B}%_%k %s%f%b '
+
+# Right side of secondry prompt shown when writing multilined commands manually
+# Try to keep it empty to don't clutter view to multilined commands
+# Expanded in same way as RPS1
+RPS2=''
+
+# Prompt used inside of select loop, expanded in same way as PS1
+PS3='%F{#B4BEFE}?#%f '
+
+# Prompt shown when xtrace, sourcetrace, and etc logging options are set
+PS4='%F{#B4BEFE}%N%f %F{#F9E2AF}%i%f%F{#A6E3A1}:%f '
+
+# [ Functions used in prompt ]
+# Autoload functions used in prompt
+autoload -Uz \
+	zshgod_arrow_left-to-right_git_info \
+	zshgod_arrow_left-to-right_time \
+	zshgod_arrow_left-to-right_exectime_human-readable \
+	zshgod_arrow_left-to-right_current-pwd \
+	zshgod_arrow_left-to-right_ssh-only_userandhostname \
+	zshgod_arrow_left-to-right_root-indicator \
+	zshgod_arrow_left-to-right_vcs_branch \
+	zshgod_arrow_left-to-right_vcs_system \
+	zshgod_arrow_left-to-right_jobs \
+	zshgod_arrow_right-to-left_ssh-only_userandhostname
+
+# Array with functions and args for them which are used in main prompt
+# This functions going to be used asynchronously in prompt
+# And they will also create variables with same name as functions,
+# but in uppercase and with _ instead of -
+# For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
+ZSHGOD_USED_FUNCTIONS=(
+	'zshgod_arrow_left-to-right_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
+	'zshgod_arrow_left-to-right_current-pwd "#89B4FA" "#11111B"'
+	'zshgod_arrow_left-to-right_jobs "#CBA6F7" "#11111B"'
+	'zshgod_arrow_left-to-right_vcs_system "#B4BEFE" "#11111B"'
+	'zshgod_arrow_left-to-right_vcs_branch "#A6E3A1" "#11111B"'
+	'zshgod_arrow_left-to-right_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF" "#11111B"'
+	'zshgod_arrow_left-to-right_time "#F9E2AF" "#11111B"'
+	'zshgod_arrow_left-to-right_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111B"'
+	'zshgod_arrow_right-to-left_ssh-only_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'
+)
+
+# [ Zsh hook functions ]
+# preexec function which gets called before every COMMAND
+preexec() {
+	# Function/Command to set title of the terminal
+	zshgod_set-title -Pr '%~'
+}
+
+# precmd function which gets called after commands and before showing prompt
+precmd() {
+	# Function/Command to set title of the terminal
+	zshgod_set-title -Pr '%1~: $2'
+}
+
+# [ Main prompt ]
+# Array with items of main prompts left side
+ZSHGOD_LEFT_PROMPT=(
+	'%B'
+	'┌'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_CURRENT_PWD'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_JOBS'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_VCS_SYSTEM'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_VCS_BRANCH'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_GIT_INFO'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_EXECTIME_HUMAN_READABLE'
+	'$prompt_newline'
+	'└'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_TIME'
+	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR '
+	'%b'
+)
+
+# Array with items of main prompts right side
+ZSHGOD_RIGHT_PROMPT=(
+	'%B'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
+	'%b'
+)

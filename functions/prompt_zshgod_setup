@@ -63,8 +63,8 @@ function prompt_zshgod_setup() {
 	PROMPT_EOL_MARK=''
 
 	# Run function for setting up default config for prompt
-	source "$ZSHGOD_HOME/premade-configs/zshgod_premade-config_xeks4237"
-	zshgod_premade-config_xeks4237
+	source "$ZSHGOD_HOME/themes/zshgod_premade-config_xeks4237"
+	zshgod_theme_xeks4237
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
@@ -74,11 +74,17 @@ function prompt_zshgod_setup() {
 				zshgod_configure
 				;;
 
-				# Flag to specify config file
-			--config-file=*)
-				ZSHGOD_CONFIG_FILE="${arg#--config-file=}"
-				# Source config file if it exists
-				[[ -f $ZSHGOD_CONFIG_FILE ]] && source "$ZSHGOD_CONFIG_FILE"
+				# Flag to specify theme or config file for prompt
+			--theme=*)
+				# Check if given theme is the path to config file or theme name
+				local theme="${arg#--theme=}"
+				if [[ -r $theme ]]; then
+					source "$theme"
+				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
+					source "$ZSHGOD_HOME/themes/$theme"
+				else
+					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for --theme flag:%f $theme"
+				fi
 				;;
 
 				# Flag to set minimal threshold for displaying exectime
@@ -101,4 +107,9 @@ function prompt_zshgod_setup() {
 
 	# Update prompts list
 	promptinit
+
+	# Set right and left sides of the main prompt using elements of arrays
+	# And join them to don't have extra spaces between elements
+	PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
+	RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
 }
