@@ -22,7 +22,7 @@ PS2='%B%F{#B4BEFE}%S %K{#11111B}%_%k %s%f%b '
 RPS2=''
 
 # Prompt used inside of select loop, expanded in same way as PS1
-PS3='%F{#B4BEFE}?#%f '
+PS3='%B%F{#B4BEFE}%S %K{#11111B}?#%k %s%f%b '
 
 # Prompt shown when xtrace, sourcetrace, and etc logging options are set
 PS4='%F{#B4BEFE}%N%f %F{#F9E2AF}%i%f%F{#A6E3A1}:%f '
