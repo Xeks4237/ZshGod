@@ -64,7 +64,7 @@ function prompt_zshgod_setup() {
 
 	# Run function for setting up default config for prompt
 	# TODO: Make it to happen only if --theme is not used
-	source "$ZSHGOD_HOME/themes/zshgod_theme_catppuccin-mocha-arrows"
+	source "$ZSHGOD_HOME/themes/catppuccin-mocha-arrows"
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
@@ -89,17 +89,17 @@ function prompt_zshgod_setup() {
 
 				# Flag to set minimal threshold for displaying exectime
 			--min-exectime=*)
-				ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
+				export ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
 				;;
 
 				# Hardlers for weird scenarios
 			--*)
-				print -u2 "Unknown option(s): $arg" >&2
+				print -u2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
 				return 1
 				;;
 
 			*)
-				print -u2 "Unknown option(s): $arg" >&2
+				print -u2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
 				return 1
 				;;
 		esac
