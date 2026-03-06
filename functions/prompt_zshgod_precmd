@@ -2,7 +2,7 @@
 # This function gets unset automatically when you change to another prompt/theme
 function prompt_zshgod_precmd() {
 	# Snippet used for calculating exectime of commands
-	if (( ${+ZSHGOD_EXECTIME_START} )); then
+	if (( ${+ZSHGOD_EXECTIME_START} )) {
 		# Calculate exectime
 		ZSHGOD_EXECTIME=$(( EPOCHSECONDS - ZSHGOD_EXECTIME_START ))
 
@@ -14,13 +14,13 @@ function prompt_zshgod_precmd() {
 
 		# Unset start time variable after calculating exectime
 		unset ZSHGOD_EXECTIME_START
-	else
+	} else {
 		unset ZSHGOD_EXECTIME
-	fi
+	}
 
 	# Cycle through and run all functions in
 	# $ZSHGOD_USED_FUNCTIONS array asynchronously
-	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
+	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}" {
 		# Start new async worker
 		async_start_worker zshgod_async_worker -n 2> /dev/null
 
@@ -29,7 +29,7 @@ function prompt_zshgod_precmd() {
 
 		# Run async job
 		async_job zshgod_async_worker "$async_work"
-	done
+	}
 
 	# Set right and left sides of the prompt using elements of arrays
 	# And join them to don't have extra spaces between elements
