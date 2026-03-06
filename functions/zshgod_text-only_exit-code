@@ -1,0 +1,7 @@
+# Function for showing colored text with exit code of previous command
+function zshgod_text-only_exit-code() {
+	# Allow passing args to function for changing foreground color
+	local fg_color=$1
+
+	print "%(?,,%F{$fg_color}%?%f)"
+}
