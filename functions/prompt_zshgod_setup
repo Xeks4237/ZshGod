@@ -67,8 +67,8 @@ function prompt_zshgod_setup() {
 	source "$ZSHGOD_HOME/themes/zshgod_theme_catppuccin-mocha-arrows"
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
-	for arg in "$@" {
-		case "$arg" {
+	for arg in "$@"; do
+		case "$arg" in
 				# Flag to open simple configuration wizard/editor
 			configure)
 				zshgod_configure
@@ -78,13 +78,13 @@ function prompt_zshgod_setup() {
 			--theme=*)
 				# Check if given theme is the path to config file or theme name
 				local theme="${arg#--theme=}"
-				if [[ -r $theme ]] {
+				if [[ -r $theme ]]; then
 					source "$theme"
-				} elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]] {
+				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
-				} else {
+				else
 					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for --theme flag:%f $theme"
-				}
+				fi
 				;;
 
 				# Flag to set minimal threshold for displaying exectime
@@ -102,8 +102,8 @@ function prompt_zshgod_setup() {
 				print -u2 "Unknown option(s): $arg" >&2
 				return 1
 				;;
-		}
-	}
+		esac
+	done
 
 	# Set right and left sides of the main prompt using elements of arrays
 	# And join them to don't have extra spaces between elements

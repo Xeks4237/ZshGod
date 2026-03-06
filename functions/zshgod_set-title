@@ -4,7 +4,11 @@ function zshgod_set-title() {
 	(( ${+EMACS} || ${+INSIDE_EMACS} )) && return
 
 	# Don't set title over serial console
-	case $TTY in { /dev/ttyS[0-9]*) return ;; }
+	case $TTY in
+		/dev/ttyS[0-9]*)
+			return
+			;;
+	esac
 
 	# Allows passing custom args to the print command of function
 	local -a opts
