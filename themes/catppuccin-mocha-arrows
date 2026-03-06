@@ -39,7 +39,8 @@ autoload -Uz \
 	zshgod_arrow_left-to-right_vcs_branch \
 	zshgod_arrow_left-to-right_vcs_system \
 	zshgod_arrow_left-to-right_jobs \
-	zshgod_arrow_right-to-left_ssh-only_userandhostname
+	zshgod_arrow_right-to-left_ssh-only_userandhostname \
+	zshgod_arrow_right-to-left_exit-code
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -56,6 +57,7 @@ ZSHGOD_USED_FUNCTIONS=(
 	'zshgod_arrow_left-to-right_time "#F9E2AF" "#11111B"'
 	'zshgod_arrow_left-to-right_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111B"'
 	'zshgod_arrow_right-to-left_ssh-only_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'
+	'zshgod_arrow_right-to-left_exit-code "#F38BA8" "#11111B"'
 )
 
 # [ Zsh hook functions ]
@@ -92,6 +94,7 @@ ZSHGOD_LEFT_PROMPT=(
 # Array with items of main prompts right side
 ZSHGOD_RIGHT_PROMPT=(
 	'%B'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_EXIT_CODE'
 	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
 	'%b'
 )

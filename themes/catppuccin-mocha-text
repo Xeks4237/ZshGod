@@ -38,7 +38,8 @@ autoload -Uz \
 	zshgod_text-only_vcs_branch \
 	zshgod_text-only_vcs_system \
 	zshgod_text-only_jobs \
-	zshgod_text-only_ssh-only_userandhostname
+	zshgod_text-only_ssh-only_userandhostname \
+	zshgod_text-only_exit-code
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -55,6 +56,7 @@ ZSHGOD_USED_FUNCTIONS=(
 	'zshgod_text-only_time "#F9E2AF"'
 	'zshgod_text-only_root-indicator "#A6E3A1" "#F38BA8"'
 	'zshgod_text-only_ssh-only_userandhostname "#A6E3A1" "#F38BA8" "#F9E2AF" "#89B4FA"'
+	'zshgod_text-only_exit-code "#F38BA8"'
 )
 
 # [ Zsh hook functions ]
@@ -88,7 +90,7 @@ ZSHGOD_LEFT_PROMPT=(
 ZSHGOD_RIGHT_PROMPT=(
 	'%B'
 	'$ZSHGOD_TEXT_ONLY_JOBS'
-	' %(0?,,%B%F{#F38BA8}%?%f%b )'
+	'$ZSHGOD_TEXT_ONLY_EXIT_CODE'
 	'$ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
 	' $ZSHGOD_TEXT_ONLY_TIME'
 	' %b'
