@@ -87,8 +87,13 @@ ZSHGOD_LEFT_PROMPT=(
 # Array with items of main prompts right side
 ZSHGOD_RIGHT_PROMPT=(
 	'%B'
-	' $ZSHGOD_TEXT_ONLY_JOBS'
+	'$ZSHGOD_TEXT_ONLY_JOBS'
+	' %(0?,,%B%F{#F38BA8}%?%f%b )'
+	'$ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
 	' $ZSHGOD_TEXT_ONLY_TIME'
-	' $ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
-	'%b'
+	' %b'
 )
+
+# Set right and left sides of the main prompt using elements of arrays
+PS1="$ZSHGOD_LEFT_PROMPT"
+RPS1="$ZSHGOD_RIGHT_PROMPT"

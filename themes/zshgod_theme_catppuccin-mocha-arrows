@@ -95,3 +95,8 @@ ZSHGOD_RIGHT_PROMPT=(
 	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
 	'%b'
 )
+
+# Set right and left sides of the main prompt using elements of arrays
+# And join them to don't have extra spaces between elements
+PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
+RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
