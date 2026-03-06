@@ -68,7 +68,7 @@ function prompt_zshgod_setup() {
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@" {
-		case "$arg" in {
+		case "$arg" {
 				# Flag to open simple configuration wizard/editor
 			configure)
 				zshgod_configure
