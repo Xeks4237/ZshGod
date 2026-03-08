@@ -40,7 +40,6 @@ function zshgod_async-callback() {
 
 	# Combine left and right side in to one line with alighment of right side,
 	# Using $ZSHGOD_FILLER as repeting string between them
-	local ZSHGOD_FILLER_LENGTH
 	zshgod_join-line "$top_left" "$top_right" "$ZSHGOD_FILLER"
 
 	# And set prompt using newly created variables.
