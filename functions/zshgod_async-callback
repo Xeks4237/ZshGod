@@ -31,13 +31,23 @@ function zshgod_async-callback() {
 	local varname="${${job_name//-/_}:u}"
 	typeset -g "${varname}"="${output}"
 
-	# Increment counter of finished async jobs
-	ZSHGOD_FINISHED_ASYNC_JOBS=$(( ZSHGOD_FINISHED_ASYNC_JOBS + 1 ))
+	# [ Building prompt ]
+	# Join elements of the arrays to don't have extra spaces between them
+	local top_left="${(j::)ZSHGOD_TOP_LEFT}"
+	local top_right="${(j::)ZSHGOD_TOP_RIGHT}"
+	local bottom_left="${(j::)ZSHGOD_BOTTOM_LEFT}"
+	local bottom_right="${(j::)ZSHGOD_BOTTOM_RIGHT}"
 
-	# Check if amount of finished async jobs are equal to amount of used functions
-	# And combine left and right side in to one line with alighment of right side,
+	# Combine left and right side in to one line with alighment of right side,
 	# Using $ZSHGOD_FILLER as repeting string between them
-	[[ ${#ZSHGOD_USED_FUNCTIONS} == $ZSHGOD_FINISHED_ASYNC_JOBS ]] && zshgod_join-line $top_left $top_right "$ZSHGOD_FILLER"
+	zshgod_join-line $top_left $top_right "$ZSHGOD_FILLER"
+
+	# And set prompt using newly created variables.
+	# Lines below will set prompt accordingly:
+	#  $ZSHGOD_TOP_LEFT.....<$ZSHGOD_FILLER>....$ZSHGOD_TOP_RIGHT
+	#  $ZSHGOD_BOTTOM_LEFT                   $ZSHGOD_BOTTOM_RIGHT
+	PS1=$ZSHGOD_TOP_LINE$prompt_newline$bottom_left
+	RPS1=$bottom_right
 
 	# Activate zle and Redisplay/Update prompt
 	zle && zle redisplay; zle reset-prompt
