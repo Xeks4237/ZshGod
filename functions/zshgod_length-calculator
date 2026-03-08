@@ -1,0 +1,39 @@
+# Function which returns length of elements/stuff passed to it (How many columns it occupies)
+# First argument is the text which length function is going to calculate
+# Second argument is optional custom $COLUMNS value.
+# Examples:
+#   prompt-length ''            => 0
+#   prompt-length 'abc'         => 3
+#   prompt-length $'abc\nxy'    => 2
+#   prompt-length '❎'          => 2
+#   prompt-length $'\t'         => 8
+#   prompt-length $'\u274E'     => 2
+#   prompt-length '%F{red}abc'  => 3
+#   prompt-length $'%{a\b%Gb%}' => 1
+#   prompt-length '%D'          => 8
+#   prompt-length '%1(l..ab)'   => 2
+#   prompt-length '%(!.a.)'     => 1 if root, 0 if not
+
+# NOTE: I took this function from here:
+# https://gist.github.com/romkatv/2a107ef9314f0d5f76563725b42f7cab
+function zshgod_length-calculator() {
+	local -i COLUMNS=${2:-COLUMNS}
+	local -i x y=${#1} m
+
+	# This section is too complex to add some usefull comments,
+	# Soo it simple calculates length of stuff passed to it
+	if (( y )); then
+		while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
+			x=y
+			(( y *= 2 ))
+		done
+
+		while (( y > x + 1 )); do
+			(( m = x + (y - x) / 2 ))
+			(( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
+		done
+	fi
+
+	# Set end result to $ZSHGOD_FILLER_LENGTH
+	typeset -g ZSHGOD_FILLER_LENGTH=$x
+}

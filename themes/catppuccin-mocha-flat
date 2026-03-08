@@ -73,29 +73,43 @@ precmd() {
 }
 
 # [ Main prompt ]
-# Array with items of main prompts left side
-ZSHGOD_LEFT_PROMPT=(
+# Lines below will set prompt accordingly:
+#  $ZSHGOD_TOP_LEFT......<$ZSHGOD_FILLER>......$ZSHGOD_TOP_RIGHT
+#  $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
+
+ZSHGOD_FILLER=' sus'
+
+# Array with items of main prompts top left side
+ZSHGOD_TOP_LEFT=(
 	'%B'
 	'$ZSHGOD_RECTANGULAR_CURRENT_PWD'
 	'$ZSHGOD_RECTANGULAR_VCS_SYSTEM'
 	'$ZSHGOD_RECTANGULAR_VCS_BRANCH'
 	'$ZSHGOD_RECTANGULAR_GIT_INFO'
 	'$ZSHGOD_RECTANGULAR_EXECTIME_HUMAN_READABLE'
-	'$prompt_newline'
-	'$ZSHGOD_RECTANGULAR_ROOT_INDICATOR '
+	'$b'
+)
+
+# Array with items of main prompts bottom left side
+ZSHGOD_BOTTOM_LEFT=(
+	'%B'
+	'$ZSHGOD_RECTANGULAR_ROOT_INDICATOR'
+	' '
 	'%b'
 )
 
-# Array with items of main prompts right side
-ZSHGOD_RIGHT_PROMPT=(
+# Array with items of main prompts top right side
+ZSHGOD_TOP_RIGHT=(
 	'%B'
-	'$ZSHGOD_RECTANGULAR_JOBS'
-	'$ZSHGOD_RECTANGULAR_EXIT_CODE'
 	'$ZSHGOD_RECTANGULAR_SSH_ONLY_USERANDHOSTNAME'
 	'$ZSHGOD_RECTANGULAR_TIME'
 	'%b'
 )
 
-# Set right and left sides of the main prompt using elements of arrays
-PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
-RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
+# Array with items of main prompts top right side
+ZSHGOD_BOTTOM_RIGHT=(
+	'%B'
+	'$ZSHGOD_RECTANGULAR_JOBS'
+	'$ZSHGOD_RECTANGULAR_EXIT_CODE'
+	'%b'
+)

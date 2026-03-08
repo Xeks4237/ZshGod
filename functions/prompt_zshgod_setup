@@ -24,7 +24,7 @@ function prompt_zshgod_setup() {
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
-	# Load zsh-async library if availible, else source source builtin one
+	# Load zsh-async library if availible, else source builtin copy
 	autoload -Uz async || source "$ZSHGOD_HOME/functions/zshgod_lib_zsh-async"
 
 	# Initialize zsh-async library
@@ -39,6 +39,8 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_preexec \
 		prompt_zshgod_chpwd \
 		zshgod_set-title \
+		zshgod_join-line \
+		zshgod_length-calculator \
 		zshgod_vcs_branch \
 		zshgod_vcs_system \
 		zshgod_async-callback \
