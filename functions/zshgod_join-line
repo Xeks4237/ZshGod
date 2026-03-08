@@ -7,15 +7,15 @@ function zshgod_join-line() {
 	zshgod_length-calculator $1
 	local -i left_len=$ZSHGOD_FILLER_LENGTH
 
-	zshgod_length-calculator $2 99999
+	zshgod_length-calculator $2
 	local -i right_len=$ZSHGOD_FILLER_LENGTH
 
 	local filler=$3
 
 	local -i pad_len=$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))
 
-	if (( pad_len < 1 )); then
-		typeset -g ZSHGOD_TOP_LINE=${1}
+	if (( pad_len > 1 )); then
+		typeset -g ZSHGOD_TOP_LINE=${1}${pad}${2}
 	else
 		local pad=${(pl.$pad_len..$filler.)}
 		typeset -g ZSHGOD_TOP_LINE=${1}${pad}${2}
