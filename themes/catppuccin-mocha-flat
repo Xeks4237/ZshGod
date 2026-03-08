@@ -29,16 +29,15 @@ PS4='%F{#B4BEFE}%N%f %F{#F9E2AF}%i%f%F{#A6E3A1}:%f '
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
 autoload -Uz \
-	zshgod_rectangular_git_info \
-	zshgod_rectangular_time \
-	zshgod_rectangular_exectime_human-readable \
 	zshgod_rectangular_current-pwd \
-	zshgod_rectangular_ssh-only_userandhostname \
-	zshgod_rectangular_root-indicator \
-	zshgod_rectangular_vcs_branch \
 	zshgod_rectangular_vcs_system \
-	zshgod_rectangular_jobs \
+	zshgod_rectangular_vcs_branch \
+	zshgod_rectangular_git_info \
+	zshgod_rectangular_exectime_human-readable \
+	zshgod_rectangular_root-indicator \
 	zshgod_rectangular_ssh-only_userandhostname \
+	zshgod_rectangular_time \
+	zshgod_rectangular_jobs \
 	zshgod_rectangular_exit-code
 
 # Array with functions and args for them which are used in main prompt
@@ -47,15 +46,15 @@ autoload -Uz \
 # but in uppercase and with _ instead of -
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
 ZSHGOD_USED_FUNCTIONS=(
-	'zshgod_rectangular_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
 	'zshgod_rectangular_current-pwd "#89B4FA" "#11111B"'
-	'zshgod_rectangular_jobs "#CBA6F7" "#11111B"'
 	'zshgod_rectangular_vcs_system "#B4BEFE" "#11111B"'
 	'zshgod_rectangular_vcs_branch "#A6E3A1" "#11111B"'
+	'zshgod_rectangular_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
 	'zshgod_rectangular_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF" "#11111B"'
-	'zshgod_rectangular_time "#F9E2AF" "#11111B"'
 	'zshgod_rectangular_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111b"'
 	'zshgod_rectangular_ssh-only_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'
+	'zshgod_rectangular_time "#F9E2AF" "#11111B"'
+	'zshgod_rectangular_jobs "#CBA6F7" "#11111B"'
 	'zshgod_rectangular_exit-code "#F38BA8" "#11111B"'
 )
 
