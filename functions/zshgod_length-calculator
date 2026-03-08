@@ -17,7 +17,6 @@
 # NOTE: I took this function from here:
 # https://gist.github.com/romkatv/2a107ef9314f0d5f76563725b42f7cab
 function zshgod_length-calculator() {
-	emulate -L zsh
 	local -i COLUMNS=${2:-COLUMNS}
 	local -i x y=${#1} m
 
