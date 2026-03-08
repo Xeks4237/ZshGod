@@ -64,9 +64,8 @@ function prompt_zshgod_setup() {
 	# Prevent percentage showing up if output doesn't end with a newline
 	PROMPT_EOL_MARK=''
 
-	# Run function for setting up default config for prompt
-	# TODO: Make it to happen only if --theme is not used
-	source "$ZSHGOD_HOME/themes/catppuccin-mocha-arrows"
+	# Unset variable which says what theme for zshgod is currently choosed
+	ZSHGOD_THEME=''
 
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
@@ -82,9 +81,12 @@ function prompt_zshgod_setup() {
 				local theme="${arg#--theme=}"
 				if [[ -r $theme ]]; then
 					source "$theme"
+					ZSHGOD_THEME="$theme"
 				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
+					ZSHGOD_THEME="$theme"
 				else
+					ZSHGOD_THEME='none'
 					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for --theme flag:%f $theme"
 				fi
 				;;
@@ -106,4 +108,7 @@ function prompt_zshgod_setup() {
 				;;
 		esac
 	done
+	# Set up default config for prompt if --theme wasn't used
+	# TODO: Make it to happen only if --theme is not used
+	[[ -n $ZSHGOD_THEME ]] || source "$ZSHGOD_HOME/themes/catppuccin-mocha-flat"
 }

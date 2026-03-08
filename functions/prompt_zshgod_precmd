@@ -21,6 +21,9 @@ function prompt_zshgod_precmd() {
 	fi
 
 	# [ Async jobs ]
+	# Reset counter of finished async jobs
+	typeset -i ZSHGOD_FINISHED_ASYNC_JOBS=0
+
 	# Cycle through and run all functions in
 	# $ZSHGOD_USED_FUNCTIONS array asynchronously
 	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
@@ -40,11 +43,6 @@ function prompt_zshgod_precmd() {
 	local top_right="${(j::)ZSHGOD_TOP_RIGHT}"
 	local bottom_left="${(j::)ZSHGOD_BOTTOM_LEFT}"
 	local bottom_right="${(j::)ZSHGOD_BOTTOM_RIGHT}"
-
-	# Combine left and right side in to one line with alighment of right side,
-	# using $ZSHGOD_FILLER as repeting string between them
-	local ZSHGOD_TOP_LINE
-	zshgod_join-line "$top_left" "$top_right" "$ZSHGOD_FILLER"
 
 	# And set prompt using newly created variables.
 	# Lines below will set prompt accordingly:

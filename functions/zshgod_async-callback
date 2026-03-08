@@ -31,6 +31,14 @@ function zshgod_async-callback() {
 	local varname="${${job_name//-/_}:u}"
 	typeset -g "${varname}"="${output}"
 
+	# Increment counter of finished async jobs
+	ZSHGOD_FINISHED_ASYNC_JOBS=$(( ZSHGOD_FINISHED_ASYNC_JOBS + 1 ))
+
+	# Check if amount of finished async jobs are equal to amount of used functions
+	# And combine left and right side in to one line with alighment of right side,
+	# Using $ZSHGOD_FILLER as repeting string between them
+	[[ ${#ZSHGOD_USED_FUNCTIONS} == $ZSHGOD_FINISHED_ASYNC_JOBS ]] && zshgod_join-line $top_left $top_right "$ZSHGOD_FILLER"
+
 	# Activate zle and Redisplay/Update prompt
 	zle && zle redisplay; zle reset-prompt
 }

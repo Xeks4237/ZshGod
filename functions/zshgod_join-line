@@ -4,16 +4,14 @@
 # Second argument sets RIGHT
 # Third argument sets character/string which going to be used between LEFT and RIGHT
 function zshgod_join-line() {
-	zshgod_length-calculator $1
-	local -i left_len=$ZSHGOD_FILLER_LENGTH
+	local -i left_len=$(zshgod_length-calculator $1)
 
-	zshgod_length-calculator $2 9999
-	local -i right_len=$ZSHGOD_FILLER_LENGTH
+	local -i right_len=$(zshgod_length-calculator $2 99999)
 
-	local -i pad_len=$((COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1}))
+	local -i pad_len=$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))
 
 	if (( pad_len < 1 )); then
-		typeset -g ZSHGOD_FILLER_LENGTH=$1
+		typeset -g ZSHGOD_TOP_LINE=${1}${2}
 	else
 		local pad=${(pl.$pad_len..$3.)}
 		typeset -g ZSHGOD_TOP_LINE=${1}${pad}${2}
