@@ -77,7 +77,8 @@ precmd() {
 #  $ZSHGOD_TOP_LEFT......<$ZSHGOD_FILLER>......$ZSHGOD_TOP_RIGHT
 #  $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
 
-ZSHGOD_FILLER=' sus'
+# Variable which sets character/string which be used between left and right of prompts top line
+ZSHGOD_FILLER='─'
 
 # Array with items of main prompts top left side
 ZSHGOD_TOP_LEFT=(
@@ -88,6 +89,7 @@ ZSHGOD_TOP_LEFT=(
 	'$ZSHGOD_RECTANGULAR_GIT_INFO'
 	'$ZSHGOD_RECTANGULAR_EXECTIME_HUMAN_READABLE'
 	'$b'
+	' '
 )
 
 # Array with items of main prompts bottom left side
@@ -100,13 +102,14 @@ ZSHGOD_BOTTOM_LEFT=(
 
 # Array with items of main prompts top right side
 ZSHGOD_TOP_RIGHT=(
+	' '
 	'%B'
 	'$ZSHGOD_RECTANGULAR_SSH_ONLY_USERANDHOSTNAME'
 	'$ZSHGOD_RECTANGULAR_TIME'
 	'%b'
 )
 
-# Array with items of main prompts top right side
+# Array with items of main prompts bottom right side
 ZSHGOD_BOTTOM_RIGHT=(
 	'%B'
 	'$ZSHGOD_RECTANGULAR_JOBS'

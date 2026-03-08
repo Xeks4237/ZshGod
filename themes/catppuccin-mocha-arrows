@@ -74,32 +74,45 @@ precmd() {
 }
 
 # [ Main prompt ]
-# Array with items of main prompts left side
-ZSHGOD_LEFT_PROMPT=(
+# Lines below will set prompt accordingly:
+#  $ZSHGOD_TOP_LEFT......<$ZSHGOD_FILLER>......$ZSHGOD_TOP_RIGHT
+#  $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
+
+# Variable which sets character/string which be used between left and right of prompts top line
+ZSHGOD_FILLER='─'
+
+# Array with items of main prompts top left side
+ZSHGOD_TOP_LEFT=(
 	'%B'
 	'┌'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_CURRENT_PWD'
-	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_JOBS'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_VCS_SYSTEM'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_VCS_BRANCH'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_GIT_INFO'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_EXECTIME_HUMAN_READABLE'
-	'$prompt_newline'
+	'%b'
+)
+
+# Array with items of main prompts bottom left side
+ZSHGOD_BOTTOM_LEFT=(
+	'%B'
 	'└'
-	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_TIME'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR '
 	'%b'
 )
 
-# Array with items of main prompts right side
-ZSHGOD_RIGHT_PROMPT=(
+# Array with items of main prompts top right side
+ZSHGOD_TOP_RIGHT=(
 	'%B'
-	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_EXIT_CODE'
 	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_TIME'
 	'%b'
 )
 
-# Set right and left sides of the main prompt using elements of arrays
-# And join them to don't have extra spaces between elements
-PS1="${(j::)ZSHGOD_LEFT_PROMPT}"
-RPS1="${(j::)ZSHGOD_RIGHT_PROMPT}"
+# Array with items of main prompts bottom right side
+ZSHGOD_BOTTOM_RIGHT=(
+	'%B'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_JOBS'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_EXIT_CODE'
+	'%b'
+)

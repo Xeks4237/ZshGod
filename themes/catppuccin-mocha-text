@@ -73,29 +73,44 @@ precmd() {
 }
 
 # [ Main prompt ]
-# Array with items of main prompts left side
-ZSHGOD_LEFT_PROMPT=(
-	'%B '
-	'$ZSHGOD_TEXT_ONLY_CURRENT_PWD '
-	'$ZSHGOD_TEXT_ONLY_VCS_SYSTEM '
-	'$ZSHGOD_TEXT_ONLY_VCS_BRANCH '
-	'$ZSHGOD_TEXT_ONLY_GIT_INFO '
-	'$ZSHGOD_TEXT_ONLY_EXECTIME_HUMAN_READABLE '
-	'$prompt_newline'
-	' $ZSHGOD_TEXT_ONLY_ROOT_INDICATOR '
+# Lines below will set prompt accordingly:
+#  $ZSHGOD_TOP_LEFT......<$ZSHGOD_FILLER>......$ZSHGOD_TOP_RIGHT
+#  $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
+
+# Variable which sets character/string which be used between left and right of prompts top line
+ZSHGOD_FILLER=' '
+
+# Array with items of main prompts top left side
+ZSHGOD_TOP_LEFT=(
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_CURRENT_PWD'
+	'$ZSHGOD_TEXT_ONLY_VCS_SYSTEM'
+	'$ZSHGOD_TEXT_ONLY_VCS_BRANCH'
+	'$ZSHGOD_TEXT_ONLY_GIT_INFO'
+	'$ZSHGOD_TEXT_ONLY_EXECTIME_HUMAN_READABLE'
+	'$b'
+)
+
+# Array with items of main prompts bottom left side
+ZSHGOD_BOTTOM_LEFT=(
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
+	' '
 	'%b'
 )
 
-# Array with items of main prompts right side
-ZSHGOD_RIGHT_PROMPT=(
+# Array with items of main prompts top right side
+ZSHGOD_TOP_RIGHT=(
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
+	'$ZSHGOD_TEXT_ONLY_TIME'
+	'%b'
+)
+
+# Array with items of main prompts bottom right side
+ZSHGOD_BOTTOM_RIGHT=(
 	'%B'
 	'$ZSHGOD_TEXT_ONLY_JOBS'
 	'$ZSHGOD_TEXT_ONLY_EXIT_CODE'
-	'$ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
-	' $ZSHGOD_TEXT_ONLY_TIME'
-	' %b'
+	'%b'
 )
-
-# Set right and left sides of the main prompt using elements of arrays
-PS1="$ZSHGOD_LEFT_PROMPT"
-RPS1="$ZSHGOD_RIGHT_PROMPT"
