@@ -1,5 +1,5 @@
 # Function which allows creating LEFT.......RIGHT string that fills the whole terminal line
-# Uses zshgod_length-calcular to measure real printed width of both parts
+# Uses zshgod_length-calculator to measure real printed width of both parts
 # First argument sets LEFT
 # Second argument sets RIGHT
 # Third argument sets character/string which going to be used between LEFT and RIGHT
@@ -8,12 +8,14 @@ function zshgod_join-line() {
 
 	local -i right_len=$(zshgod_length-calculator $2 99999)
 
+	local filler=$3
+
 	local -i pad_len=$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))
 
 	if (( pad_len < 1 )); then
 		typeset -g ZSHGOD_TOP_LINE=${1}${2}
 	else
-		local pad=${(pl.$pad_len..$3.)}
+		local pad=${(pl.$pad_len..$filler.)}
 		typeset -g ZSHGOD_TOP_LINE=${1}${pad}${2}
 	fi
 }
