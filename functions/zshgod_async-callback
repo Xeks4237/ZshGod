@@ -16,12 +16,16 @@ function zshgod_async-callback() {
 	\[async])
 			# Handle all the errors that could indicate a crashed async worker
 			# See zsh-async documentation for the definition of the exit codes.
-			[[ $exit_code == 1 || $exit_code == 2 || $exit_code == 3 || $exit_code == 130 ]] && async_stop_worker zshgod_async_worker
+			[[ $exit_code ]] && async_stop_worker zshgod_async_worker
+			print -Pu2 "%F{red}Error in async worker:%f %F{yellow}Job name: $job_name%f" >&2
+			return $exit_code
 			;;
 
 			# Handler for case in async_worker_eval failed
 		\[async/eval])
 			[[ $exit_code ]] && async_stop_worker zshgod_async_worker
+			print -Pu2 "%F{red}Error in async worker:%f %F{yellow}Job name: $job_name%f" >&2
+			return $exit_code
 			;;
 	esac
 

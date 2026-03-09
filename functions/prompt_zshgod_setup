@@ -98,12 +98,12 @@ function prompt_zshgod_setup() {
 
 				# Hardlers for weird scenarios
 			--*)
-				print -u2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
+				print -Pu2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
 				return 1
 				;;
 
 			*)
-				print -u2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
+				print -Pu2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
 				return 1
 				;;
 		esac

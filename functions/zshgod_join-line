@@ -4,11 +4,9 @@
 # Second argument sets RIGHT
 # Third argument sets character/string which going to be used between LEFT and RIGHT
 function zshgod_join-line() {
-	zshgod_length-calculator $1
-	local -i left_len=$ZSHGOD_FILLER_LENGTH
+	local -i left_len=$(zshgod_length-calculator $1)
 
-	zshgod_length-calculator $2
-	local -i right_len=$ZSHGOD_FILLER_LENGTH
+	local -i right_len=$(zshgod_length-calculator $2)
 
 	local filler=$3
 

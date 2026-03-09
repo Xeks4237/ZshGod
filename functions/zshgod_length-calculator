@@ -34,6 +34,6 @@ function zshgod_length-calculator() {
 		done
 	fi
 
-	# Set end result through $ZSHGOD_FILLER_LENGTH
-	typeset -g ZSHGOD_FILLER_LENGTH=$x
+	# Send end result
+	print $x
 }
