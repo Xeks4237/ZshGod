@@ -31,7 +31,7 @@ function zshgod_async-callback() {
 
 	# Dynamically create new variable based on the function name in $job_name
 	# and then put value in $output to the newly created variable
-	# For example $job_name with zsh_git-info will create variable ZSH_GIT_INFO
+	# For example $job_name with zsh_git-info will create variable $ZSH_GIT_INFO
 	local varname="${${job_name//-/_}:u}"
 	typeset -g "${varname}"="${output}"
 
