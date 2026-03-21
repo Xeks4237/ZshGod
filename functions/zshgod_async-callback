@@ -37,10 +37,10 @@ function zshgod_async-callback() {
 
 	# [ Building prompt ]
 	# Join elements of the arrays to don't have extra spaces between them
-	local top_left="${(j::)ZSHGOD_TOP_LEFT}"
-	local top_right="${(j::)ZSHGOD_TOP_RIGHT}"
-	local bottom_left="${(j::)ZSHGOD_BOTTOM_LEFT}"
-	local bottom_right="${(j::)ZSHGOD_BOTTOM_RIGHT}"
+	local top_left="${(ej::)ZSHGOD_TOP_LEFT}"
+	local top_right="${(ej::)ZSHGOD_TOP_RIGHT}"
+	local bottom_left="${(ej::)ZSHGOD_BOTTOM_LEFT}"
+	local bottom_right="${(ej::)ZSHGOD_BOTTOM_RIGHT}"
 
 	# Combine left and right side in to one line with alighment of right side,
 	# Using $ZSHGOD_FILLER as repeting string between them
