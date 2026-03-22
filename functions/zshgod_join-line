@@ -8,12 +8,11 @@ function zshgod_join-line() {
 
 	local -i right_len=$(zshgod_length-calculator $2)
 
-	local filler=$3
-
 	local -i pad_len=$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))
 
 	if (( pad_len > 0 )); then
-		typeset -g ZSHGOD_TOP_LINE=${1}${filler}${2}
+		local pad=${(pl.$pad_len..$3.)}
+		typeset -g ZSHGOD_TOP_LINE=${1}${pad}${2}
 	else
 		typeset -g ZSHGOD_TOP_LINE=${1}
 	fi
