@@ -67,6 +67,7 @@ function prompt_zshgod_setup() {
 	# Unset variable which says what theme for zshgod is currently choosed
 	ZSHGOD_THEME=''
 
+	# [ Handling args ]
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
@@ -86,6 +87,7 @@ function prompt_zshgod_setup() {
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
 				else
+					unset ZSHGOD_THEME
 					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for%f %F{green}--theme%f %F{yellow}flag:%f %F{blue}$theme%f"
 				fi
 				;;
@@ -108,6 +110,5 @@ function prompt_zshgod_setup() {
 		esac
 	done
 	# Set up default config for prompt if --theme wasn't used
-	# TODO: Make it to happen only if --theme is not used
 	[[ -n $ZSHGOD_THEME ]] || source "$ZSHGOD_HOME/themes/catppuccin-mocha-flat"
 }

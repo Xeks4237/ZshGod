@@ -18,6 +18,7 @@ ZSHGOD_HOME="${0:A:h}"
 
 # Add directory with prompt files to fpath
 fpath+=( "$ZSHGOD_HOME/functions" )
+fpath+=( "$ZSHGOD_HOME/elements" )
 
 # Autoload promptinit system in case it's not loaded
 autoload -Uz promptinit
