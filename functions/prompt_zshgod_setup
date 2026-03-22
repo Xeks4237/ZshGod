@@ -86,8 +86,7 @@ function prompt_zshgod_setup() {
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
 				else
-					ZSHGOD_THEME='none'
-					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for --theme flag:%f $theme"
+					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for%f %F{green}--theme%f %F{yellow}flag:%f %F{blue}$theme%f"
 				fi
 				;;
 
