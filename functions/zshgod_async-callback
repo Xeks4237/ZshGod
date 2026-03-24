@@ -37,6 +37,7 @@ function zshgod_async-callback() {
 
 	# [ Building prompt ]
 	# Join elements of the arrays to don't have extra spaces between them
+	# And also expand variables if available
 	local top_left="${(ej::)ZSHGOD_TOP_LEFT}"
 	local top_right="${(ej::)ZSHGOD_TOP_RIGHT}"
 	local bottom_left="${(ej::)ZSHGOD_BOTTOM_LEFT}"
@@ -46,10 +47,10 @@ function zshgod_async-callback() {
 	# Using $ZSHGOD_FILLER as repeting string between them
 	zshgod_join-line "$top_left" "$top_right" "$ZSHGOD_FILLER"
 
-	# And set prompt using newly created variables.
+	# Set prompt using newly created variables.
 	# Lines below will set prompt accordingly:
-	#  $ZSHGOD_TOP_LEFT.....<$ZSHGOD_FILLER>....$ZSHGOD_TOP_RIGHT
-	#  $ZSHGOD_BOTTOM_LEFT                   $ZSHGOD_BOTTOM_RIGHT
+	# $ZSHGOD_TOP_LEFT.....$ZSHGOD_FILLER....$ZSHGOD_TOP_RIGHT
+	# $ZSHGOD_BOTTOM_LEFT                 $ZSHGOD_BOTTOM_RIGHT
 	PS1=$ZSHGOD_TOP_LINE$prompt_newline$bottom_left
 	RPS1=$bottom_right
 
