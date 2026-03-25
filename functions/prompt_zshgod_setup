@@ -65,7 +65,7 @@ function prompt_zshgod_setup() {
 	PROMPT_EOL_MARK=''
 
 	# Unset variable which says what theme for zshgod is currently choosed
-	ZSHGOD_THEME=''
+	unset ZSHGOD_THEME
 
 	# [ Handling args ]
 	# Cycle through passed args/flags to function to make easy and fast configuration
