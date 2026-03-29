@@ -1,5 +1,5 @@
 # Generic function which allows putting given to it info, style, and colors in to custom element
-function zshgod_arrow_left-to-right_time() {
+function zshgod_generic() {
 	local style=$1
 	local info=$2
 	local bg_color=$3
