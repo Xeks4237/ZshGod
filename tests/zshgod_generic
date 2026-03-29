@@ -1,0 +1,22 @@
+# Generic function which allows putting given to it info, style, and colors in to custom element
+function zshgod_arrow_left-to-right_time() {
+	local style=$1
+	local info=$2
+	local bg_color=$3
+	local fg_color=$4
+
+	case $style in
+		text|txt)
+			print "%F{$fg_color}$info%f"
+			;;
+		rentangle|rectangular)
+			print "%F{$fg_color}%K{$bg_color} $info %k%f"
+			;;
+		left-to-right_arrow|lra)
+			print "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
+			;;
+		right-to-left_arrow|rla)
+			print "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
+			;;
+	esac
+}
