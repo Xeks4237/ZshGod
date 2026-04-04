@@ -135,10 +135,10 @@ _async_worker() {
 	# Process option parameters passed to worker.
 	while getopts "np:uz" opt; do
 		case $opt in
-			n) notify_parent=1;;
-			p) parent_pid=$OPTARG;;
-			u) unique=1;;
-			z) notify_parent=0;;  # Uses ZLE watcher instead.
+			n) notify_parent=1 ;;
+			p) parent_pid=$OPTARG ;;
+			u) unique=1 ;;
+			z) notify_parent=0 ;;  # Uses ZLE watcher instead.
 		esac
 	done
 
@@ -202,8 +202,8 @@ _async_worker() {
 
 		# Check for non-job commands sent to worker
 		case $request in
-			_killjobs)    killjobs; continue;;
-			_async_eval*) do_eval=1;;
+			_killjobs)    killjobs; continue ;;
+			_async_eval*) do_eval=1 ;;
 		esac
 
 		# Parse the request using shell parsing (z) to allow commands
