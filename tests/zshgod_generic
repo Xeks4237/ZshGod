@@ -6,16 +6,16 @@ function zshgod_generic() {
 	local fg_color=$4
 
 	case $style in
-		text|txt)
+		text)
 			print "%F{$fg_color}$info%f"
 			;;
-		rentangle|rectangular)
+		rectangular)
 			print "%F{$fg_color}%K{$bg_color} $info %k%f"
 			;;
-		left-to-right_arrow|lra)
+		left-to-right_arrow)
 			print "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
 			;;
-		right-to-left_arrow|rla)
+		right-to-left_arrow)
 			print "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
 			;;
 	esac
