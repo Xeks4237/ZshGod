@@ -13,7 +13,7 @@ function zshgod_async-callback() {
 
 	# Case statement to check if there are errors with worker
 	case $job_name in
-	\[async])
+		\[async])
 			# Handle all the errors that could indicate a crashed async worker
 			# See zsh-async documentation for the definition of the exit codes.
 			[[ $exit_code ]] && async_stop_worker zshgod_async_worker
