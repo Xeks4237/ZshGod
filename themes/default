@@ -14,7 +14,7 @@ ZSHGOD_EXECTIME_MIN=5
 
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
-PS2='%B%F{magenta}%S %K{black}%_%k %s%f%b '
+PS2='%B%F{green}%S %K{black}%_%k %s%f%b '
 
 # Right side of secondry prompt shown when writing multilined commands manually
 # Try to keep it empty to don't clutter view to multilined commands
@@ -22,10 +22,10 @@ PS2='%B%F{magenta}%S %K{black}%_%k %s%f%b '
 RPS2=''
 
 # Prompt used inside of select loop, expanded in same way as PS1
-PS3='%B%F{magenta}%S %K{black}?#%k %s%f%b '
+PS3='%B%F{green}%S %K{black}?#%k %s%f%b '
 
 # Prompt shown when xtrace, sourcetrace, and etc logging options are set
-PS4='%F{magenta}%N%f %F{yellow}%i%f%F{green}:%f '
+PS4='%F{green}%N%f %F{yellow}%i%f%F{green}:%f '
 
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
@@ -105,14 +105,16 @@ ZSHGOD_BOTTOM_LEFT=(
 ZSHGOD_TOP_RIGHT=(
 	'%B'
 	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
-	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_TIME'
+	'┐'
 	'%b'
 )
 
 # Array with items of main prompts bottom right side
 ZSHGOD_BOTTOM_RIGHT=(
 	'%B'
-	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_JOBS'
 	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_EXIT_CODE'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_JOBS'
+	'$ZSHGOD_ARROW_RIGHT_TO_LEFT_TIME'
+	'┘'
 	'%b'
 )
