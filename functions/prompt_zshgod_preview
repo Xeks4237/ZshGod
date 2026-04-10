@@ -1,0 +1,3 @@
+# Function which is called to show simulated preview of prompt
+# Can be used by running: prompt -p zshgod
+prompt_zshgod_preview() {}
