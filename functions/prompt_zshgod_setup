@@ -38,6 +38,7 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_precmd \
 		prompt_zshgod_preexec \
 		prompt_zshgod_chpwd \
+		prompt_zshgod_preview \
 		zshgod_set-title \
 		zshgod_length-calculator \
 		zshgod_join-line \
