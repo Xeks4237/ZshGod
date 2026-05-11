@@ -1,0 +1,11 @@
+# Function which prints help page for zshgod prompt by running:
+# prompt -h zshgod
+function prompt_zshgod_help() {
+	print -P '%BName%b'
+	print -P '       ZshGod - Simple, Slick, and Flexible in configuration zsh prompt'
+	print -P '%BOPTIONS%b'
+	print -P '       %B--theme=%b%UTHEME%u'
+	print -P '              Use %UTHEME%u to change theme of prompt, it can also be'
+	print -P '              path to the config file with custom theme. List of currently'
+	print -P '              available themes can be shown by running: %Bprompt zshgod themes%b'
+}
