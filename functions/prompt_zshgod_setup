@@ -77,6 +77,11 @@ function prompt_zshgod_setup() {
 				zshgod_configure
 				;;
 
+				# Flag to list all currently availible themes
+			themes)
+				ls --color=never --almost-all --format=single-column "$ZSHGOD_HOME/themes/"
+				;;
+
 				# Flag to specify theme or config file for prompt
 			--theme=*)
 				# Check if given theme is the path to config file or theme name
