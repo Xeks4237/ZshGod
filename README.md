@@ -41,13 +41,13 @@ prompt zshgod configure
   git clone 'https://codeberg.org/Xeks4237/ZshGod.git' ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/}/plugins/zshgod/
   ```
 
-- 2. And add `zshgod` to your plugins list in zshrc
+- 2. Add `zshgod` to your plugins list in zshrc
 </details>
 
 <details>
   <summary>Zinit</summary>
 
-- 1. Add the following to your `zshrc`:
+- 1. Add the following line to your `zshrc`:
 
   ```zsh
   zinit light 'Xeks4237/ZshGod'
