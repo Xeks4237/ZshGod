@@ -72,13 +72,20 @@ function prompt_zshgod_setup() {
 	# Cycle through passed args/flags to function to make easy and fast configuration
 	for arg in "$@"; do
 		case "$arg" in
-				# Flag to open simple configuration wizard/editor
+				# SubCommand open simple configuration wizard/editor
 			configure)
 				zshgod_configure
 				return
 				;;
 
-				# Flag to list all currently availible themes
+				# SubCommand to display help page of prompt
+				# NOTE: Help page of prompt can also be shown by running: prompt -h zshgod
+			-h|--help|help)
+				prompt -h zshgod
+				return
+				;;
+
+				# SubCommand to list all currently availible themes
 			themes)
 				ls --color=never --almost-all --format=single-column "$ZSHGOD_HOME/themes/"
 				return
