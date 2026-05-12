@@ -75,11 +75,13 @@ function prompt_zshgod_setup() {
 				# Flag to open simple configuration wizard/editor
 			configure)
 				zshgod_configure
+				return
 				;;
 
 				# Flag to list all currently availible themes
 			themes)
 				ls --color=never --almost-all --format=single-column "$ZSHGOD_HOME/themes/"
+				return
 				;;
 
 				# Flag to specify theme or config file for prompt
