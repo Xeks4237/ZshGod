@@ -1,6 +1,6 @@
 <center>ZshGod - flexible, fast, asynchronous, and easy to configure and extend zsh prompt framework</center>
 
-# Instruction
+# Description
 
 ZshGod is made by me [Xeks4237](https://codeberg.org/Xeks4237/ZshGod) when I was tinkering with my zsh config
 I wanted some cool and flexible zsh prompt similar in look to the old and well known powerlevel10k, So I made my own prompt then made it extensible, asynchronous, configurable and in end here we are.
@@ -54,3 +54,6 @@ prompt zshgod configure
   ```
 
 </details>
+
+# LICENSE
+Zshgod is licensed under MIT License respectfully.
