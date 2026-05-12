@@ -15,37 +15,42 @@ After installing ZshGod you can just run this command to open configuration wiza
 prompt zshgod configure
 ```
 
-<!-- For more info read [Configuration]() section -->
+<details>
+  <summary>Manual</summary>
 
-## Manual
+- 1. Clone the repository using **git**:
 
-Clone the repository using **git**:
+  ```zsh
+  git clone 'https://codeberg.org/Xeks4237/ZshGod.git' "${XDG_DATA_DIR-:$HOME/.local/share/}/zshgod/"
+  ```
 
-```zsh
-git clone 'https://codeberg.org/Xeks4237/ZshGod.git' "${XDG_DATA_DIR-:$HOME/.local/share/}/zshgod/"
-```
+- 2. Add the following line to the end of your `zshrc`:
 
-And add the following to your `zshrc` file:
+  ```zsh
+  source ${XDG_DATA_DIR-:$HOME/.local/share/}/zshgod/zshgod.plugin.zsh
+  ```
 
-```zsh
-source ${XDG_DATA_DIR-:$HOME/.local/share/}/zshgod/zshgod.plugin.zsh
+</details>
 
-```
+<details>
+  <summary>Oh-My-Zsh</summary>
 
-## Oh-My-Zsh
+- 1. Clone the repository using **git**:
 
-Clone the Repository:
+  ```zsh
+  git clone 'https://codeberg.org/Xeks4237/ZshGod.git' ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/}/plugins/zshgod/
+  ```
 
-```zsh
-git clone 'https://codeberg.org/Xeks4237/ZshGod.git' ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom/}/plugins/zshgod/
-```
+- 2. And add `zshgod` to your plugins list in zshrc
+</details>
 
-And add `zshgod` to your plugins list
+<details>
+  <summary>Zinit</summary>
 
-## Zinit
+- 1. Add the following to your `zshrc`:
 
-Add the following to your `zshrc` file:
+  ```zsh
+  zinit light 'Xeks4237/ZshGod'
+  ```
 
-```zsh
-zinit light 'Xeks4237/ZshGod'
-```
+</details>
