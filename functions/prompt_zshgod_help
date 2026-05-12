@@ -1,5 +1,8 @@
-# Function which prints help page for zshgod prompt by running:
+# Function which prints help page for zshgod prompt by running any of these:
 # prompt -h zshgod
+# prompt zshgod --help
+# prompt zshgod -h
+# prompt zshgod help
 function prompt_zshgod_help() {
 	print -P '%BName%b'
 	print '       ZshGod - Simple, Slick, and Flexible in configuration zsh prompt'
@@ -39,10 +42,28 @@ function prompt_zshgod_help() {
 	print '              This variable gets set automatically after sourcing'
 	print '              zshgod.plugin.zsh, and it gets set to the path with main parts'
 	print "              of zshgod. This variable doesn't need to be set by user."
+	print ''
 	print -P '       %BZSHGOD_THEME%b'
 	print '              This variable gets set automatically after applying any theme'
 	print '              including default one. If applied theme is one of the'
 	print '              premade/builtin ones then variable will be set to the name of'
-	print '              that theme, but if applied themeis set through specific path'
+	print '              that theme, but if applied theme is set through specific path'
 	print '              then variable will be set to it (relative paths work too).'
+	print ''
+	print -P '       %BZSHGOD_EXECTIME_MIN%b'
+	print '              Allows setting minimal amount of seconds after running'
+	print '              commands to show exectime related elements of prompt.'
+	print '              Default value for it is 5. Also this variable can be set'
+	print -P '              through %B--min-exectime%b option. Variable it self should'
+	print '              be used in custom theme files for zshgod instead of zshrc'
+	print -P '%BNOTES%b'
+	print '              Configuration wizard is still in development and will be added'
+	print '              soon.'
+	print ''
+	print -P '%BSEE ALSO%b'
+	print -P '       %BMain ZshGod repo on CodeBerg%b: %Uhttps://codeberg.org/Xeks4237/ZshGod%u'
+	print -P '       %BRead Only GitHub Mirror of ZshGod%b: %Uhttps://github.com/Xeks4237/ZshGod%u'
+	print -P '       %BRead Only GitLab Mirror of ZshGod%b: %Uhttps://gitlab.com/Xeks4237/ZshGod%u'
+	print ''
+	print -P '%BXeks%b       2026-5-12'
 }
