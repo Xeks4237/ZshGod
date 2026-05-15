@@ -21,6 +21,9 @@ function prompt_zshgod_setup() {
 	# Load Zsh module related to zsh hooks
 	autoload -Uz add-zsh-hook
 
+	# Load Zsh module related to zsh line editor hooks
+	autoload -Uz add-zle-hook-widget
+
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
