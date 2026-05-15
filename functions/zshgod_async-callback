@@ -54,6 +54,6 @@ function zshgod_async-callback() {
 	PS1=$ZSHGOD_TOP_LINE$prompt_newline$bottom_left
 	RPS1=$bottom_right
 
-	# Activate zle and Redisplay/Update prompt
-	zle && zle redisplay; zle reset-prompt
+	# Redisplay/Update prompt
+	zshgod_refresh
 }

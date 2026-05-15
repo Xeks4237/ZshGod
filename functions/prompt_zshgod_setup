@@ -48,7 +48,9 @@ function prompt_zshgod_setup() {
 		zshgod_join-line \
 		zshgod_vcs_branch \
 		zshgod_vcs_system \
+		zshgod_refresh \
 		zshgod_async-callback \
+		zshgod_vimode \
 		zshgod_configure
 
 	# preexec hook gets called before you run any command, like when you press enter
@@ -61,6 +63,11 @@ function prompt_zshgod_setup() {
 
 	# chpwd hook gets called when current working directory changes
 	add-zsh-hook chpwd prompt_zshgod_chpwd
+
+	# Make zshgod_refresh function to be called in certain cases
+	add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
+	zle -N zle-keymap-select zshgod_refresh
+	zle -N zle-line-init zshgod_refresh
 
 	# [ Default valies for variables ]
 	# Variable which sets minimal amount of exectime after its shown

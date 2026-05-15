@@ -1,0 +1,27 @@
+# Function which returns current vi mode of prompt
+function zshgod_vi-mode() {
+	if (( REGION_ACTIVE )); then
+		if (( REGION_ACTIVE == 2 )); then
+			print 'V-LINE'
+		else
+			print 'VISUAL'
+		fi
+		return
+	fi
+
+	if [[ ${KEYMAP} == vicmd ]]; then
+		print 'NORMAL'
+		return
+	fi
+
+	if [[ ${ZLE_STATE} == *overwrite* ]]; then
+		print 'REPLACE'
+		return
+	fi
+
+	print 'INSERT'
+}
+# Make sure that these lines are availible
+add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
+zle -N zle-keymap-select zshgod_refresh
+zle -N zle-line-init zshgod_refresh
