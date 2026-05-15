@@ -66,7 +66,7 @@ function prompt_zshgod_setup() {
 	# Prevent percentage showing up if output doesn't end with a newline
 	PROMPT_EOL_MARK=''
 
-	# Unset variable which says what theme for zshgod is currently choosed
+	# Unset variable to prevent Oh-My-Zsh from overwriting prompt
 	unset ZSHGOD_THEME
 
 	# [ Handling args ]
