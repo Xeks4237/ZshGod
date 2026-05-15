@@ -77,7 +77,8 @@ precmd() {
 #  $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
 
 # Variable which sets character/string which be used between left and right of prompts top line
-ZSHGOD_FILLER='─'
+# NOTE: Symbols or \u like sequences work too
+ZSHGOD_FILLER=$'\u2500'
 
 # Array with items of main prompts top left side
 ZSHGOD_TOP_LEFT=(
