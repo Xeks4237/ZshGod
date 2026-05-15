@@ -45,12 +45,12 @@ autoload -Uz \
 # And they will also create variables with same name as functions,
 # but in uppercase and with _ instead of -
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
+# NOTE: exectime related elements shouldn't be runned in asynchronously
 ZSHGOD_USED_FUNCTIONS=(
 	'zshgod_text-only_current-pwd "#89B4FA"'
 	'zshgod_text-only_vcs_system "#B4BEFE"'
 	'zshgod_text-only_vcs_branch "#A6E3A1"'
 	'zshgod_text-only_git_info "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
-	'zshgod_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF"'
 	'zshgod_text-only_root-indicator "#A6E3A1" "#F38BA8"'
 	'zshgod_text-only_ssh-only_userandhostname "#A6E3A1" "#F38BA8" "#F9E2AF" "#89B4FA"'
 	'zshgod_text-only_time "#F9E2AF"'
@@ -91,7 +91,7 @@ ZSHGOD_TOP_LEFT=(
 	' '
 	'$ZSHGOD_TEXT_ONLY_GIT_INFO'
 	' '
-	'$ZSHGOD_TEXT_ONLY_EXECTIME_HUMAN_READABLE'
+	'$(zshgod_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF")'
 	'$b'
 )
 
