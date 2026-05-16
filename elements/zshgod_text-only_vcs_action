@@ -1,0 +1,8 @@
+# Function which returns current action of current vcs
+function zshgod_text-only_vcs_action() {
+	# Allow passing args to function for changing foreground color
+	local fg_color=$1
+
+	[[ -n $(zshgod_vcs_action) ]] || return
+	print "%F{$fg_color}$(zshgod_vcs_action)%f"
+}

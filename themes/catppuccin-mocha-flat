@@ -32,6 +32,7 @@ autoload -Uz \
 	zshgod_rectangular_current-pwd \
 	zshgod_rectangular_vcs_system \
 	zshgod_rectangular_vcs_branch \
+	zshgod_rectangular_vcs_action \
 	zshgod_rectangular_git_info \
 	zshgod_rectangular_exectime_human-readable \
 	zshgod_rectangular_root-indicator \
@@ -50,6 +51,7 @@ ZSHGOD_USED_FUNCTIONS=(
 	'zshgod_rectangular_current-pwd "#89B4FA" "#11111B"'
 	'zshgod_rectangular_vcs_system "#B4BEFE" "#11111B"'
 	'zshgod_rectangular_vcs_branch "#A6E3A1" "#11111B"'
+	'zshgod_rectangular_vcs_action "#F38BA8" "#11111B"'
 	'zshgod_rectangular_git_info "#6C7086" "#A6E3A1" "#F9E2AF" "#F38BA8" "#89DCEB" "#B4BEFE"'
 	'zshgod_rectangular_root-indicator "#A6E3A1" "#11111B" "#F38BA8" "#11111b"'
 	'zshgod_rectangular_ssh-only_userandhostname "#A6E3A1" "#11111B" "#F38BA8" "#11111B" "#F9E2AF" "#11111B" "#89B4FA" "#11111B"'
@@ -86,6 +88,7 @@ ZSHGOD_TOP_LEFT=(
 	'$ZSHGOD_RECTANGULAR_CURRENT_PWD'
 	'$ZSHGOD_RECTANGULAR_VCS_SYSTEM'
 	'$ZSHGOD_RECTANGULAR_VCS_BRANCH'
+	'$ZSHGOD_RECTANGULAR_VCS_ACTION'
 	'$ZSHGOD_RECTANGULAR_GIT_INFO'
 	'$(zshgod_rectangular_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF" "#11111B")'
 	'$b'
