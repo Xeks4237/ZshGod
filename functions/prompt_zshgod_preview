@@ -1,7 +1,7 @@
 # Function which is called to show simulated preview of prompt
 # Can be used by running: prompt -p zshgod
 function prompt_zshgod_preview() {
-	print 'ZshGod prompt with default theme (example for preview):'
+	print 'ZshGod prompt with "arrows" theme (example for preview):'
 	print -P "%B┌%F{blue}%S %K{black}~/some/path%k %s%f%F{magenta}%S %K{black}git%k %s%f%F{green}%S %K{black}main%k %s%f%F{#6C7086}%S %K{green}1+%k %K{yellow}1*%k %K{red}1-%k %K{cyan}1?%k %K{magenta}1↑%k %s%f%F{yellow}%S %K{black}4h 3m 7s%k %s%f%b──────────%B┐%b"
 	print -P "%B└%(!,%F{red}%S %K{black}#%k %s%f,%F{green}%S %K{black}$%k %s%f) %bcommand arg1 arg2 arg3 ...     %B%F{red}%S %K{black}127%k %s%f%F{magenta}%S %K{black}jobs: [37]%k %s%f%F{yellow}%S %K{black}%D{%H:%M:%S}%k %s%f┘%b"
 }
