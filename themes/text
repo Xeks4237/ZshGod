@@ -1,0 +1,133 @@
+# [ Info about theme ]
+# Author: Xeks4237
+# Configuration for zshgod which uses text elements in catppuccin mocha colors:
+# https://github.com/catppuccin
+
+# [ Configuration variables and Zstyle ]
+# zstyle options to enable or disable some vcs which you don't use
+# zstyle ':vcs_info:*' disable git svn
+zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
+
+# Variable which sets minimal amount of exectime after its shown
+ZSHGOD_EXECTIME_MIN=5
+
+# Left side of secondry prompt shown when writing multilined commands manually
+# Expanded in same way as PS1
+PS2='%B%F{magenta}%_%f%F{yellow} >%f%b '
+
+# Right side of secondry prompt shown when writing multilined commands manually
+# Try to keep it empty to don't clutter view to multilined commands
+# Expanded in same way as RPS1
+RPS2=''
+
+# Prompt used inside of select loop, expanded in same way as PS1
+PS3=' %F{green}?#%f '
+
+# Prompt shown when xtrace, sourcetrace, and etc logging options are set
+PS4='%F{magenta}%N%f %F{yellow}%i%f%F{green}:%f '
+
+# [ Functions used in prompt ]
+# Autoload functions used in prompt
+autoload -Uz \
+	zshgod_text-only_current-pwd \
+	zshgod_text-only_vcs_system \
+	zshgod_text-only_vcs_branch \
+	zshgod_text-only_vcs_action \
+	zshgod_text-only_git_info \
+	zshgod_text-only_git_dirty \
+	zshgod_text-only_exectime_human-readable \
+	zshgod_text-only_root-indicator \
+	zshgod_text-only_ssh-only_userandhostname \
+	zshgod_text-only_time \
+	zshgod_text-only_jobs \
+	zshgod_text-only_exit-code
+
+# Array with functions and args for them which are used in main prompt
+# This functions going to be used asynchronously in prompt
+# And they will also create variables with same name as functions,
+# but in uppercase and with _ instead of -
+# For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
+# NOTE: exectime related elements shouldn't be runned in asynchronously
+ZSHGOD_USED_FUNCTIONS=(
+	'zshgod_text-only_current-pwd blue'
+	'zshgod_text-only_vcs_system magenta'
+	'zshgod_text-only_vcs_branch green'
+	'zshgod_text-only_vcs_action red'
+	'zshgod_text-only_git_info green yellow red cyan magenta'
+	'zshgod_text-only_git_dirty yellow'
+	'zshgod_text-only_root-indicator green red'
+	'zshgod_text-only_ssh-only_userandhostname green red yellow blue'
+	'zshgod_text-only_time yellow'
+	'zshgod_text-only_jobs magenta'
+	'zshgod_text-only_exit-code red'
+)
+
+# [ Zsh hook functions ]
+# preexec function which gets called before every COMMAND
+preexec() {
+	# Function/Command to set title of the terminal
+	zshgod_set-title -Pr '%~'
+}
+
+# precmd function which gets called after commands and before showing prompt
+precmd() {
+	# Function/Command to set title of the terminal
+	zshgod_set-title -Pr '%1~: $2'
+}
+
+# [ Main prompt ]
+# Lines below will set prompt accordingly:
+#  $ZSHGOD_TOP_LEFT......<$ZSHGOD_FILLER>......$ZSHGOD_TOP_RIGHT
+#  $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
+
+# Variable which sets character/string which be used between left and right of prompts top line
+# NOTE: Symbols or \u like sequences work too
+ZSHGOD_FILLER=' '
+
+# Array with items of main prompts top left side
+ZSHGOD_TOP_LEFT=(
+	' '
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_CURRENT_PWD'
+	' '
+	'$ZSHGOD_TEXT_ONLY_VCS_SYSTEM'
+	' '
+	'$ZSHGOD_TEXT_ONLY_GIT_DIRTY'
+	'$ZSHGOD_TEXT_ONLY_VCS_BRANCH'
+	' '
+	'$ZSHGOD_TEXT_ONLY_VCS_ACTION'
+	' '
+	'$ZSHGOD_TEXT_ONLY_GIT_INFO'
+	' '
+	'$(zshgod_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" yellow)'
+	'$b'
+)
+
+# Array with items of main prompts bottom left side
+ZSHGOD_BOTTOM_LEFT=(
+	' '
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
+	' '
+	'%b'
+)
+
+# Array with items of main prompts top right side
+ZSHGOD_TOP_RIGHT=(
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
+	' '
+	'$ZSHGOD_TEXT_ONLY_TIME'
+	'%b'
+	' '
+)
+
+# Array with items of main prompts bottom right side
+ZSHGOD_BOTTOM_RIGHT=(
+	'%B'
+	'$ZSHGOD_TEXT_ONLY_JOBS'
+	' '
+	'$ZSHGOD_TEXT_ONLY_EXIT_CODE'
+	'%b'
+	' '
+)
