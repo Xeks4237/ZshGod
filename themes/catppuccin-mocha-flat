@@ -84,19 +84,19 @@ ZSHGOD_FILLER=$'\u2500'
 
 # Array with items of main prompts top left side
 ZSHGOD_TOP_LEFT=(
+	'┌'
 	'%B'
-	'$ZSHGOD_RECTANGULAR_CURRENT_PWD'
 	'$ZSHGOD_RECTANGULAR_VCS_SYSTEM'
 	'$ZSHGOD_RECTANGULAR_VCS_BRANCH'
 	'$ZSHGOD_RECTANGULAR_VCS_ACTION'
 	'$ZSHGOD_RECTANGULAR_GIT_INFO'
 	'$(zshgod_rectangular_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF" "#11111B")'
 	'$b'
-	' '
 )
 
 # Array with items of main prompts bottom left side
 ZSHGOD_BOTTOM_LEFT=(
+	'└'
 	'%B'
 	'$ZSHGOD_RECTANGULAR_ROOT_INDICATOR'
 	' '
@@ -105,11 +105,11 @@ ZSHGOD_BOTTOM_LEFT=(
 
 # Array with items of main prompts top right side
 ZSHGOD_TOP_RIGHT=(
-	' '
 	'%B'
 	'$ZSHGOD_RECTANGULAR_SSH_ONLY_USERANDHOSTNAME'
 	'$ZSHGOD_RECTANGULAR_TIME'
 	'%b'
+	'┐'
 )
 
 # Array with items of main prompts bottom right side
@@ -117,5 +117,7 @@ ZSHGOD_BOTTOM_RIGHT=(
 	'%B'
 	'$ZSHGOD_RECTANGULAR_JOBS'
 	'$ZSHGOD_RECTANGULAR_EXIT_CODE'
+	'$ZSHGOD_RECTANGULAR_CURRENT_PWD'
 	'%b'
+	'┘'
 )
