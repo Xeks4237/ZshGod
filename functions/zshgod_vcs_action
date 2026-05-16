@@ -1,9 +1,9 @@
-# Function which returns name of current vcs
-function zshgod_vcs_system() {
+# Function which returns info about current action of vcs if present
+function zshgod_vcs_action() {
 	# zstyle options to customize info in variables of vcs_info
-	# vcs_info_msg_0_ returns name of current vcs system
-	zstyle ':vcs_info:*' formats '%s'
-	zstyle ':vcs_info:*' actionformats '%s'
+	# vcs_info_msg_0_ return current action of vcs if availible, like git rebase
+	zstyle ':vcs_info:*' formats '%a'
+	zstyle ':vcs_info:*' actionformats '%a'
 
 	# Run vcs_info to get/update vcs info
 	vcs_info

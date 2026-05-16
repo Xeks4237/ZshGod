@@ -46,8 +46,9 @@ function prompt_zshgod_setup() {
 		zshgod_set-title \
 		zshgod_length-calculator \
 		zshgod_join-line \
-		zshgod_vcs_branch \
 		zshgod_vcs_system \
+		zshgod_vcs_branch \
+		zshgod_vcs_action \
 		zshgod_refresh \
 		zshgod_async-callback \
 		zshgod_vimode \

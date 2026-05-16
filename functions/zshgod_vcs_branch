@@ -1,8 +1,9 @@
 # Function which returns branch/subversion info about current vcs
 function zshgod_vcs_branch() {
-	# zstyle options to customize look of vcs_info
-	zstyle ':vcs_info:*' actionformats '%b'
+	# zstyle options to customize info in variables of vcs_info
+	# vcs_info_msg_0_ returns current branch, with repo's top name in specific vcs systems
 	zstyle ':vcs_info:*' formats '%b'
+	zstyle ':vcs_info:*' actionformats '%b'
 	zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b: %r'
 
 	# Run vcs_info to get/update vcs info
