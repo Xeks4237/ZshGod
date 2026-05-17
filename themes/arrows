@@ -101,7 +101,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	'%B'
 	'└'
-	'$(zshgod_arrow_left-to-right_vi-mode_long black blue green magenta magenta red)'
+	'$(zshgod_arrow_left-to-right_vi-mode_long black green blue magenta magenta red)'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR'
 	' '
 	'%b'

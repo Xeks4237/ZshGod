@@ -99,7 +99,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	'└'
 	'%B'
-	'$(zshgod_rectangular_vi-mode_short black blue green magenta magenta red)'
+	'$(zshgod_rectangular_vi-mode_short black green blue magenta magenta red)'
 	'$ZSHGOD_RECTANGULAR_ROOT_INDICATOR'
 	' '
 	'%b'

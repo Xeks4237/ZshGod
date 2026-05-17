@@ -108,7 +108,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	' '
 	'%B'
-	'$(zshgod_text-only_vi-mode_short blue green magenta magenta red)'
+	'$(zshgod_text-only_vi-mode_short green blue magenta magenta red)'
 	' '
 	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
 	' '
