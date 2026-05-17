@@ -45,8 +45,8 @@ function zshgod_async-callback() {
 
 	# Set prompt using newly created variables.
 	# Lines below will set prompt accordingly:
-	# $ZSHGOD_TOP_LEFT.....$ZSHGOD_FILLER_LINE....$ZSHGOD_TOP_RIGHT
-	# $ZSHGOD_BOTTOM_LEFT                      $ZSHGOD_BOTTOM_RIGHT
+	# $ZSHGOD_TOP_LEFT.....$ZSHGOD_FILLER_LINE.....$ZSHGOD_TOP_RIGHT
+	# $ZSHGOD_BOTTOM_LEFT                       $ZSHGOD_BOTTOM_RIGHT
 	PS1='${(ej::)ZSHGOD_TOP_LEFT}$ZSHGOD_FILLER_LINE${(ej::)ZSHGOD_TOP_RIGHT}$prompt_newline${(ej::)ZSHGOD_BOTTOM_LEFT}'
 	RPS1='${(ej::)ZSHGOD_BOTTOM_RIGHT}'
 
