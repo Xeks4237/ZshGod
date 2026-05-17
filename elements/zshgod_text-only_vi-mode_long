@@ -1,0 +1,28 @@
+# Function/Element which shows current vi mode of command line
+# NOTE: This function should not be called with async, because it
+# doesn't needs that and also it should be added to prompt theme/file
+# like literal string of '$(zshgod_text-only_vi-mode_long)'
+function zshgod_text-only_vi-mode_long() {
+	# Allow passing args to function for changing foreground and background colors
+	local color_insert=$1
+	local color_normal=$2
+	local color_visual=$3
+	local color_v_line=$4
+	local color_replace=$5
+
+	local vimode="$(zshgod_vi-mode)"
+
+	if [[ $vimode == 'INSERT' ]]; then
+		print "%F{$color_insert}INSERT%f"
+	elif [[ $vimode == 'NORMAL' ]]; then
+		print "%F{$color_normal}NORMAL%f"
+	elif [[ $vimode == 'VISUAL' ]]; then
+		print "%F{$color_visual}VISUAL%f"
+	elif [[ $vimode == 'V-LINE' ]]; then
+		print "%F{$color_v_line}V-LINE%f"
+	elif [[ $vimode == 'REPLACE' ]]; then
+		print "%F{$color_replace}REPLACE%f"
+	else
+		print "%F{$color_normal}UNKNOWN%f"
+	fi
+}

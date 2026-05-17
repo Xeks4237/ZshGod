@@ -35,6 +35,7 @@ autoload -Uz \
 	zshgod_text-only_vcs_action \
 	zshgod_text-only_git_info \
 	zshgod_text-only_git_dirty \
+	zshgod_text-only_vi-mode_short \
 	zshgod_text-only_exectime_human-readable \
 	zshgod_text-only_root-indicator \
 	zshgod_text-only_ssh-only_userandhostname \
@@ -107,6 +108,8 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	' '
 	'%B'
+	'$(zshgod_text-only_vi-mode_short blue green magenta magenta red)'
+	' '
 	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
 	' '
 	'%b'
