@@ -23,5 +23,12 @@ fpath+=( "$ZSHGOD_HOME/elements" )
 # Autoload promptinit system in case it's not loaded
 autoload -Uz promptinit
 
+# Source zsh-async library
+source "$ZSHGOD_HOME/functions/async"
+autoload -Uz async
+
+# Initialize zsh-async library
+async_init
+
 # Initialize/Update prompts list
 promptinit
