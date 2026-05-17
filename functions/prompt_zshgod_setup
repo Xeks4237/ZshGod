@@ -45,7 +45,7 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_help \
 		zshgod_set-title \
 		zshgod_length-calculator \
-		zshgod_join-line \
+		zshgod_middle-line \
 		zshgod_vcs_system \
 		zshgod_vcs_branch \
 		zshgod_vcs_action \

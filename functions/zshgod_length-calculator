@@ -14,7 +14,7 @@
 #   prompt-length '%1(l..ab)'   => 2
 #   prompt-length '%(!.a.)'     => 1 if root, 0 if not
 
-# NOTE: I took this function from here:
+# NOTE: This function was originally made my romkatv:
 # https://gist.github.com/romkatv/2a107ef9314f0d5f76563725b42f7cab
 function zshgod_length-calculator() {
 	local -i COLUMNS=${2:-COLUMNS}

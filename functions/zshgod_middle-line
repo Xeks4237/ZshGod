@@ -1,0 +1,23 @@
+# Function which allows creating string in $ZSHGOD_FILLER_LINE to use
+# in between left and right sides of prompt, soo right side gets
+# aligned corrently to the right. It is needed to make multilined
+# right side of prompt and to easily customize stuff in between of
+# prompt's sides.
+#
+# Uses zshgod_length-calculator to measure real width of both sides
+# First argument sets LEFT
+# Second argument sets RIGHT
+# Third argument sets character/string which going to be used
+function zshgod_middle-line() {
+	local -i left_len=$(zshgod_length-calculator $1)
+
+	local -i right_len=$(zshgod_length-calculator $2)
+
+	local -i pad_len=$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))
+
+	if (( pad_len > 1 )); then
+		typeset -g ZSHGOD_FILLER_LINE=${(pl.$pad_len..$3.)}
+	else
+		typeset -g ZSHGOD_FILLER_LINE=''
+	fi
+}
