@@ -49,6 +49,7 @@ function prompt_zshgod_setup() {
 		zshgod_vcs_system \
 		zshgod_vcs_branch \
 		zshgod_vcs_action \
+		zshgod_vi-mode \
 		zshgod_refresh \
 		zshgod_async-callback \
 		zshgod_vimode \
