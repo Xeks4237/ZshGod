@@ -66,10 +66,8 @@ function prompt_zshgod_setup() {
 	# chpwd hook gets called when current working directory changes
 	add-zsh-hook chpwd prompt_zshgod_chpwd
 
-	# Make zshgod_refresh function to be called in certain cases
+	# Make zshgod_refresh function to be called in certain cases needed for vimode elements
 	add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
-	zle -N zle-keymap-select zshgod_refresh
-	zle -N zle-line-init zshgod_refresh
 
 	# [ Default valies for variables ]
 	# Variable which sets minimal amount of exectime after its shown
@@ -138,5 +136,5 @@ function prompt_zshgod_setup() {
 		esac
 	done
 	# Set up default config for prompt if --theme wasn't used
-	[[ -n $ZSHGOD_THEME ]] || source "$ZSHGOD_HOME/themes/default"
+	[[ -n $ZSHGOD_THEME ]] || source "$ZSHGOD_HOME/themes/default" && ZSHGOD_THEME='default'
 }

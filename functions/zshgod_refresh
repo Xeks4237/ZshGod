@@ -1,5 +1,4 @@
 # Function which redraws prompt
-# NOTE: These commands have their own function only because of vi mode indicators
 function zshgod_refresh() {
 	zle && zle redisplay; zle reset-prompt
 }
