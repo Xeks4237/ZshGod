@@ -2,17 +2,17 @@
 # First argument is the text which length function is going to calculate
 # Second argument is optional custom $COLUMNS value.
 # Examples:
-#   prompt-length ''            => 0
-#   prompt-length 'abc'         => 3
-#   prompt-length $'abc\nxy'    => 2
-#   prompt-length '❎'          => 2
-#   prompt-length $'\t'         => 8
-#   prompt-length $'\u274E'     => 2
-#   prompt-length '%F{red}abc'  => 3
-#   prompt-length $'%{a\b%Gb%}' => 1
-#   prompt-length '%D'          => 8
-#   prompt-length '%1(l..ab)'   => 2
-#   prompt-length '%(!.a.)'     => 1 if root, 0 if not
+#   zshgod_length-calculator ''            => 0
+#   zshgod_length-calculator 'abc'         => 3
+#   zshgod_length-calculator $'abc\nxy'    => 2
+#   zshgod_length-calculator '❎'          => 2
+#   zshgod_length-calculator $'\t'         => 8
+#   zshgod_length-calculator $'\u274E'     => 2
+#   zshgod_length-calculator '%F{red}abc'  => 3
+#   zshgod_length-calculator $'%{a\b%Gb%}' => 1
+#   zshgod_length-calculator '%D'          => 8
+#   zshgod_length-calculator '%1(l..ab)'   => 2
+#   zshgod_length-calculator '%(!.a.)'     => 1 if root, 0 if not
 
 # NOTE: This function was originally made my romkatv:
 # https://gist.github.com/romkatv/2a107ef9314f0d5f76563725b42f7cab
@@ -20,7 +20,7 @@ function zshgod_length-calculator() {
 	local -i COLUMNS=${2:-COLUMNS}
 	local -i x y=${#1} m
 
-	# This section is too complex to add some usefull comments,
+	# This section is too complex to add some usefull comments.
 	# Soo it simple calculates length of stuff passed to it
 	if (( y )); then
 		while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
