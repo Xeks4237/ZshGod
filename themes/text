@@ -65,13 +65,13 @@ ZSHGOD_USED_FUNCTIONS=(
 
 # [ Zsh hook functions ]
 # preexec function which gets called before every COMMAND
-preexec() {
+zshgod_theme_preexec() {
 	# Function/Command to set title of the terminal
 	zshgod_set-title -Pr '%~'
 }
 
 # precmd function which gets called after commands and before showing prompt
-precmd() {
+zshgod_theme_precmd() {
 	# Function/Command to set title of the terminal
 	zshgod_set-title -Pr '%1~: $2'
 }

@@ -55,15 +55,19 @@ function prompt_zshgod_setup() {
 		zshgod_vimode \
 		zshgod_configure
 
-	# preexec hook gets called before you run any command, like when you press enter
-	# Needed for stuff like exectime functions and etc
+	# Declare empty precmd and preexec functions used in themes
+	zshgod_theme_precmd() {}
+	zshgod_theme_preexec() {}
+
+	# Add preexec hook which gets called before running any COMMAND to some functions
 	add-zsh-hook preexec prompt_zshgod_preexec
+	add-zsh-hook preexec zshgod_theme_preexec
 
-	# precmd hook gets called when running command finishes and before prompt is drown
-	# Needed for stuff like exectime functions and etc
+	# Add precmd hook which gets called before showing prompt to some functions
 	add-zsh-hook precmd prompt_zshgod_precmd
+	add-zsh-hook precmd zshgod_theme_precmd
 
-	# chpwd hook gets called when current working directory changes
+	# Add chpwd hook which gets called after current working directory changes to some function
 	add-zsh-hook chpwd prompt_zshgod_chpwd
 
 	# Make zshgod_refresh function to be called in certain cases needed for vimode elements
