@@ -1,10 +1,11 @@
 # Function which defines $ZSHGOD_COLORS array with all escape sequences
-# which are needed for colors prompt but also allowing these colors to be
-# editable through preferences of user's terminal
+# which are needed for coloring prompt but also allowing these colors
+# to be editable through preferences of user's terminal
 function zshgod_colors() {
 	typeset -gA ZSHGOD_COLORS=(
 		# Clear/Reset
 		[reset]=$'\e[0m'
+
 		# Main foreground colors
 		[fg_black]=$'\e[30m'
 		[fg_red]=$'\e[31m'
@@ -14,8 +15,9 @@ function zshgod_colors() {
 		[fg_magenta]=$'\e[35m'
 		[fg_cyan]=$'\e[36m'
 		[fg_white]=$'\e[37m'
-		# [extended]=$'\e[38m' # for 256-color / Truecolor
+		# [fg_extended]=$'\e[38m' # for 256-color / Truecolor
 		[fg_default]=$'\e[39m' # foreground color
+
 		# Background colors
 		[bg_black]=$'\e[40m'
 		[bg_red]=$'\e[41m'
@@ -27,6 +29,7 @@ function zshgod_colors() {
 		[bg_white]=$'\e[47m'
 		# [bg_extended]=$'\e[48m' # for 256-color / Truecolor
 		[bg_default]=$'\e[49m' # background color
+
 		# Bright foreground colors
 		[fg_bright_black]=$'\e[90m'
 		[fg_bright_red]=$'\e[91m'
@@ -36,6 +39,7 @@ function zshgod_colors() {
 		[fg_bright_magenta]=$'\e[95m'
 		[fg_bright_cyan]=$'\e[96m'
 		[fg_bright_white]=$'\e[97m'
+
 		# Bright background colors
 		[bg_bright_black]=$'\e[100m'
 		[bg_bright_red]=$'\e[101m'
