@@ -33,6 +33,7 @@ autoload -Uz \
 	zshgod_rectangular_vcs_system \
 	zshgod_rectangular_vcs_branch \
 	zshgod_rectangular_vcs_action \
+	zshgod_rectangular_vi-mode_short \
 	zshgod_rectangular_git_info \
 	zshgod_rectangular_exectime_human-readable \
 	zshgod_rectangular_root-indicator \
@@ -95,6 +96,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	'└'
 	'%B'
+	'$(zshgod_rectangular_vi-mode_short "#11111B" "#A6E3A1" "#89B4FA" "#B4BEFE" "#B4BEFE" "#F38BA8")'
 	'$ZSHGOD_RECTANGULAR_ROOT_INDICATOR'
 	' '
 	'%b'

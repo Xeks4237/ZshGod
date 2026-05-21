@@ -34,6 +34,7 @@ autoload -Uz \
 	zshgod_text-only_vcs_branch \
 	zshgod_text-only_vcs_action \
 	zshgod_text-only_git_info \
+	zshgod_text-only_vi-mode_short \
 	zshgod_text-only_git_dirty \
 	zshgod_text-only_exectime_human-readable \
 	zshgod_text-only_root-indicator \
@@ -92,9 +93,9 @@ ZSHGOD_TOP_LEFT=(
 	'$ZSHGOD_TEXT_ONLY_GIT_DIRTY'
 	'$ZSHGOD_TEXT_ONLY_VCS_BRANCH'
 	' '
-	'$ZSHGOD_TEXT_ONLY_VCS_ACTION'
-	' '
 	'$ZSHGOD_TEXT_ONLY_GIT_INFO'
+	' '
+	'$ZSHGOD_TEXT_ONLY_VCS_ACTION'
 	' '
 	'$(zshgod_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" "#F9E2AF")'
 	'$b'
@@ -104,6 +105,8 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	' '
 	'%B'
+	'$(zshgod_text-only_vi-mode_short "#A6E3A1" "#89B4FA" "#B4BEFE" "#B4BEFE" "#F38BA8")'
+	' '
 	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
 	' '
 	'%b'
