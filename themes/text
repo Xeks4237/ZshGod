@@ -35,13 +35,13 @@ autoload -Uz \
 	zshgod_text-only_vcs_action \
 	zshgod_text-only_git_info \
 	zshgod_text-only_git_dirty \
-	zshgod_text-only_vi-mode_short \
 	zshgod_text-only_exectime_human-readable \
 	zshgod_text-only_root-indicator \
 	zshgod_text-only_ssh-only_userandhostname \
 	zshgod_text-only_time \
 	zshgod_text-only_jobs \
 	zshgod_text-only_exit-code
+	# zshgod_text-only_vi-mode_short
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -105,7 +105,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	' '
 	'%B'
-	'$(zshgod_text-only_vi-mode_short green blue magenta magenta red)'
+	# '$(zshgod_text-only_vi-mode_short green blue magenta magenta red)'
 	' '
 	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
 	' '

@@ -72,7 +72,7 @@ function prompt_zshgod_setup() {
 
 	# Add zle hoom to zshgod_refresh function to be call it in certain cases needed for vimode elements
 	# TODO: I should make more efficient way to run zshgod_refresh than this exact hook
-	add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
+	# add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
 
 	# [ Default valies for variables ]
 	# Variable which sets minimal amount of exectime after its shown

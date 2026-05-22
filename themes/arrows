@@ -35,13 +35,13 @@ autoload -Uz \
 	zshgod_arrow_left-to-right_vcs_branch \
 	zshgod_arrow_left-to-right_vcs_action \
 	zshgod_arrow_left-to-right_git_info \
-	zshgod_arrow_left-to-right_vi-mode_long \
 	zshgod_arrow_left-to-right_exectime_human-readable \
 	zshgod_arrow_left-to-right_root-indicator \
 	zshgod_arrow_right-to-left_ssh-only_userandhostname \
 	zshgod_arrow_right-to-left_time \
 	zshgod_arrow_right-to-left_jobs \
 	zshgod_arrow_right-to-left_exit-code
+	# zshgod_arrow_left-to-right_vi-mode_long
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -98,7 +98,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	'%B'
 	'└'
-	'$(zshgod_arrow_left-to-right_vi-mode_long black green blue magenta magenta red)'
+	# '$(zshgod_arrow_left-to-right_vi-mode_long black green blue magenta magenta red)'
 	'$ZSHGOD_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR'
 	' '
 	'%b'

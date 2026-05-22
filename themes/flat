@@ -34,13 +34,13 @@ autoload -Uz \
 	zshgod_rectangular_vcs_branch \
 	zshgod_rectangular_vcs_action \
 	zshgod_rectangular_git_info \
-	zshgod_rectangular_vi-mode_short \
 	zshgod_rectangular_exectime_human-readable \
 	zshgod_rectangular_root-indicator \
 	zshgod_rectangular_ssh-only_userandhostname \
 	zshgod_rectangular_time \
 	zshgod_rectangular_jobs \
 	zshgod_rectangular_exit-code
+	# zshgod_rectangular_vi-mode_short
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -96,7 +96,7 @@ ZSHGOD_TOP_LEFT=(
 ZSHGOD_BOTTOM_LEFT=(
 	'└'
 	'%B'
-	'$(zshgod_rectangular_vi-mode_short black green blue magenta magenta red)'
+	# '$(zshgod_rectangular_vi-mode_short black green blue magenta magenta red)'
 	'$ZSHGOD_RECTANGULAR_ROOT_INDICATOR'
 	' '
 	'%b'
