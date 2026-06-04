@@ -2,8 +2,8 @@
 # INFO: This function gets unset automatically when you change to another prompt/theme
 function prompt_zshgod_precmd() {
 	# Stop all previous async workers of zshgod nd flush their jobs
-	async_stop_worker zshgod_async_worker
 	async_flush_jobs zshgod_async_worker
+	async_stop_worker zshgod_async_worker
 
 	# [ Parts of other functions which need precmd ]
 	# Snippet used for calculating exectime of commands
