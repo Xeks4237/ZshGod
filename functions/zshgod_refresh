@@ -1,4 +1,0 @@
-# Function which redraws prompt
-function zshgod_refresh() {
-	zle && zle redisplay; zle reset-prompt
-}

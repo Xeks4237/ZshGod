@@ -50,7 +50,6 @@ function prompt_zshgod_setup() {
 		zshgod_vcs_branch \
 		zshgod_vcs_action \
 		zshgod_vi-mode \
-		zshgod_refresh \
 		zshgod_async-callback \
 		zshgod_vimode \
 		zshgod_configure
@@ -71,8 +70,8 @@ function prompt_zshgod_setup() {
 	add-zsh-hook chpwd prompt_zshgod_chpwd
 
 	# Add zle hoom to zshgod_refresh function to be call it in certain cases needed for vimode elements
-	# TODO: I should make more efficient way to run zshgod_refresh than this exact hook
-	# add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
+	# TODO: I should make more efficient way to run than
+	add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
 
 	# [ Default valies for variables ]
 	# Variable which sets minimal amount of exectime after its shown

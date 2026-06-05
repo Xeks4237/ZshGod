@@ -51,5 +51,5 @@ function zshgod_async-callback() {
 	RPS1='${(ej::)ZSHGOD_BOTTOM_RIGHT}'
 
 	# Redisplay/Update prompt
-	zshgod_refresh
+	zle && zle redisplay; zle reset-prompt
 }
