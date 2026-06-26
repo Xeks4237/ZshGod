@@ -14,16 +14,16 @@ function zshgod_rectangular_vi-mode_short() {
 	local vimode="$(zshgod_vi-mode)"
 
 	if [[ $vimode == 'INSERT' ]]; then
-		print "%F{$fg_color}%K{$bg_color_insert} I %k%f"
+		zshgod_generic rectangular 'I' "$bg_color_insert" "$fg_color"
 	elif [[ $vimode == 'NORMAL' ]]; then
-		print "%F{$fg_color}%K{$bg_color_normal} N %k%f"
+		zshgod_generic rectangular 'N' "$bg_color_normal" "$fg_color"
 	elif [[ $vimode == 'VISUAL' ]]; then
-		print "%F{$fg_color}%K{$bg_color_visual} V %k%f"
+		zshgod_generic rectangular 'V' "$bg_color_visual" "$fg_color"
 	elif [[ $vimode == 'V-LINE' ]]; then
-		print "%F{$fg_color}%K{$bg_color_v_line} L %k%f"
+		zshgod_generic rectangular 'L' "$bg_color_v_line" "$fg_color"
 	elif [[ $vimode == 'REPLACE' ]]; then
-		print "%F{$fg_color}%K{$bg_color_replace} R %k%f"
+		zshgod_generic rectangular 'R' "$bg_color_replace" "$fg_color"
 	else
-		print "%F{$fg_color}%K{$bg_color_normal} ? %k%f"
+		zshgod_generic rectangular '?' "$bg_color_normal" "$fg_color"
 	fi
 }

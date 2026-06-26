@@ -5,5 +5,5 @@ function zshgod_rectangular_vcs_branch() {
 	local fg_color=$2
 
 	[[ -n $(zshgod_vcs_branch) ]] || return
-	print "%F{$fg_color}%K{$bg_color} $(zshgod_vcs_branch) %k%f"
+	zshgod_generic rectangular "$(zshgod_vcs_branch)" "$bg_color" "$fg_color"
 }

@@ -4,5 +4,5 @@ function zshgod_rectangular_hostname() {
 	local bg_color=$1
 	local fg_color=$2
 
-	print "%F{$fg_color}%K{$bg_color} %m %k%f"
+	zshgod_generic rectangular '%m' "$bg_color" "$fg_color"
 }
