@@ -9,21 +9,15 @@ function zshgod_arrow_right-to-left_exectime_human-readable() {
 	# Check if exectime isn't empty, like less that 5 or else
 	[[ -n $time ]] || return
 
-	# Do calculations and put results in to local variables
+	# Do calculations and output human readable exectime
 	local days="$(( time / 60 / 60 / 24 ))"
 	local hours="$(( time / 60 / 60 % 24 ))"
 	local minutes="$(( time / 60 % 60 ))"
 	local seconds="$(( time % 60 ))"
-
-	# Check if local variables aren't empty and add them to local array
-	(( $days > 0 )) && parts+=("${days}d")
-	(( $hours > 0 )) && parts+=("${hours}h")
-	(( $minutes > 0 )) && parts+=("${minutes}m")
-	(( $seconds > 0 )) && parts+=("${seconds}s")
-
-	# Combine parts of local array in $output with spaces in between them
-	local output="${(j: :)parts}"
-
-	# Output final result
-	print "%F{$bg_color}%S %K{$fg_color}$output%k %s%f"
+	local output
+	(( $days > 0 )) && output+="${days}d "
+	(( $hours > 0 )) && output+="${hours}h "
+	(( $minutes > 0 )) && output+="${minutes}m "
+	(( $seconds > 0 )) && output+="${seconds}s"
+	zshgod_generic arrow_right-to-left "$output" "$bg_color" "$fg_color"
 }

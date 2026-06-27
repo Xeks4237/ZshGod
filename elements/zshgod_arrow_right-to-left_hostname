@@ -4,5 +4,5 @@ function zshgod_arrow_right-to-left_hostname() {
 	local bg_color=$1
 	local fg_color=$2
 
-	print "%F{$bg_color}%S %K{$fg_color}%m%k %s%f"
+	zshgod_generic arrow_right-to-left '%m' "$bg_color" "$fg_color"
 }
