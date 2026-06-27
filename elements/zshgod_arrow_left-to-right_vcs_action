@@ -5,5 +5,5 @@ function zshgod_arrow_left-to-right_vcs_action() {
 	local fg_color=$2
 
 	[[ -n $(zshgod_vcs_action) ]] || return
-	print "%F{$bg_color}%S %K{$fg_color}$(zshgod_vcs_action)%k %s%f"
+	zshgod_generic arrow_left-to-right "$(zshgod_vcs_action)" "$bg_color" "$fg_color"
 }

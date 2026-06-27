@@ -6,5 +6,5 @@ function zshgod_arrow_left-to-right_exectime_seconds-only() {
 	local fg_color=$3
 
 	# Check if exectime isn't empty and output exectime
-	[[ -n $time ]] && print "%F{$bg_color}%S %K{$fg_color}${time}s%k %s%f"
+	[[ -n $time ]] && zshgod_generic arrow_left-to-right "${time}s" "$bg_color" "$fg_color"
 }

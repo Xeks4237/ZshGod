@@ -4,5 +4,5 @@ function zshgod_arrow_left-to-right_time() {
 	local bg_color=$1
 	local fg_color=$2
 
-	print "%F{$bg_color}%S %K{$fg_color}%D{%H:%M:%S}%k %s%f"
+	zshgod_generic arrow_left-to-right '%D{%H:%M:%S}' "$bg_color" "$fg_color"
 }

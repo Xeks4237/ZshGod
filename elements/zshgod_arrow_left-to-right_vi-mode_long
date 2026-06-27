@@ -14,16 +14,16 @@ function zshgod_arrow_left-to-right_vi-mode_long() {
 	local vimode="$(zshgod_vi-mode)"
 
 	if [[ $vimode == 'INSERT' ]]; then
-		print "%F{$bg_color_insert}%S %K{$fg_color}INSERT%k %s%f"
+		zshgod_generic arrow_left-to-right 'INSERT' "$bg_color_insert" "$fg_color"
 	elif [[ $vimode == 'NORMAL' ]]; then
-		print "%F{$bg_color_normal}%S %K{$fg_color}NORMAL%k %s%f"
+		zshgod_generic arrow_left-to-right 'NORMAL' "$bg_color_normal" "$fg_color"
 	elif [[ $vimode == 'VISUAL' ]]; then
-		print "%F{$bg_color_visual}%S %K{$fg_color}VISUAL%k %s%f"
+		zshgod_generic arrow_left-to-right 'VISUAL' "$bg_color_visual" "$fg_color"
 	elif [[ $vimode == 'V-LINE' ]]; then
-		print "%F{$bg_color_v_line}%S %K{$fg_color}V-LINE%k %s%f"
+		zshgod_generic arrow_left-to-right 'V-LINE' "$bg_color_v_line" "$fg_color"
 	elif [[ $vimode == 'REPLACE' ]]; then
-		print "%F{$bg_color_replace}%S %K{$fg_color}REPLACE%k %s%f"
+		zshgod_generic arrow_left-to-right 'REPLACE' "$bg_color_replace" "$fg_color"
 	else
-		print "%F{$bg_color_normal}%S %K{$fg_color}UNKNOWN%k %s%f"
+		zshgod_generic arrow_left-to-right 'UNKNOWN' "$bg_color_normal" "$fg_color"
 	fi
 }
