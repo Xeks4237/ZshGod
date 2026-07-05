@@ -1,0 +1,3 @@
+function zshgod_async_run() {
+	zpty -w zpty_of_zshgod_async_engine "$@"$'\0'
+}

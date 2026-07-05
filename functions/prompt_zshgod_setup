@@ -6,7 +6,7 @@
 function prompt_zshgod_setup() {
 	# [ Prompt specific opts and Hooks for Functions ]
 	# Sets prompt specific zsh opts like prompt substitution
-	prompt_opts=( bang cr percent sp subst )
+	prompt_opts=(bang cr percent sp subst)
 
 	# Ensures that variable $prompt_newline is availible
 	# This variable needs to be set, usually set by promptinit
@@ -52,10 +52,12 @@ function prompt_zshgod_setup() {
 		zshgod_vcs_action \
 		zshgod_vi-mode \
 		zshgod_async-callback \
+		zshgod_async_engine \
+		zshgod_async_run \
 		zshgod_vimode \
 		zshgod_configure
 
-	# Declare empty precmd and preexec functions used in themes
+	# Declare/Update empty precmd and preexec functions used in themes
 	zshgod_theme_precmd() {}
 	zshgod_theme_preexec() {}
 

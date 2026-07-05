@@ -1,0 +1,70 @@
+function zshgod_async_engine() {
+	# [ Preparing zpty pseudo-terminal's environment ]
+	# Reset all options to defaults inside async worker.
+	emulate -R zsh
+
+	# Make sure monitor is unset to avoid printing the
+	# pids of child processes.
+	unsetopt monitor
+
+	# Redirect stderr to `/dev/null` in case unforseen errors produced by the
+	# worker. For example: `fork failed: resource temporarily unavailable`.
+	# Some older versions of zsh might also print malloc errors (know to happen
+	# on at least zsh 5.0.2 and 5.0.8) likely due to kill signals.
+	exec 2>/dev/null
+
+	# When a zpty is deleted (using -d) all the zpty instances created before
+	# the one being deleted receive a SIGHUP, unless we catch it, the async
+	# worker would simply exit (stop working) even though visible in the list
+	# of zpty's (zpty -L). This has been fixed around the time of Zsh 5.4
+	# (not released).
+	if ! is-at-least 5.4.1; then
+		TRAPHUP() {
+			# Return 0, indicating signal was handled.
+			return 0
+		}
+	fi
+
+	local -a zsh_hooks zsh_hook_functions
+	zsh_hooks=(chpwd periodic precmd preexec zshexit zshaddhistory)
+	zsh_hook_functions=(${^zsh_hooks}_functions)
+	# Deactivate all zsh hooks inside the worker
+	unfunction $zsh_hooks &>/dev/null
+	# And hooks with registered functions
+	unset $zsh_hook_functions
+	# Cleanup
+	unset zsh_hooks zsh_hook_functions
+
+	# [ Main part ]
+	# Notify parent shell if requested job have finished through WINCH signal
+	# We detect if it happened through trapping CHLD signal inside pseudo-terminal
+	trap 'kill -WINCH "$PPID"' CHLD
+
+	# Infinite while loop waiting for input/job ending with null character \0
+	while :; do
+		# Wait for input/job ending with null character \0
+		read -r -d $'\0' requested_job || {
+			# Stdin is broken and in case this was an unintended
+			# crash, we try to report it as a last hurrah.
+			print -r -n "ZshGod's async engine crashed do to unknown reason"
+
+			# We use `return` to abort here because using `exit` may
+			# result in an infinite loop that never exits and, as a
+			# result, high CPU utilization.
+			return 1
+		}
+
+		# We need to clean the requested job because sometimes when a zpty
+		# has died and been respawned, messages will be prefixed with a
+		# carriage return (\r, or \C-M)
+		# requested_job=${requested_job#$'\C-M'}
+
+		# Parse the requested_job using shell parsing (z) to allow commands
+		# to be parsed from single strings and multi-args alike.
+		# requested_job=("${(z)requested_job}")
+
+		# Run requested_job in background, completed jobs are printed to stdout.
+		# Also when background & job finishes/exits it sends CHLD signal
+		$requested_job &
+	done
+}
