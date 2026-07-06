@@ -76,7 +76,7 @@ _async_worker() {
 	# worker. For example: `fork failed: resource temporarily unavailable`.
 	# Some older versions of zsh might also print malloc errors (know to happen
 	# on at least zsh 5.0.2 and 5.0.8) likely due to kill signals.
-	exec 2>/dev/null
+	exec 2> /dev/null
 
 	# When a zpty is deleted (using -d) all the zpty instances created before
 	# the one being deleted receive a SIGHUP, unless we catch it, the async
@@ -99,7 +99,7 @@ _async_worker() {
 	local -a zsh_hooks zsh_hook_functions
 	zsh_hooks=(chpwd periodic precmd preexec zshexit zshaddhistory)
 	zsh_hook_functions=(${^zsh_hooks}_functions)
-	unfunction $zsh_hooks &>/dev/null   # Deactivate all zsh hooks inside the worker.
+	unfunction $zsh_hooks &> /dev/null   # Deactivate all zsh hooks inside the worker.
 	unset $zsh_hook_functions           # And hooks with registered functions.
 	unset zsh_hooks zsh_hook_functions  # Cleanup.
 
@@ -291,7 +291,7 @@ async_process_results() {
 	typeset -gA ASYNC_PROCESS_BUFFER
 
 	# Read output from zpty and parse it if available.
-	while zpty -r -t $worker data 2>/dev/null; do
+	while zpty -r -t $worker data 2> /dev/null; do
 		ASYNC_PROCESS_BUFFER[$worker]+=$data
 		len=${#ASYNC_PROCESS_BUFFER[$worker]}
 		pos=${ASYNC_PROCESS_BUFFER[$worker][(i)$null]}  # Get index of NULL-character (delimiter).
@@ -374,7 +374,7 @@ _async_send_job() {
 	local worker=$2
 	shift 2
 
-	zpty -t $worker &>/dev/null || {
+	zpty -t $worker &> /dev/null || {
 		typeset -gA ASYNC_CALLBACKS
 		local callback=$ASYNC_CALLBACKS[$worker]
 
@@ -501,7 +501,7 @@ async_flush_jobs() {
 	local worker=$1; shift
 
 	# Check if the worker exists
-	zpty -t $worker &>/dev/null || return 1
+	zpty -t $worker &> /dev/null || return 1
 
 	# Send kill command to worker
 	async_job $worker "_killjobs"
@@ -539,7 +539,7 @@ async_start_worker() {
 	local worker=$1; shift
 	local -a args
 	args=("$@")
-	zpty -t $worker &>/dev/null && return
+	zpty -t $worker &> /dev/null && return
 
 	typeset -gA ASYNC_PTYS
 	typeset -h REPLY
@@ -628,7 +628,7 @@ async_stop_worker() {
 			fi
 		done
 		async_unregister_callback $worker
-		zpty -d $worker 2>/dev/null || ret=$?
+		zpty -d $worker 2> /dev/null || ret=$?
 
 		# Clear any partial buffers.
 		typeset -gA ASYNC_PROCESS_BUFFER
