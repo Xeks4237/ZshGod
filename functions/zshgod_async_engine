@@ -11,7 +11,7 @@ function zshgod_async_engine() {
 	# worker. For example: `fork failed: resource temporarily unavailable`.
 	# Some older versions of zsh might also print malloc errors (know to happen
 	# on at least zsh 5.0.2 and 5.0.8) likely due to kill signals.
-	exec 2>/dev/null
+	exec 2> /dev/null
 
 	# When a zpty is deleted (using -d) all the zpty instances created before
 	# the one being deleted receive a SIGHUP, unless we catch it, the async
@@ -29,7 +29,7 @@ function zshgod_async_engine() {
 	zsh_hooks=(chpwd periodic precmd preexec zshexit zshaddhistory)
 	zsh_hook_functions=(${^zsh_hooks}_functions)
 	# Deactivate all zsh hooks inside the worker
-	unfunction $zsh_hooks &>/dev/null
+	unfunction $zsh_hooks &> /dev/null
 	# And hooks with registered functions
 	unset $zsh_hook_functions
 	# Cleanup
@@ -57,11 +57,11 @@ function zshgod_async_engine() {
 		# We need to clean the requested job because sometimes when a zpty
 		# has died and been respawned, messages will be prefixed with a
 		# carriage return (\r, or \C-M)
-		# requested_job=${requested_job#$'\C-M'}
+		requested_job=${requested_job#$'\C-M'}
 
 		# Parse the requested_job using shell parsing (z) to allow commands
 		# to be parsed from single strings and multi-args alike.
-		# requested_job=("${(z)requested_job}")
+		requested_job=("${(z)requested_job}")
 
 		# Run requested_job in background, completed jobs are printed to stdout.
 		# Also when background & job finishes/exits it sends CHLD signal
