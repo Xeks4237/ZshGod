@@ -43,12 +43,14 @@ function zshgod_async-callback() {
 	# while using $ZSHGOD_FILLER as repeting string
 	zshgod_middle-line "${(ej::)ZSHGOD_TOP_LEFT}" "${(ej::)ZSHGOD_TOP_RIGHT}" "$ZSHGOD_FILLER"
 
-	# Set prompt using newly created variables.
 	# Lines below will set prompt accordingly:
 	# $ZSHGOD_TOP_LEFT.....$ZSHGOD_FILLER_LINE.....$ZSHGOD_TOP_RIGHT
 	# $ZSHGOD_BOTTOM_LEFT                       $ZSHGOD_BOTTOM_RIGHT
-	PS1='${(ej::)ZSHGOD_TOP_LEFT}$ZSHGOD_FILLER_LINE${(ej::)ZSHGOD_TOP_RIGHT}$prompt_newline${(ej::)ZSHGOD_BOTTOM_LEFT}'
-	RPS1='${(ej::)ZSHGOD_BOTTOM_RIGHT}'
+	# NOTE: It doesn't matter if those are variables or arrays, it gonna work anyway
+	typeset -g ZSHGOD_PS1='${(ej::)ZSHGOD_TOP_LEFT}$ZSHGOD_FILLER_LINE${(ej::)ZSHGOD_TOP_RIGHT}$prompt_newline${(ej::)ZSHGOD_BOTTOM_LEFT}'
+	typeset -g ZSHGOD_RPS1='${(ej::)ZSHGOD_BOTTOM_RIGHT}'
+	typeset -g PS1="$ZSHGOD_PS1"
+	typeset -g RPS1="$ZSHGOD_RPS1"
 
 	# Redisplay/Update prompt
 	zle && zle redisplay; zle reset-prompt
