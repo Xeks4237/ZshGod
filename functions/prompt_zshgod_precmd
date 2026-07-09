@@ -28,7 +28,7 @@ function prompt_zshgod_precmd() {
 	# Cycle through and run all functions listed as strings in arrays asynchronously
 	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
 		# Start new async worker
-		async_start_worker zshgod_async_worker -n 2> /dev/null
+		async_start_worker zshgod_async_worker 2> /dev/null
 
 		# Register its callback function
 		async_register_callback zshgod_async_worker zshgod_async-callback
