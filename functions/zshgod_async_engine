@@ -36,9 +36,9 @@ function zshgod_async_engine() {
 	unset zsh_hooks zsh_hook_functions
 
 	# [ Main part ]
-	# Notify parent shell if requested job have finished through WINCH signal
+	# Notify parent shell if requested job have finished through USR1 signal
 	# We detect if it happened through trapping CHLD signal inside pseudo-terminal
-	trap 'kill -WINCH "$PPID"' CHLD
+	trap 'kill -USR1 "$PPID"' CHLD
 
 	# Infinite while loop waiting for input/job ending with null character \0
 	while :; do

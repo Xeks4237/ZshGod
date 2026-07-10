@@ -1,3 +1,20 @@
+# Experimental Function which runs commands passed to it in async using builtin zpty feature of zsh
+# NOTE: This function can only one command/function with its args,
+# if you need to run multiple functions/commands just make wrapper function for it
 function zshgod_async_run() {
-	zpty -w zpty_of_zshgod_async_engine "$*"$'\0'
+	# Check if zpty with async engine is running
+	if zpty -t zpty_of_zshgod_async_engine 2> /dev/null; then
+		# Read/Send output of previous async job to don't intersect its output with new ones
+		# it is optional in case output from previous async job wasn't read
+		zpty -r zpty_of_zshgod_async_engine > /dev/null
+
+		# Send command/function to zpty of async engine with null character at end
+		zpty -w zpty_of_zshgod_async_engine "$*" $'\0'
+	else
+		# Start the async engine
+		zpty -b zpty_of_zshgod_async_engine zshgod_async_engine
+
+		# Send command/function to zpty of async engine with null character at end
+		zpty -w zpty_of_zshgod_async_engine "$*" $'\0'
+	fi
 }
