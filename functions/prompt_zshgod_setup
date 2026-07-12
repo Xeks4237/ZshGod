@@ -3,6 +3,7 @@
 # This functions name is important it should be 'prompt_<name_of_prompt>_setup'
 # And this function also accepts args through 'prompt' command, like:
 # prompt zshgod --min-exectime=5
+# For more info run "prompt zshgod --help" or "prompt -h zshgod"
 function prompt_zshgod_setup() {
 	# [ Prompt specific opts and Hooks for Functions ]
 	# Sets prompt specific zsh opts like prompt substitution
@@ -27,12 +28,6 @@ function prompt_zshgod_setup() {
 	# Builtin zsh module for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
-	# Source zsh-async library
-	source "$ZSHGOD_HOME/functions/async"
-
-	# Initialize zsh-async library
-	async
-
 	# Autoload generally needed functions which are used in prompt
 	# Autoloading allows to have only used functions in memory
 	# INFO: availible functions are mentioned in help message of prompt: prompt -h zshgod
@@ -51,9 +46,10 @@ function prompt_zshgod_setup() {
 		zshgod_vcs_branch \
 		zshgod_vcs_action \
 		zshgod_vi-mode \
-		zshgod_async-callback \
 		zshgod_async_engine \
 		zshgod_async_run \
+		zshgod_async_zle-handler \
+		zshgod_async_callback \
 		zshgod_vimode \
 		zshgod_configure
 
@@ -112,22 +108,20 @@ function prompt_zshgod_setup() {
 				# Flag to specify theme or config file for prompt
 			--theme=*)
 				# Check if given theme is the path to config file or theme name
+				# And also set $ZSHGOD_THEME to file of of this theme
 				local theme="${arg#--theme=}"
 				if [[ -r $theme ]]; then
 					source "$theme"
 					ZSHGOD_THEME="$theme"
+					return
 				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
+					return
 				else
 					unset ZSHGOD_THEME
-					print -Pu2 "%F{red}Error:%f %F{yellow}Bad value for%f %F{green}--theme%f %F{yellow}flag:%f %F{blue}$theme%f"
+					print -Pu2 "%F{magenta}ZshGod:%f %F{red}Error:%f %F{yellow}Bad value for%f %F{green}--theme%f %F{yellow}flag:%f %F{blue}$theme%f"
 				fi
-				;;
-
-				# Flag to set minimal threshold for displaying exectime
-			--min-exectime=*)
-				export ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
 				;;
 
 				# Hardlers for weird scenarios
@@ -142,6 +136,4 @@ function prompt_zshgod_setup() {
 				;;
 		esac
 	done
-	# Set up default config for prompt if --theme wasn't used
-	[[ -n $ZSHGOD_THEME ]] || source "$ZSHGOD_HOME/themes/default" && ZSHGOD_THEME='default'
 }

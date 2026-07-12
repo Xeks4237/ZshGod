@@ -1,3 +1,4 @@
+# Function which is used as async engine of zshgod by zshgod_async_run function
 function zshgod_async_engine() {
 	# [ Preparing zpty pseudo-terminal's environment ]
 	# Reset all options to defaults inside async worker.
@@ -25,21 +26,20 @@ function zshgod_async_engine() {
 		}
 	fi
 
-	local -a zsh_hooks zsh_hook_functions
-	zsh_hooks=(chpwd periodic precmd preexec zshexit zshaddhistory)
-	zsh_hook_functions=(${^zsh_hooks}_functions)
 	# Deactivate all zsh hooks inside the worker
+	local -a zsh_hooks
+	zsh_hooks=(chpwd periodic precmd preexec zshexit zshaddhistory)
 	unfunction $zsh_hooks &> /dev/null
+
 	# And hooks with registered functions
+	local -a zsh_hook_functions
+	zsh_hook_functions=(${^zsh_hooks}_functions)
 	unset $zsh_hook_functions
+
 	# Cleanup
 	unset zsh_hooks zsh_hook_functions
 
 	# [ Main part ]
-	# Notify parent shell if requested job have finished through USR1 signal
-	# We detect if it happened through trapping CHLD signal inside pseudo-terminal
-	trap 'kill -USR1 "$PPID"' CHLD
-
 	# Infinite while loop waiting for input/job ending with null character \0
 	while :; do
 		# Wait for input/job ending with null character \0
@@ -63,8 +63,8 @@ function zshgod_async_engine() {
 		# to be parsed from single strings and multi-args alike.
 		requested_job=("${(z)requested_job}")
 
-		# Run requested_job in background, completed jobs are printed to stdout.
-		# Also when background & job finishes/exits it sends CHLD signal
-		$requested_job &
+		# Run requested_job and print its output with null character at end
+		local output="$(${requested_job})"
+		print -r -n -- $output$'\0'
 	done
 }

@@ -1,9 +1,11 @@
 # Function which gets called after running command finishes and before prompt is drown
 # INFO: This function gets unset automatically when you change to another prompt/theme
 function prompt_zshgod_precmd() {
-	# Stop all previous async workers of zshgod nd flush their jobs
-	async_flush_jobs zshgod_async_worker
-	async_stop_worker zshgod_async_worker
+	# Stop zpty with async engine
+	zpty -d zpty_of_zshgod_async_engine &> /dev/null
+
+	# Set amount of finishes async jobs to 0
+	typeset -gi ZSHGOD_ASYNC_FINISHED_JOBS=0
 
 	# [ Parts of other functions which need precmd ]
 	# Snippet used for calculating exectime of commands
@@ -24,16 +26,13 @@ function prompt_zshgod_precmd() {
 		unset ZSHGOD_EXECTIME
 	fi
 
-	# [ Async jobs ]
-	# Cycle through and run all functions listed as strings in arrays asynchronously
-	for async_work in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
-		# Start new async worker
-		async_start_worker zshgod_async_worker 2> /dev/null
+	# [ Start async part of zshgod ]
+	# Increment amount of finishes async jobs
+	((ZSHGOD_ASYNC_FINISHED_JOBS++))
 
-		# Register its callback function
-		async_register_callback zshgod_async_worker zshgod_async-callback
+	# Generate name for current async job using basename of function/command from ZSHGOD_USED_FUNCTIONS
+	typeset -g ZSHGOD_ASYNC_CURRENT_JOB="${ZSHGOD_USED_FUNCTIONS[${ZSHGOD_ASYNC_FINISHED_JOBS}]%% *}"
 
-		# Run async job
-		async_job zshgod_async_worker "$async_work"
-	done
+	# Run first async job, It will continue running these until everything have been runned
+	zshgod_async_run "${ZSHGOD_USED_FUNCTIONS[${ZSHGOD_ASYNC_FINISHED_JOBS}]}"
 }

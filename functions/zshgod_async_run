@@ -1,20 +1,26 @@
-# Experimental Function which runs commands passed to it in async using builtin zpty feature of zsh
+# Function which runs commands passed to it in async using builtin zpty feature of zsh
+# WARN: It is not recomended to use this function by yourself because
+# zle handler of zshgod will make variable out of anything what gets
+# runned by this function, but you can use it manually anyway for
+# testing purposes if your function/command is named in the same way as
+# other functions of zshgod
 # NOTE: This function can only one command/function with its args,
-# if you need to run multiple functions/commands just make wrapper function for it
+# if you need to run multiple functions/commands or change something
+# in environment of async engine where functions/commands gonna be
+# runned just make wrapper function for it, you can also make pass
+# wrapper function directly in to this functions
 function zshgod_async_run() {
-	# Check if zpty with async engine is running
-	if zpty -t zpty_of_zshgod_async_engine 2> /dev/null; then
-		# Read/Send output of previous async job to don't intersect its output with new ones
-		# it is optional in case output from previous async job wasn't read
-		zpty -r zpty_of_zshgod_async_engine > /dev/null
+	typeset -g ZSHGOD_ASYNC_FD=$REPLY
 
-		# Send command/function to zpty of async engine with null character at end
-		zpty -w zpty_of_zshgod_async_engine "$*" $'\0'
-	else
-		# Start the async engine
-		zpty -b zpty_of_zshgod_async_engine zshgod_async_engine
+	# Stop zpty with async engine and start if again
+	zpty -d zpty_of_zshgod_async_engine 2> /dev/null
+	zpty -b zpty_of_zshgod_async_engine zshgod_async_engine
 
-		# Send command/function to zpty of async engine with null character at end
-		zpty -w zpty_of_zshgod_async_engine "$*" $'\0'
+	# Check if zle file descriptor can be used/registered
+	if [[ -n $ZSHGOD_ASYNC_FD && -o interactive && -o zle ]]; then
+		zle -F $ZSHGOD_ASYNC_FD zshgod_async_zle-handler
 	fi
+
+	# Send the command
+	zpty -w zpty_of_zshgod_async_engine "$*" $'\0'
 }
