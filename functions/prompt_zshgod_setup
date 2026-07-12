@@ -16,6 +16,7 @@ function prompt_zshgod_setup() {
 	# Load zsh modules used in prompt
 	zmodload zsh/datetime
 	zmodload zsh/zle
+	zmodload zsh/zpty
 	zmodload zsh/parameter
 	zmodload zsh/zutil
 

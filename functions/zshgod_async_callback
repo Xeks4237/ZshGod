@@ -52,7 +52,7 @@ function zshgod_async_callback() {
 
 	# [ Async part ]
 	# Check if amount of finished jobs matches amount of function/elements in $ZSHGOD_USED_FUNCTIONS
-	if [[ "$ZSHGOD_ASYNC_FINISHED_JOBS">="${#ZSHGOD_USED_FUNCTIONS}" ]]; then
+	if (( $ZSHGOD_ASYNC_FINISHED_JOBS >= #ZSHGOD_USED_FUNCTIONS )); then
 		# Set amount of finished jobs back to 0 and unset $ZSHGOD_ASYNC_CURRENT_JOB
 		typeset -gi ZSHGOD_ASYNC_FINISHED_JOBS=0
 		unset ZSHGOD_ASYNC_CURRENT_JOB
