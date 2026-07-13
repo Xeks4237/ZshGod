@@ -114,10 +114,16 @@ function prompt_zshgod_setup() {
 				if [[ -r $theme ]]; then
 					source "$theme"
 					ZSHGOD_THEME="$theme"
+					# Run prompt's precmd function to guarantee prompt
+					# gets displayed after running the command
+					prompt_zshgod_precmd
 					return
 				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
+					# Run prompt's precmd function to guarantee prompt
+					# gets displayed after running the command
+					prompt_zshgod_precmd
 					return
 				else
 					unset ZSHGOD_THEME
