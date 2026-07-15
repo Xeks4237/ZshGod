@@ -103,7 +103,6 @@ ZSHGOD_TOP_LEFT=(
 
 # Array with items of main prompts bottom left side
 ZSHGOD_BOTTOM_LEFT=(
-	' '
 	'%B'
 	' '
 	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
