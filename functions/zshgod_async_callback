@@ -46,10 +46,6 @@ function zshgod_async_callback() {
 	typeset -g PS1='${(ej::)ZSHGOD_TOP_LEFT}$ZSHGOD_FILLER_LINE${(ej::)ZSHGOD_TOP_RIGHT}$prompt_newline${(ej::)ZSHGOD_BOTTOM_LEFT}'
 	typeset -g RPS1='${(ej::)ZSHGOD_BOTTOM_RIGHT}'
 
-	# Redisplay/Update prompt to show the changes
-	zle redisplay
-	zle reset-prompt
-
 	# [ Async part ]
 	# Check if amount of finished jobs matches amount of function/elements in $ZSHGOD_USED_FUNCTIONS
 	if (( $ZSHGOD_ASYNC_FINISHED_JOBS >= #ZSHGOD_USED_FUNCTIONS )); then
@@ -67,4 +63,8 @@ function zshgod_async_callback() {
 		# and continue doing it until everything have been runned
 		zshgod_async_run "${ZSHGOD_USED_FUNCTIONS[${ZSHGOD_ASYNC_FINISHED_JOBS}]}"
 	fi
+
+	# Redisplay/Update prompt to show the changes
+	zle redisplay
+	zle reset-prompt
 }
