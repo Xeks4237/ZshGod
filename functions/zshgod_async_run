@@ -14,11 +14,11 @@ function zshgod_async_run() {
 	# Check file descriptor holder of zshgod and register it if needed
 	[[ -z $ZSHGOD_ASYNC_FD ]] && typeset -g ZSHGOD_ASYNC_FD=$REPLY
 
-	# Check and start zpty with async engine if not already running
-	zpty -t zpty_of_zshgod_async_engine 2> /dev/null || zpty -b zpty_of_zshgod_async_engine zshgod_async_engine
-
 	# Check if zle file descriptor can be used/registered in current shell
 	[[ -n $ZSHGOD_ASYNC_FD && -o interactive && -o zle ]] && zle -F $ZSHGOD_ASYNC_FD zshgod_async_zle-handler
+
+	# Check and start zpty with async engine if not already running
+	if zpty -t zpty_of_zshgod_async_engine 2> /dev/null || zpty -b zpty_of_zshgod_async_engine zshgod_async_engine
 
 	# Send the command to async engine with null character in end
 	zpty -w zpty_of_zshgod_async_engine "$*" $'\0'

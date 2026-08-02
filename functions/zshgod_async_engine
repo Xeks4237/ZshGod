@@ -4,46 +4,99 @@ function zshgod_async_engine() {
 	# Reset all options to defaults inside async worker.
 	emulate -R zsh
 
-	# Make sure monitor is unset to avoid printing the
-	# pids of child processes.
+	# Make sure monitor is unset to avoid printing the pids of child processes
 	unsetopt monitor
 
 	# Redirect stderr to `/dev/null` in case unforseen errors produced by the
-	# worker. For example: `fork failed: resource temporarily unavailable`.
+	# worker. For example: `fork failed: resource temporarily unavailable`
 	# Some older versions of zsh might also print malloc errors (know to happen
-	# on at least zsh 5.0.2 and 5.0.8) likely due to kill signals.
+	# on at least zsh 5.0.2 and 5.0.8) likely due to kill signals
 	exec 2> /dev/null
 
 	# When a zpty is deleted (using -d) all the zpty instances created before
 	# the one being deleted receive a SIGHUP, unless we catch it, the async
 	# worker would simply exit (stop working) even though visible in the list
 	# of zpty's (zpty -L). This has been fixed around the time of Zsh 5.4
-	# (not released).
 	if ! is-at-least 5.4.1; then
 		TRAPHUP() {
-			# Return 0, indicating signal was handled.
+			# Return 0, indicating signal was handled
 			return 0
 		}
 	fi
 
-	# Deactivate all zsh hooks inside the worker
-	local -a zsh_hooks
+	# Local variables with their default values
+	local coproc_pid=0
+	local processing=0
+	local -A storage
+	local request
+	local -a cmd
+
+	local -a zsh_hooks zsh_hook_functions
 	zsh_hooks=(chpwd periodic precmd preexec zshexit zshaddhistory)
+	zsh_hook_functions=(${^zsh_hooks}_functions)
+
+	# Deactivate all zsh hooks inside the worker
 	unfunction $zsh_hooks &> /dev/null
 
-	# And hooks with registered functions
-	local -a zsh_hook_functions
-	zsh_hook_functions=(${^zsh_hooks}_functions)
+	# Unset all zsh hook functions inside the worker
 	unset $zsh_hook_functions
 
 	# Cleanup
 	unset zsh_hooks zsh_hook_functions
 
+	# Function which gets called when requested job inside async engine finishes, called by trap command below
+	close_idle_coproc() {
+		local -a pids
+		pids=(${${(v)jobstates##*:*:}%\=*})
+
+		# If coproc (cat) is the only child running, we close it to avoid
+		# leaving it running indefinitely and cluttering the process tree
+		if  (( ! processing )) && [[ $#pids = 1 ]] && [[ $coproc_pid = $pids[1] ]]; then
+			coproc :
+			coproc_pid=0
+		fi
+	}
+
+	# Register a SIGCHLD trap to handle the completion of child processes of requested jobs
+	trap close_idle_coproc CHLD
+
+	# Terminate all running jobs, note that this function does not
+	# reinstall the child trap
+	terminate_jobs() {
+		# Ignore child exits during kill
+		trap - CHLD
+
+		# Quit coproc
+		coproc :
+
+		# Reset pid
+		coproc_pid=0
+
+		if is-at-least 5.4.1; then
+			# Catch the HUP sent to this process
+			trap '' HUP
+
+			# Send to entire process group
+			kill -HUP -$$
+
+			# Disable HUP trap
+			trap - HUP
+		else
+			# We already handle HUP for Zsh < 5.4.1
+			# Send it to entire process group
+			kill -HUP -$$
+		fi
+	}
+
 	# [ Main part ]
-	# Infinite while loop waiting for input/job ending with null character \0
+	# Infinite while loop waiting for input/job ending with null character \0 as input
 	while :; do
-		# Wait for input/job ending with null character \0
-		read -r -d $'\0' requested_job || {
+		# Wait for jobs sent by async_job
+		read -r -d $'\0' request || {
+			# Unknown error occurred while reading from stdin, the zpty
+			# worker is likely in a broken state, so we shut down
+			terminate_jobs
+
 			# Stdin is broken and in case this was an unintended
 			# crash, we try to report it as a last hurrah.
 			print -r -n "ZshGod's async engine crashed do to unknown reason"
@@ -54,17 +107,33 @@ function zshgod_async_engine() {
 			return 1
 		}
 
-		# We need to clean the requested job because sometimes when a zpty
+		# We need to clean the input here because sometimes when a zpty
 		# has died and been respawned, messages will be prefixed with a
-		# carriage return (\r, or \C-M)
-		requested_job=${requested_job#$'\C-M'}
+		# carraige return (\r, or \C-M)
+		request=${request#$'\C-M'}
 
-		# Parse the requested_job using shell parsing (z) to allow commands
-		# to be parsed from single strings and multi-args alike.
-		requested_job=("${(z)requested_job}")
+		# Parse the request using shell parsing (z) to allow commands
+		# to be parsed from single strings and multi-args alike
+		cmd=("${(z)request}")
 
-		# Run requested_job and print its output with null character at end
-		local output="$(${requested_job})"
-		print -r -n -- $output$'\0'
+		# Guard against closing coproc from trap before command has started
+		processing=1
+
+		# Because we close the coproc after the last job has completed, we must
+		# recreate it when there are no other jobs running
+		if (( ! coproc_pid )); then
+			# Use coproc as a mutex for synchronized output between children
+			coproc command -p cat
+			coproc_pid="$!"
+
+			# Insert token into coproc
+			print -n -p "t"
+		fi
+
+		# Run job in background, completed jobs are printed to stdout
+		print -r -n -- "$($cmd)"$'\0' &
+
+		# Disable guard
+		processing=0
 	done
 }

@@ -3,7 +3,7 @@
 # mostly used in interactive zsh shell
 function zshgod_async_callback() {
 	# NOTE: Output passed to this callback function becomes just a null
-	# character if async job in async engine retured no output
+	# character if async job in async engine returned no output
 	local output="$1"
 
 	# Dynamically create new variable based on the function name in $ZSHGOD_CURRENT_ASYNC_JOB
