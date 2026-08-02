@@ -24,8 +24,8 @@ function prompt_zshgod_precmd() {
 	fi
 
 	# [ Start async part of zshgod ]
-	# Run async jobs, It will be running these until everything have been runned
-	for async_job in "$ZSHGOD_USED_FUNCTIONS[@]"; do
+	# Cycle through and run all functions written in ZSHGOD_USED_FUNCTIONS asynchronously
+	for async_job in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
 		zshgod_async_run "$async_job"
 	done
 }

@@ -20,7 +20,9 @@ function zshgod_async_zle-handler() {
 	output=${output%$'\0'}
 
 	# Send result to callback function
-	# NOTE: If you print/echo output in callback function you should
-	# use -n like flag to don't add extra newline characters to output
 	zshgod_async_callback "$output"
+
+	# Redisplay/Update prompt to show the changes
+	zle redisplay
+	zle reset-prompt
 }
