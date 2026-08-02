@@ -4,9 +4,6 @@ function prompt_zshgod_precmd() {
 	# Stop zpty with async engine
 	zpty -d zpty_of_zshgod_async_engine &> /dev/null
 
-	# Set amount of finishes async jobs to 0
-	typeset -gi ZSHGOD_ASYNC_FINISHED_JOBS=0
-
 	# [ Parts of other functions which need precmd ]
 	# Snippet used for calculating exectime of commands
 	if (( ${+ZSHGOD_EXECTIME_START} )); then
@@ -27,12 +24,8 @@ function prompt_zshgod_precmd() {
 	fi
 
 	# [ Start async part of zshgod ]
-	# Increment amount of finishes async jobs
-	((ZSHGOD_ASYNC_FINISHED_JOBS++))
-
-	# Generate name for current async job using basename of function/command from ZSHGOD_USED_FUNCTIONS
-	typeset -g ZSHGOD_ASYNC_CURRENT_JOB="${ZSHGOD_USED_FUNCTIONS[${ZSHGOD_ASYNC_FINISHED_JOBS}]%% *}"
-
-	# Run first async job, It will continue running these until everything have been runned
-	zshgod_async_run "${ZSHGOD_USED_FUNCTIONS[${ZSHGOD_ASYNC_FINISHED_JOBS}]}"
+	# Run async jobs, It will be running these until everything have been runned
+	for async_job in "$ZSHGOD_USED_FUNCTIONS[@]"; do
+		zshgod_async_run "$async_job"
+	done
 }
