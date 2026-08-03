@@ -133,7 +133,7 @@ function zshgod_async_engine() {
 		local jobname=$cmd[1]
 
 		# Run job in background, completed jobs are printed to stdout
-		{ print -r -n -- "$jobname"$'\0'"$($cmd)"$'\0' } &
+		print -r -n -- "$jobname"$'\0'"$($cmd)"$'\0' &
 
 		# Disable guard
 		processing=0

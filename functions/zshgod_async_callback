@@ -2,12 +2,13 @@
 # This function is called by zshgod_async_zle-handler and should be
 # mostly used in interactive zsh shell
 function zshgod_async_callback() {
-	# NOTE: Output passed to this callback function becomes just a null
-	# character if async job in async engine returned no output
-	# Name of command/function which have been runned in async engine
-	jobname="${1%%$'\0'*}"
+	# Output passed to this callback function by zshgod_async_zle-handler
+	# becomes just a null character if async job in async engine returned no output
 	# Output given from command/function runned in async engine
-	output="${${1#*$'\0'}%%$'\0'*}"
+	local output="$2"
+
+	# Name of command/function which have been runned in async engine
+	local jobname="$1"
 
 	# Dynamically create new variable based on the function name in $jobname
 	# and then put $output given to this function in to newly created variable

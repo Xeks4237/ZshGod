@@ -14,13 +14,19 @@ function zshgod_async_zle-handler() {
 	local output
 	zpty -r zpty_of_zshgod_async_engine output 2> /dev/null || return
 
+	# Parse jobname from output of async engine
+	local jobname="${output%%$'\0'*}"
+
+	# Parse output seperated from jobname from output
+	output="${${output#*$'\0'}%%$'\0'*}"
+
 	# Remove the trailing null from end of the output
 	# NOTE: Null character will be the only thing in output of async
-	# engine if job in async engine return nothing
+	# engine if job in async engine returns nothing
 	output=${output%$'\0'}
 
 	# Send result to callback function
-	zshgod_async_callback "$output"
+	zshgod_async_callback "$jobname" "$output"
 
 	# Redisplay/Update prompt to show the changes
 	zle redisplay
