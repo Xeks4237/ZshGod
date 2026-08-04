@@ -135,7 +135,7 @@ function prompt_zshgod_setup() {
 				fi
 				;;
 
-				# Hardlers for weird scenarios
+				# Handlers for weird scenarios
 			--*)
 				print -Pu2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
 				return 1
