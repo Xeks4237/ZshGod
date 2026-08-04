@@ -56,4 +56,4 @@ prompt zshgod configure
 </details>
 
 # LICENSE
-Zshgod is licensed under MIT License respectfully.
+Zshgod is licensed under 0BSD License respectfully.
