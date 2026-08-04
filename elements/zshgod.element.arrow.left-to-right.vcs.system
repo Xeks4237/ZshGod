@@ -1,0 +1,9 @@
+# Function which returns name of current vcs
+function zshgod.element.arrow.left-to-right.vcs.system() {
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	[[ -n $(zshgod.vcs.system) ]] || return
+	zshgod.generic arrow.left-to-right "$(zshgod.vcs.system)" "$bg_color" "$fg_color"
+}

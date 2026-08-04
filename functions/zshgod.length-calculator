@@ -1,0 +1,39 @@
+# Function which returns length of elements/stuff passed to it (How many columns it occupies)
+# First argument is the text which length function is going to calculate
+# Second argument is optional custom $COLUMNS value.
+# Examples:
+#   zshgod.length-calculator ''            => 0
+#   zshgod.length-calculator 'abc'         => 3
+#   zshgod.length-calculator $'abc\nxy'    => 2
+#   zshgod.length-calculator '❎'          => 2
+#   zshgod.length-calculator $'\t'         => 8
+#   zshgod.length-calculator $'\u274E'     => 2
+#   zshgod.length-calculator '%F{red}abc'  => 3
+#   zshgod.length-calculator $'%{a\b%Gb%}' => 1
+#   zshgod.length-calculator '%D'          => 8
+#   zshgod.length-calculator '%1(l..ab)'   => 2
+#   zshgod.length-calculator '%(!.a.)'     => 1 if root, 0 if not
+
+# NOTE: This function was originally made my romkatv:
+# https://gist.github.com/romkatv/2a107ef9314f0d5f76563725b42f7cab
+function zshgod.length-calculator() {
+	local -i COLUMNS=${2:-COLUMNS}
+	local -i x y=${#1} m
+
+	# This section is too complex to add some usefull comments.
+	# Soo it simple calculates length of stuff passed to it
+	if (( y )); then
+		while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
+			x=y
+			(( y *= 2 ))
+		done
+
+		while (( y > x + 1 )); do
+			(( m = x + (y - x) / 2 ))
+			(( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
+		done
+	fi
+
+	# Send end result
+	print $x
+}

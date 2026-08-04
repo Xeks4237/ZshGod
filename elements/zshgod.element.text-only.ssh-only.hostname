@@ -1,0 +1,7 @@
+# Same function as zshgod.element.rectangular.hostname but shown only through ssh
+function zshgod.element.text-only.ssh-only.hostname() {
+	# Allow passing args to function for changing foreground color
+	local fg_color=$1
+
+	[[ -n $SSH_CONNECTION ]] && zshgod.element.text-only.hostname $fg_color
+}

@@ -1,0 +1,29 @@
+# Function/Element which shows current vi mode of command line
+# NOTE: This function should not be called with async, because it
+# doesn't needs that and also it should be added to prompt theme/file
+# like literal string of '$(zshgod.element.arrow.left-to-right.vi-mode.short)'
+function zshgod.element.arrow.left-to-right.vi-mode.short() {
+	# Allow passing args to function for changing foreground and background colors
+	local fg_color=$1
+	local bg_color_insert=$2
+	local bg_color_normal=$3
+	local bg_color_visual=$4
+	local bg_color_v_line=$5
+	local bg_color_replace=$6
+
+	local vimode="$(zshgod.vi-mode)"
+
+	if [[ $vimode == 'INSERT' ]]; then
+		zshgod.generic arrow.left-to-right 'I' "$bg_color_insert" "$fg_color"
+	elif [[ $vimode == 'NORMAL' ]]; then
+		zshgod.generic arrow.left-to-right 'N' "$bg_color_normal" "$fg_color"
+	elif [[ $vimode == 'VISUAL' ]]; then
+		zshgod.generic arrow.left-to-right 'V' "$bg_color_visual" "$fg_color"
+	elif [[ $vimode == 'V-LINE' ]]; then
+		zshgod.generic arrow.left-to-right 'L' "$bg_color_v_line" "$fg_color"
+	elif [[ $vimode == 'REPLACE' ]]; then
+		zshgod.generic arrow.left-to-right 'R' "$bg_color_replace" "$fg_color"
+	else
+		zshgod.generic arrow.left-to-right '?' "$bg_color_normal" "$fg_color"
+	fi
+}

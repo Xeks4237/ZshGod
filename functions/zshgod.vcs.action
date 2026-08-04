@@ -1,0 +1,14 @@
+# Function which returns info about current action of vcs if present
+function zshgod.vcs.action() {
+	# zstyle options to customize info in variables of vcs_info
+	# vcs_info_msg_0_ return current action of vcs if availible, like git rebase
+	zstyle ':vcs_info:*' formats '%a'
+	zstyle ':vcs_info:*' actionformats '%a'
+
+	# Run vcs_info to get/update vcs info
+	vcs_info
+
+	# Check if $vcs_info_msg_0_ is empty and if not prints vcs branch info
+	local vcs_msg=$vcs_info_msg_0_
+	[[ -n $vcs_msg ]] && print "$vcs_msg"
+}

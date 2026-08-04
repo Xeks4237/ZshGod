@@ -1,0 +1,19 @@
+# Function which runs commands passed to it in async using builtin zpty module of zsh
+# WARN: It is not recomended to use this function by yourself because
+# zle handler of zshgod will make variable out of anything what gets
+# runned by this function, but you can use it manually anyway for
+# testing purposes if your function/command is named in the same way as
+# other functions of zshgod and they are valid and working as intended
+#
+# NOTE: This function can only run one command/function with its args,
+# if you need to run multiple functions/commands or change something
+# in environment of async engine where functions/commands gonna be
+# runned just make wrapper function for it, you can also make/pass
+# wrapper function directly in this function
+function zshgod.async.run() {
+	# Check and start zpty with async engine if not already running
+	zpty -t zpty_of_zshgod_async_engine 2> /dev/null || zpty -b zpty_of_zshgod_async_engine zshgod.async.engine
+
+	# Send the command to async engine with null character in end
+	zpty -w zpty_of_zshgod_async_engine "$*" $'\0'
+}

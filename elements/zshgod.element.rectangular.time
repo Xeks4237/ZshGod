@@ -1,0 +1,8 @@
+# Function for showing arrow with customly formatted current time
+function zshgod.element.rectangular.time() {
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	zshgod.generic rectangular '%D{%H:%M:%S}' "$bg_color" "$fg_color"
+}

@@ -1,0 +1,4 @@
+# Function which opens simple configuration wizard
+function zshgod.configure() {
+	print 'Configuration wizard for ZshGod is still in development.'
+}

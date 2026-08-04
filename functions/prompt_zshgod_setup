@@ -39,41 +39,45 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_chpwd \
 		prompt_zshgod_preview \
 		prompt_zshgod_help \
-		zshgod_set-title \
-		zshgod_length-calculator \
-		zshgod_middle-line \
-		zshgod_generic \
-		zshgod_vcs_system \
-		zshgod_vcs_branch \
-		zshgod_vcs_action \
-		zshgod_vi-mode \
-		zshgod_async_engine \
-		zshgod_async_run \
-		zshgod_async_zle-handler \
-		zshgod_async_callback \
-		zshgod_vimode \
-		zshgod_configure
+		zshgod.set.title \
+		zshgod.set.nerd-icons \
+		zshgod.length-calculator \
+		zshgod.middle-line \
+		zshgod.generic \
+		zshgod.vcs.system \
+		zshgod.vcs.branch \
+		zshgod.vcs.action \
+		zshgod.vi-mode \
+		zshgod.async.engine \
+		zshgod.async.run \
+		zshgod.async.zle-handler \
+		zshgod.async.callback \
+		zshgod.vimode \
+		zshgod.configure
 
 	# Declare/Update empty precmd and preexec functions used in themes
-	zshgod_theme_precmd() {}
-	zshgod_theme_preexec() {}
+	zshgod.theme.precmd() {}
+	zshgod.theme.preexec() {}
 
 	# Add preexec hook which gets called before running any COMMAND to some functions
 	add-zsh-hook preexec prompt_zshgod_preexec
-	add-zsh-hook preexec zshgod_theme_preexec
+	add-zsh-hook preexec zshgod.theme.preexec
 
 	# Add precmd hook which gets called before showing prompt to some functions
 	add-zsh-hook precmd prompt_zshgod_precmd
-	add-zsh-hook precmd zshgod_theme_precmd
+	add-zsh-hook precmd zshgod.theme.precmd
 
 	# Add chpwd hook which gets called after current working directory changes to some function
 	add-zsh-hook chpwd prompt_zshgod_chpwd
+
+	# Make zle widget from prompt_zshgod_precmd so it can be called through line editor
+	zle -N zshgod_refresh prompt_zshgod_precmd
 
 	# Add zle hoom to zshgod_refresh function to be call it in certain cases needed for vimode elements
 	# TODO: I should make more efficient way to run than
 	# add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
 
-	# [ Default valies for variables ]
+	# [ Default values for variables ]
 	# Variable which sets minimal amount of exectime after its shown
 	ZSHGOD_EXECTIME_MIN=5
 
@@ -89,7 +93,7 @@ function prompt_zshgod_setup() {
 		case "$arg" in
 				# SubCommand open simple configuration wizard/editor
 			configure)
-				zshgod_configure
+				zshgod.configure
 				return
 				;;
 
@@ -116,14 +120,14 @@ function prompt_zshgod_setup() {
 					ZSHGOD_THEME="$theme"
 					# Run prompt's precmd function to guarantee prompt
 					# gets displayed after running the command
-					prompt_zshgod_precmd
+					zle && zle zshgod_refresh
 					return
 				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
 					# Run prompt's precmd function to guarantee prompt
 					# gets displayed after running the command
-					prompt_zshgod_precmd
+					zle && zle zshgod_refresh
 					return
 				else
 					unset ZSHGOD_THEME

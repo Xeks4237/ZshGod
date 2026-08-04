@@ -27,11 +27,11 @@ function prompt_zshgod_precmd() {
 	[[ -z $ZSHGOD_ASYNC_FD ]] && typeset -g ZSHGOD_ASYNC_FD=$REPLY
 
 	# Check if zle file descriptor can be used/registered in current shell
-	[[ -n $ZSHGOD_ASYNC_FD && -o interactive && -o zle ]] && zle -F $ZSHGOD_ASYNC_FD zshgod_async_zle-handler
+	[[ -n $ZSHGOD_ASYNC_FD && -o interactive && -o zle ]] && zle -F $ZSHGOD_ASYNC_FD zshgod.async.zle-handler
 
 	# [ Start async part of zshgod ]
 	# Cycle through and run all functions written in ZSHGOD_USED_FUNCTIONS asynchronously
 	for async_job in "${ZSHGOD_USED_FUNCTIONS[@]}"; do
-		zshgod_async_run "$async_job"
+		zshgod.async.run "$async_job"
 	done
 }

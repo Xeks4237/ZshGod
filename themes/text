@@ -9,39 +9,39 @@
 zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
 # Variable which sets minimal amount of exectime after its shown
-ZSHGOD_EXECTIME_MIN=5
+typeset -g ZSHGOD_EXECTIME_MIN=5
 
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
-PS2='%B%F{magenta}%_%f%F{yellow} >%f%b '
+typeset -g PS2='%B%F{magenta}%_%f%F{yellow} >%f%b '
 
 # Right side of secondry prompt shown when writing multilined commands manually
 # Try to keep it empty to don't clutter view to multilined commands
 # Expanded in same way as RPS1
-RPS2=''
+typeset -g RPS2=''
 
 # Prompt used inside of select loop, expanded in same way as PS1
-PS3=' %F{green}?#%f '
+typeset -g PS3=' %F{green}?#%f '
 
 # Prompt shown when xtrace, sourcetrace, and etc logging options are set
-PS4='%F{magenta}%N%f %F{yellow}%i%f%F{green}:%f '
+typeset -g PS4='%F{magenta}%N%f %F{yellow}%i%f%F{green}:%f '
 
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
 autoload -Uz \
-	zshgod_text-only_current-pwd \
-	zshgod_text-only_vcs_system \
-	zshgod_text-only_vcs_branch \
-	zshgod_text-only_vcs_action \
-	zshgod_text-only_git_info \
-	zshgod_text-only_git_dirty \
-	zshgod_text-only_exectime_human-readable \
-	zshgod_text-only_root-indicator \
-	zshgod_text-only_userandhostname \
-	zshgod_text-only_ssh-only_userandhostname \
-	zshgod_text-only_time \
-	zshgod_text-only_jobs \
-	zshgod_text-only_exit-code
+	zshgod.element.text-only.current-pwd \
+	zshgod.element.text-only.vcs.system \
+	zshgod.element.text-only.vcs.branch \
+	zshgod.element.text-only.vcs.action \
+	zshgod.element.text-only.git.info \
+	zshgod.element.text-only.git.dirty \
+	zshgod.element.text-only.exectime.human-readable \
+	zshgod.element.text-only.root.indicator \
+	zshgod.element.text-only.userandhostname \
+	zshgod.element.text-only.ssh-only.userandhostname \
+	zshgod.element.text-only.time \
+	zshgod.element.text-only.jobs \
+	zshgod.element.text-only.exit-code
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -49,28 +49,28 @@ autoload -Uz \
 # but in uppercase and with _ instead of -
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
 # NOTE: exectime related elements shouldn't be runned in asynchronously
-ZSHGOD_USED_FUNCTIONS=(
-	'zshgod_text-only_current-pwd blue'
-	'zshgod_text-only_vcs_system magenta'
-	'zshgod_text-only_vcs_branch green'
-	'zshgod_text-only_vcs_action red'
-	'zshgod_text-only_git_info green yellow red cyan magenta'
-	'zshgod_text-only_git_dirty yellow'
-	'zshgod_text-only_root-indicator green red'
-	'zshgod_text-only_ssh-only_userandhostname green red yellow blue'
-	'zshgod_text-only_time yellow'
-	'zshgod_text-only_jobs magenta'
-	'zshgod_text-only_exit-code red'
+typeset -ga ZSHGOD_USED_FUNCTIONS=(
+	'zshgod.element.text-only.current-pwd blue'
+	'zshgod.element.text-only.vcs.system magenta'
+	'zshgod.element.text-only.vcs.branch green'
+	'zshgod.element.text-only.vcs.action red'
+	'zshgod.element.text-only.git.info green yellow red cyan magenta'
+	'zshgod.element.text-only.git.dirty yellow'
+	'zshgod.element.text-only.root.indicator green red'
+	'zshgod.element.text-only.ssh-only.userandhostname green red yellow blue'
+	'zshgod.element.text-only.time yellow'
+	'zshgod.element.text-only.jobs magenta'
+	'zshgod.element.text-only.exit-code red'
 )
 
 # [ Zsh hook functions ]
 # preexec function which gets called before every COMMAND
-zshgod_theme_preexec() {}
+zshgod.theme.preexec() {}
 
 # precmd function which gets called after commands and before showing prompt
-zshgod_theme_precmd() {
+zshgod.theme.precmd() {
 	# Function/Command to set title of the terminal
-	zshgod_set-title -P '%1~'
+	zshgod.set.title -P '%1~'
 }
 
 # [ Main prompt ]
@@ -80,52 +80,52 @@ zshgod_theme_precmd() {
 
 # Variable which sets character/string which be used between left and right of prompts top line
 # NOTE: Symbols or \u like sequences work too
-ZSHGOD_FILLER=' '
+typeset -g ZSHGOD_FILLER=' '
 
 # Array with items of main prompts top left side
-ZSHGOD_TOP_LEFT=(
+typeset -ga ZSHGOD_TOP_LEFT=(
 	' '
 	'%B'
-	'$ZSHGOD_TEXT_ONLY_CURRENT_PWD'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_CURRENT_PWD'
 	' '
-	'$ZSHGOD_TEXT_ONLY_VCS_SYSTEM'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_VCS_SYSTEM'
 	' '
-	'$ZSHGOD_TEXT_ONLY_GIT_DIRTY'
-	'$ZSHGOD_TEXT_ONLY_VCS_BRANCH'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_GIT_DIRTY'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_VCS_BRANCH'
 	' '
-	'$ZSHGOD_TEXT_ONLY_VCS_ACTION'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_VCS_ACTION'
 	' '
-	'$ZSHGOD_TEXT_ONLY_GIT_INFO'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_GIT_INFO'
 	' '
-	'$(zshgod_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" yellow)'
+	'$(zshgod.element.text-only.exectime.human-readable "$ZSHGOD_EXECTIME" yellow)'
 	'$b'
 )
 
 # Array with items of main prompts bottom left side
-ZSHGOD_BOTTOM_LEFT=(
+typeset -ga ZSHGOD_BOTTOM_LEFT=(
 	'%B'
 	' '
-	'$ZSHGOD_TEXT_ONLY_ROOT_INDICATOR'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_ROOT_INDICATOR'
 	' '
 	'%b'
 )
 
 # Array with items of main prompts top right side
-ZSHGOD_TOP_RIGHT=(
+typeset -ga ZSHGOD_TOP_RIGHT=(
 	'%B'
-	'$ZSHGOD_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
 	' '
-	'$ZSHGOD_TEXT_ONLY_TIME'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_TIME'
 	'%b'
 	' '
 )
 
 # Array with items of main prompts bottom right side
-ZSHGOD_BOTTOM_RIGHT=(
+typeset -ga ZSHGOD_BOTTOM_RIGHT=(
 	'%B'
-	'$ZSHGOD_TEXT_ONLY_JOBS'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_JOBS'
 	' '
-	'$ZSHGOD_TEXT_ONLY_EXIT_CODE'
+	'$ZSHGOD_ELEMENT_TEXT_ONLY_EXIT_CODE'
 	'%b'
 	' '
 )
