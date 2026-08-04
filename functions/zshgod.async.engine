@@ -60,26 +60,6 @@ function zshgod.async.engine() {
 	# Register a SIGCHLD trap to handle the completion of child processes of requested jobs
 	trap close-idle-coproc CHLD
 
-	# Function to execute async jobs in serialized manner and avoid overlap of outputs
-	serialized-task-runner() {
-		# Name of the async job
-		local jobname=$1
-		shift
-
-		# Capture the entire stdout of the command.
-		local output="$($@)"
-
-		# Acquire mutex (blocks until token is available)
-		local tok
-		read -r -k1 -p tok || return
-
-		# Emit one complete packet while holding the mutex
-		print -r -n -- "$jobname"$'\0'"$output"$'\0'
-
-		# Release mutex
-		print -n -p "$tok"
-	}
-
 	# Terminate all running jobs, note that this function does not
 	# reinstall the child trap
 	terminate-jobs() {
@@ -150,11 +130,11 @@ function zshgod.async.engine() {
 			print -n -p "t"
 		fi
 
-
+		# Make name for jobe using basename of it
 		local jobname=$cmd[1]
 
 		# Run command in the background.
-		serialized-task-runner "$jobname" "${cmd[@]}" &
+		print "$jobname"'\0'"$(eval ${(@)cmd})"$'\0' &
 
 		# Disable guard
 		processing=0
