@@ -120,14 +120,14 @@ function prompt_zshgod_setup() {
 					ZSHGOD_THEME="$theme"
 					# Run prompt's precmd function to guarantee prompt
 					# gets displayed after running the command
-					zle && zle zshgod_refresh
+					prompt_zshgod_precmd
 					return
 				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
 					# Run prompt's precmd function to guarantee prompt
 					# gets displayed after running the command
-					zle && zle zshgod_refresh
+					prompt_zshgod_precmd
 					return
 				else
 					unset ZSHGOD_THEME
