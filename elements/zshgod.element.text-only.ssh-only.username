@@ -4,5 +4,5 @@ function zshgod.element.text-only.ssh-only.username() {
 	local user_fg_color=$1
 	local root_fg_color=$2
 
-	[[ -n $SSH_CONNECTION ]] && zshgod.element.rectangular.username $user_fg_color $root_fg_color
+	[[ -n $SSH_CONNECTION ]] && zshgod.element.text-only.username $user_fg_color $root_fg_color
 }
