@@ -13,7 +13,7 @@ typeset -g ZSHGOD_EXECTIME_MIN=5
 
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
-typeset -g PS2='%B%F{magenta}%_%f%F{yellow} >%f%b '
+typeset -g PS2='%B%F{005}%_%f%F{003} >%f%b '
 
 # Right side of secondry prompt shown when writing multilined commands manually
 # Try to keep it empty to don't clutter view to multilined commands
@@ -21,10 +21,10 @@ typeset -g PS2='%B%F{magenta}%_%f%F{yellow} >%f%b '
 typeset -g RPS2=''
 
 # Prompt used inside of select loop, expanded in same way as PS1
-typeset -g PS3=' %F{green}?#%f '
+typeset -g PS3=' %F{002}?#%f '
 
 # Prompt shown when xtrace, sourcetrace, and etc logging options are set
-typeset -g PS4='%F{magenta}%N%f %F{yellow}%i%f%F{green}:%f '
+typeset -g PS4='%F{005}%N%f %F{003}%i%f%F{002}:%f '
 
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
@@ -50,17 +50,17 @@ autoload -Uz \
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
 # NOTE: exectime related elements shouldn't be runned in asynchronously
 typeset -ga ZSHGOD_USED_FUNCTIONS=(
-	'zshgod.element.text-only.current-pwd blue'
-	'zshgod.element.text-only.vcs.system magenta'
-	'zshgod.element.text-only.vcs.branch green'
-	'zshgod.element.text-only.vcs.action red'
-	'zshgod.element.text-only.git.info green yellow red cyan magenta'
-	'zshgod.element.text-only.git.dirty yellow'
-	'zshgod.element.text-only.root.indicator green red'
-	'zshgod.element.text-only.ssh-only.userandhostname green red yellow blue'
-	'zshgod.element.text-only.time yellow'
-	'zshgod.element.text-only.jobs magenta'
-	'zshgod.element.text-only.exit-code red'
+	'zshgod.element.text-only.current-pwd 004'
+	'zshgod.element.text-only.vcs.system 005'
+	'zshgod.element.text-only.vcs.branch 002'
+	'zshgod.element.text-only.vcs.action 001'
+	'zshgod.element.text-only.git.info 002 003 001 006 005'
+	'zshgod.element.text-only.git.dirty 003'
+	'zshgod.element.text-only.root.indicator 002 001'
+	'zshgod.element.text-only.ssh-only.userandhostname 002 001 003 004'
+	'zshgod.element.text-only.time 003'
+	'zshgod.element.text-only.jobs 005'
+	'zshgod.element.text-only.exit-code 001'
 )
 
 # [ Zsh hook functions ]
@@ -97,7 +97,7 @@ typeset -ga ZSHGOD_TOP_LEFT=(
 	' '
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_GIT_INFO'
 	' '
-	'$(zshgod.element.text-only.exectime.human-readable "$ZSHGOD_EXECTIME" yellow)'
+	'$(zshgod.element.text-only.exectime.human-readable "$ZSHGOD_EXECTIME" 003)'
 	'$b'
 )
 

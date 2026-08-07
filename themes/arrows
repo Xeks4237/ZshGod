@@ -14,7 +14,7 @@ typeset -g ZSHGOD_EXECTIME_MIN=5
 
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
-typeset -g PS2='%B%F{green}%S %K{black}%_%k %s%f%b '
+typeset -g PS2='%B%F{002}%S %K{000}%_%k %s%f%b '
 
 # Right side of secondry prompt shown when writing multilined commands manually
 # Try to keep it empty to don't clutter view to multilined commands
@@ -22,10 +22,10 @@ typeset -g PS2='%B%F{green}%S %K{black}%_%k %s%f%b '
 typeset -g RPS2=''
 
 # Prompt used inside of select loop, expanded in same way as PS1
-typeset -g PS3='%B%F{green}%S %K{black}?#%k %s%f%b '
+typeset -g PS3='%B%F{002}%S %K{000}?#%k %s%f%b '
 
 # Prompt shown when xtrace, sourcetrace, and etc logging options are set
-typeset -g PS4='%F{green}%N%f %F{yellow}%i%f%F{green}:%f '
+typeset -g PS4='%F{002}%N%f %F{003}%i%f%F{002}:%f '
 
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
@@ -50,16 +50,16 @@ autoload -Uz \
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
 # NOTE: exectime related elements shouldn't be runned in asynchronously
 typeset -ga ZSHGOD_USED_FUNCTIONS=(
-	'zshgod.element.arrow.left-to-right.current-pwd blue black'
-	'zshgod.element.arrow.left-to-right.vcs.system magenta black'
-	'zshgod.element.arrow.left-to-right.vcs.branch green black'
-	'zshgod.element.arrow.left-to-right.vcs.action red black'
-	'zshgod.element.arrow.left-to-right.git.info "#6C7086" green yellow red cyan magenta'
-	'zshgod.element.arrow.left-to-right.root.indicator green black red black'
-	'zshgod.element.arrow.right-to-left.ssh-only.userandhostname green black red black yellow black blue black'
-	'zshgod.element.arrow.right-to-left.time yellow black'
-	'zshgod.element.arrow.right-to-left.jobs magenta black'
-	'zshgod.element.arrow.right-to-left.exit-code red black'
+	'zshgod.element.arrow.left-to-right.current-pwd 004 000'
+	'zshgod.element.arrow.left-to-right.vcs.system 005 000'
+	'zshgod.element.arrow.left-to-right.vcs.branch 002 000'
+	'zshgod.element.arrow.left-to-right.vcs.action 001 000'
+	'zshgod.element.arrow.left-to-right.git.info 008 002 003 001 006 005'
+	'zshgod.element.arrow.left-to-right.root.indicator 002 000 001 000'
+	'zshgod.element.arrow.right-to-left.ssh-only.userandhostname 002 000 001 000 003 000 004 000'
+	'zshgod.element.arrow.right-to-left.time 003 000'
+	'zshgod.element.arrow.right-to-left.jobs 005 000'
+	'zshgod.element.arrow.right-to-left.exit-code 001 000'
 )
 
 # [ Zsh hook functions ]
@@ -90,7 +90,7 @@ typeset -ga ZSHGOD_TOP_LEFT=(
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_VCS_BRANCH'
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_VCS_ACTION'
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_GIT_INFO'
-	'$(zshgod.element.arrow.left-to-right.exectime.human-readable "$ZSHGOD_EXECTIME" yellow black)'
+	'$(zshgod.element.arrow.left-to-right.exectime.human-readable "$ZSHGOD_EXECTIME" 003 000)'
 	'%b'
 )
 
