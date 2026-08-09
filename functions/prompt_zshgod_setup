@@ -9,30 +9,27 @@ function prompt_zshgod_setup() {
 	# Sets prompt specific zsh opts like prompt substitution
 	prompt_opts=(bang cr percent sp subst)
 
-	# Ensures that variable $prompt_newline is availible
-	# This variable needs to be set, usually set by promptinit
+	# Ensures that variable $prompt_newline is available
+	# This variable is usually set by promptinit
 	[[ -z $prompt_newline ]] && typeset -g prompt_newline=$'\n%{\r%}'
 
-	# Load zsh modules used in prompt
-	zmodload zsh/datetime
+	# Load or make sure these zsh modules are loaded
 	zmodload zsh/zle
 	zmodload zsh/zpty
+	zmodload zsh/datetime
 	zmodload zsh/parameter
 	zmodload zsh/zutil
 
-	# Load Zsh module related to zsh hooks
+	# Load zsh function related to zsh hooks
 	autoload -Uz add-zsh-hook
 
-	# Load Zsh module related to zsh line editor hooks
+	# Autoload zsh function related to zsh line editor hooks
 	autoload -Uz add-zle-hook-widget
 
-	# Builtin zsh module for getting basic info from vcs systems
+	# Builtin zsh function/tool for getting basic info from vcs systems
 	autoload -Uz vcs_info
 
-	# Autoload generally needed functions which are used in prompt
-	# Autoloading allows to have only used functions in memory
-	# INFO: availible functions are mentioned in help message of prompt: prompt -h zshgod
-	# WARN: Always use '-Uz' to supress alias expansion and to use zsh styly autoloading
+	# Autoload generally needed functions which are always used in zshgod
 	autoload -Uz \
 		prompt_zshgod_precmd \
 		prompt_zshgod_preexec \
@@ -55,7 +52,7 @@ function prompt_zshgod_setup() {
 		zshgod.vimode \
 		zshgod.configure
 
-	# Declare/Update empty precmd and preexec functions used in themes
+	# Empty local precmd and preexec function of previous used theme
 	zshgod.theme.precmd() {}
 	zshgod.theme.preexec() {}
 
@@ -63,88 +60,83 @@ function prompt_zshgod_setup() {
 	add-zsh-hook preexec prompt_zshgod_preexec
 	add-zsh-hook preexec zshgod.theme.preexec
 
-	# Add precmd hook which gets called before showing prompt to some functions
+	# Add precmd hook which gets called ALWAYS before showing prompt
 	add-zsh-hook precmd prompt_zshgod_precmd
 	add-zsh-hook precmd zshgod.theme.precmd
 
-	# Add chpwd hook which gets called after current working directory changes to some function
+	# Add chpwd hook which gets called after current working directory changes
 	add-zsh-hook chpwd prompt_zshgod_chpwd
 
 	# Make zle widget from prompt_zshgod_precmd so it can be called through line editor
 	zle -N zshgod_refresh prompt_zshgod_precmd
 
-	# Add zle hoom to zshgod_refresh function to be call it in certain cases needed for vimode elements
-	# TODO: I should make more efficient way to run than
-	# add-zle-hook-widget zle-line-pre-redraw zshgod_refresh
-
 	# [ Default values for variables ]
-	# Variable which sets minimal amount of exectime after its shown
+	# Variable which sets minimal amount of exectime to actually show exectime elements
 	ZSHGOD_EXECTIME_MIN=5
 
 	# Prevent percentage showing up if output doesn't end with a newline
 	PROMPT_EOL_MARK=''
 
 	# Unset variable to prevent Oh-My-Zsh from overwriting prompt
-	unset ZSHGOD_THEME
+	unset ZSH_THEME
 
 	# [ Handling args ]
-	# Cycle through passed args/flags to function to make easy and fast configuration
+	# Parse first arg for subcommand before actual flags
+	# Needed to separate things like configuration wizard from other flags
+	case "$1" in
+			# Subcommand to open simple configuration wizard/editor
+		configure)
+			zshgod.configure
+			return
+			;;
+
+			# Subcommand to list all currently availible themes
+		themes)
+			ls --color=never --almost-all --format=single-column "$ZSHGOD_HOME/themes/"
+			return
+			;;
+	esac
+
+	# Cycle through passed args/flags to function and do things accordingly
 	for arg in "$@"; do
 		case "$arg" in
-				# SubCommand open simple configuration wizard/editor
-			configure)
-				zshgod.configure
-				return
-				;;
-
-				# SubCommand to display help page of prompt
-				# NOTE: Help page of prompt can also be shown by running: prompt -h zshgod
-			-h|--help|help)
-				prompt -h zshgod
-				return
-				;;
-
-				# SubCommand to list all currently availible themes
-			themes)
-				ls --color=never --almost-all --format=single-column "$ZSHGOD_HOME/themes/"
-				return
-				;;
-
 				# Flag to specify theme or config file for prompt
 			--theme=*)
 				# Check if given theme is the path to config file or theme name
-				# And also set $ZSHGOD_THEME to file of of this theme
+				# And also set $ZSHGOD_THEME to file name or theme name which was chosen
 				local theme="${arg#--theme=}"
 				if [[ -r $theme ]]; then
 					source "$theme"
 					ZSHGOD_THEME="$theme"
-					# Run prompt's precmd function to guarantee prompt
-					# gets displayed after running the command
-					prompt_zshgod_precmd
-					return
 				elif [[ -r "$ZSHGOD_HOME/themes/$theme" ]]; then
 					source "$ZSHGOD_HOME/themes/$theme"
 					ZSHGOD_THEME="$theme"
-					# Run prompt's precmd function to guarantee prompt
-					# gets displayed after running the command
-					prompt_zshgod_precmd
-					return
 				else
 					unset ZSHGOD_THEME
-					print -Pu2 "%F{magenta}ZshGod:%f %F{red}Error:%f %F{yellow}Bad value for%f %F{green}--theme%f %F{yellow}flag:%f %F{blue}$theme%f"
+					print -Pu2 "%F{001}Error:%f %F{003}Bad value:%f %F{004}--theme=%f%U%F{001}$theme%f%u"
+					return 1
 				fi
 				;;
 
-				# Handlers for weird scenarios
-			--*)
-				print -Pu2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
-				return 1
+				# Flag to set minimum amount of exectime in seconds needed
+				# for exectime elements to be shown in prompt
+			--min-exectime=*)
+				# NOTE: Giving non integer values will not cause errors
+				# and it will fallback to 5 seconds if so
+				typeset -g ZSHGOD_EXECTIME_MIN="${arg#--min-exectime=}"
 				;;
 
+				# Handler for unknown/wrong arguments
 			*)
-				print -Pu2 "%F{red}Unknown option(s):%f %F{yellow}$arg%f" >&2
+				print -Pu2 "%F{001}Error:%f %F{003}Unknown argument:%f %U%F{001}$arg%f%u"
 				return 1
 				;;
 		esac
+
+		# Call precmd function of zshgod to guarantee prompt gets showen
+		# NOTE: We call precmd function directly and not by its zle widget zshgod_refresh
+		# because it can be called to slowly on shell startup leading
+		# to prompt not even appearing at all
+		prompt_zshgod_precmd
 	done
 }
