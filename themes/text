@@ -82,7 +82,6 @@ typeset -g ZSHGOD_FILLER=' '
 # Array with items of main prompts top left side
 typeset -ga ZSHGOD_TOP_LEFT=(
 	' '
-	'%B'
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_CURRENT_PWD'
 	' '
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_VCS_SYSTEM'
@@ -100,29 +99,23 @@ typeset -ga ZSHGOD_TOP_LEFT=(
 
 # Array with items of main prompts bottom left side
 typeset -ga ZSHGOD_BOTTOM_LEFT=(
-	'%B'
 	' '
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_ROOT_INDICATOR'
 	' '
-	'%b'
 )
 
 # Array with items of main prompts top right side
 typeset -ga ZSHGOD_TOP_RIGHT=(
-	'%B'
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_SSH_ONLY_USERANDHOSTNAME'
 	' '
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_TIME'
-	'%b'
 	' '
 )
 
 # Array with items of main prompts bottom right side
 typeset -ga ZSHGOD_BOTTOM_RIGHT=(
-	'%B'
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_JOBS'
 	' '
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_EXIT_CODE'
-	'%b'
 	' '
 )

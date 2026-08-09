@@ -51,7 +51,7 @@ typeset -ga ZSHGOD_USED_FUNCTIONS=(
 	'zshgod.element.arrow.left-to-right.vcs.system 005 000'
 	'zshgod.element.arrow.left-to-right.vcs.branch 002 000'
 	'zshgod.element.arrow.left-to-right.vcs.action 001 000'
-	'zshgod.element.arrow.left-to-right.git.info 008 002 003 001 006 005'
+	'zshgod.element.arrow.left-to-right.git.info 000 002 003 001 006 005'
 	'zshgod.element.arrow.left-to-right.root.indicator 002 000 001 000'
 	'zshgod.element.arrow.right-to-left.ssh-only.userandhostname 002 000 001 000 003 000 004 000'
 	'zshgod.element.arrow.right-to-left.time 003 000'
@@ -80,7 +80,6 @@ typeset -g ZSHGOD_FILLER=$'\u2500'
 
 # Array with items of main prompts top left side
 typeset -ga ZSHGOD_TOP_LEFT=(
-	'%B'
 	'┌'
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_CURRENT_PWD'
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_VCS_SYSTEM'
@@ -88,32 +87,25 @@ typeset -ga ZSHGOD_TOP_LEFT=(
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_VCS_ACTION'
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_GIT_INFO'
 	'$(zshgod.element.arrow.left-to-right.exectime.human-readable "$ZSHGOD_EXECTIME" 003 000)'
-	'%b'
 )
 
 # Array with items of main prompts bottom left side
 typeset -ga ZSHGOD_BOTTOM_LEFT=(
-	'%B'
 	'└'
 	'$ZSHGOD_ELEMENT_ARROW_LEFT_TO_RIGHT_ROOT_INDICATOR'
 	' '
-	'%b'
 )
 
 # Array with items of main prompts top right side
 typeset -ga ZSHGOD_TOP_RIGHT=(
-	'%B'
 	'$ZSHGOD_ELEMENT_ARROW_RIGHT_TO_LEFT_SSH_ONLY_USERANDHOSTNAME'
 	'┐'
-	'%b'
 )
 
 # Array with items of main prompts bottom right side
 typeset -ga ZSHGOD_BOTTOM_RIGHT=(
-	'%B'
 	'$ZSHGOD_ELEMENT_ARROW_RIGHT_TO_LEFT_EXIT_CODE'
 	'$ZSHGOD_ELEMENT_ARROW_RIGHT_TO_LEFT_JOBS'
 	'$ZSHGOD_ELEMENT_ARROW_RIGHT_TO_LEFT_TIME'
 	'┘'
-	'%b'
 )

@@ -50,7 +50,7 @@ typeset -ga ZSHGOD_USED_FUNCTIONS=(
 	'zshgod.element.rectangular.vcs.system 005 000'
 	'zshgod.element.rectangular.vcs.branch 002 000'
 	'zshgod.element.rectangular.vcs.action 001 000'
-	'zshgod.element.rectangular.git.info 008 002 003 001 006 005'
+	'zshgod.element.rectangular.git.info 000 002 003 001 006 005'
 	'zshgod.element.rectangular.root.indicator 002 000 001 000'
 	'zshgod.element.rectangular.ssh-only.userandhostname 002 000 001 000 003 000 004 000'
 	'zshgod.element.rectangular.time 003 000'
@@ -80,39 +80,31 @@ typeset -g ZSHGOD_FILLER=$'\u2500'
 # Array with items of main prompts top left side
 typeset -ga ZSHGOD_TOP_LEFT=(
 	'┌'
-	'%B'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_VCS_SYSTEM'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_VCS_BRANCH'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_VCS_ACTION'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_GIT_INFO'
 	'$(zshgod.element.rectangular.exectime.human-readable "$ZSHGOD_EXECTIME" 003 000)'
-	'$b'
 )
 
 # Array with items of main prompts bottom left side
 typeset -ga ZSHGOD_BOTTOM_LEFT=(
 	'└'
-	'%B'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_ROOT_INDICATOR'
 	' '
-	'%b'
 )
 
 # Array with items of main prompts top right side
 typeset -ga ZSHGOD_TOP_RIGHT=(
-	'%B'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_SSH_ONLY_USERANDHOSTNAME'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_TIME'
-	'%b'
 	'┐'
 )
 
 # Array with items of main prompts bottom right side
 typeset -ga ZSHGOD_BOTTOM_RIGHT=(
-	'%B'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_JOBS'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_EXIT_CODE'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_CURRENT_PWD'
-	'%b'
 	'┘'
 )
