@@ -8,9 +8,6 @@
 # zstyle ':vcs_info:*' disable git svn
 zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
-# Variable which sets minimal amount of exectime after its shown
-typeset -g ZSHGOD_EXECTIME_MIN=5
-
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
 typeset -g PS2='%B%F{005}%_%f%F{003} >%f%b '
