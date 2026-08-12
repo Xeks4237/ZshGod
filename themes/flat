@@ -10,7 +10,7 @@ zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
-typeset -g PS2='%B%F{000}%K{005} %_ %k%f%b '
+typeset -g PS2='%F{000}%K{005} %_ %k%f '
 
 # Right side of secondry prompt shown when writing multilined commands manually
 # Try to keep it empty to don't clutter view to multilined commands
@@ -18,7 +18,7 @@ typeset -g PS2='%B%F{000}%K{005} %_ %k%f%b '
 typeset -g RPS2=''
 
 # Prompt used inside of select loop, expanded in same way as PS1
-typeset -g PS3=' %B%F{000}%K{002} ?# %k%f%b '
+typeset -g PS3=' %F{000}%K{002} ?# %k%f '
 
 # Prompt shown when xtrace, sourcetrace, and etc logging options are set
 typeset -g PS4='%F{005}%N%f %F{003}%i%f%F{002}:%f '

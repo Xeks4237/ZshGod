@@ -10,7 +10,7 @@ zstyle ':vcs_info:*' enable bzr cdv cvs darcs fossil git hg mtn p4 svk svn tla
 
 # Left side of secondry prompt shown when writing multilined commands manually
 # Expanded in same way as PS1
-typeset -g PS2='%B%F{005}%_%f%F{003} >%f%b '
+typeset -g PS2='%F{005}%_%f%F{003} >%f '
 
 # Right side of secondry prompt shown when writing multilined commands manually
 # Try to keep it empty to don't clutter view to multilined commands
