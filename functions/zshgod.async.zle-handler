@@ -2,10 +2,6 @@
 # This is called through zle file descriptors of zsh defined in
 # zshgod.async.run function
 function zshgod.async.zle-handler() {
-	# Redisplay/Update prompt to show the changes
-	zle redisplay
-	zle reset-prompt
-
 	# If function gets any errors as second argument by zsh then return and do nothing
 	# Also first argument passed to this function by zsh is not needed for what we want to do
 	if [[ -n $2 ]]; then
@@ -31,8 +27,4 @@ function zshgod.async.zle-handler() {
 
 	# Send result to callback function
 	zshgod.async.callback "$jobname" "$output"
-
-	# Redisplay/Update prompt to show the changes
-	zle redisplay
-	zle reset-prompt
 }
