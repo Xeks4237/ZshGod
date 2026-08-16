@@ -33,7 +33,7 @@ function zshgod.async.callback() {
 	# if yes make actual $ZSHGOD_FILLER_LINE, if not set ZSHGOD_FILLER_LINE to nothing
 	# It is needed if user wants to set minimal length for filler line to get shown
 	if (( pad_len > ZSHGOD_FILLER_MIN )); then
-		typeset -g ZSHGOD_FILLER_LINE=${(pl.$pad_len..$ZSHGOD_FILLER.)}
+		typeset -g ZSHGOD_FILLER_LINE="${(pl.$pad_len..$ZSHGOD_FILLER.)}"
 	else
 		typeset -g ZSHGOD_FILLER_LINE=''
 	fi
