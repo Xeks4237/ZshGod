@@ -7,16 +7,16 @@ function zshgod.generic() {
 
 	case $style in
 		text)
-			print "%F{$fg_color}$info%f"
+			print -n "%F{$fg_color}$info%f"
 			;;
 		rectangular)
-			print "%F{$fg_color}%K{$bg_color} $info %k%f"
+			print -n "%F{$fg_color}%K{$bg_color} $info %k%f"
 			;;
 		arrow.left-to-right)
-			print "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
+			print -n "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
 			;;
 		arrow.right-to-left)
-			print "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
+			print -n "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
 			;;
 	esac
 }
