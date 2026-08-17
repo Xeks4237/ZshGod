@@ -1,9 +1,0 @@
-# Function which returns current action of current vcs
-function zshgod.element.arrow.right-to-left.vcs.action() {
-	# Allow passing args to function for changing foreground and background colors
-	local bg_color=$1
-	local fg_color=$2
-
-	[[ -n $(zshgod.vcs.action) ]] || return
-	zshgod.generic arrow.right-to-left "$(zshgod.vcs.action)" "$bg_color" "$fg_color"
-}

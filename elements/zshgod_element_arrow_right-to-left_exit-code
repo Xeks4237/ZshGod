@@ -1,0 +1,8 @@
+# Function for showing rectangular element with exit code of previous command
+function zshgod_element_arrow_right-to-left_exit-code() {
+	# Allow passing args to function for changing foreground and background colors
+	local bg_color=$1
+	local fg_color=$2
+
+	print "%(?,,$(zshgod_generic arrow_right-to-left '%?' $bg_color $fg_color))"
+}

@@ -12,10 +12,10 @@ function zshgod_generic() {
 		rectangular)
 			print -n "%F{$fg_color}%K{$bg_color} $info %k%f"
 			;;
-		arrow.left-to-right)
+		arrow_left-to-right)
 			print -n "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
 			;;
-		arrow.right-to-left)
+		arrow_right-to-left)
 			print -n "%F{$bg_color}%S %K{$fg_color}$info%k %s%f"
 			;;
 	esac
