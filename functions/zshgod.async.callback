@@ -27,7 +27,7 @@ function zshgod.async.callback() {
 	# of both top left and top right side of prompt from terminal length
 	# defined by $COLUMNS, We also subtract $ZLE_RPROMPT_INDENT from it too
 	# in case user has indentation of right side of prompt from terminal border
-	local -i pad_len=$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))
+	local -i pad_len="$(( COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1} ))"
 
 	# Check if resulted length is above $ZSHGOD_FILLER_MIN
 	# if yes make actual $ZSHGOD_FILLER_LINE, if not set ZSHGOD_FILLER_LINE to nothing
