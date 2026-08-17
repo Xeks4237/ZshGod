@@ -14,8 +14,10 @@ function zshgod.async.callback() {
 	# and then put $output given to this function in to newly created variable
 	# Also it makes new variable to be uppercase with underline _ intead of middleline -
 	# Example: foo_Function-Boo-Bar => FOO_FUNCTION_BOO_BAR
-	local varname="${${${jobname//-/_}//./_}:u}"
-	typeset -g "${varname}"="$output"
+	# Also we redirect any errors which can accure when setting this variables
+	# It is needed to don't get all those errors clatter the screen if they happen
+	local varname="${${${jobname//-/_}//./_}:u}" 2> /dev/null
+	typeset -g "${varname}"="$output" 2> /dev/null
 
 	# [ Generating $ZSHGOD_FILLER_LINE ]
 	# Generate $ZSHGOD_FILLER_LINE by calculating length of top right and top left
