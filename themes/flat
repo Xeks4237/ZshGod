@@ -26,18 +26,18 @@ typeset -g PS4='%F{005}%N%f %F{003}%i%f%F{002}:%f '
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
 autoload -Uz \
-	zshgod.element.rectangular.current-pwd \
-	zshgod.element.rectangular.vcs.system \
-	zshgod.element.rectangular.vcs.branch \
-	zshgod.element.rectangular.vcs.action \
-	zshgod.element.rectangular.git.info \
-	zshgod.element.rectangular.exectime.human-readable \
-	zshgod.element.rectangular.root.indicator \
-	zshgod.element.rectangular.userandhostname \
-	zshgod.element.rectangular.ssh-only.userandhostname \
-	zshgod.element.rectangular.time \
-	zshgod.element.rectangular.jobs \
-	zshgod.element.rectangular.exit-code
+	zshgod_element_rectangular_current-pwd \
+	zshgod_element_rectangular_vcs_system \
+	zshgod_element_rectangular_vcs_branch \
+	zshgod_element_rectangular_vcs_action \
+	zshgod_element_rectangular_git_info \
+	zshgod_element_rectangular_exectime_human-readable \
+	zshgod_element_rectangular_root_indicator \
+	zshgod_element_rectangular_userandhostname \
+	zshgod_element_rectangular_ssh-only_userandhostname \
+	zshgod_element_rectangular_time \
+	zshgod_element_rectangular_jobs \
+	zshgod_element_rectangular_exit-code
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -46,26 +46,26 @@ autoload -Uz \
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
 # NOTE: exectime related elements shouldn't be runned in asynchronously
 typeset -ga ZSHGOD_USED_FUNCTIONS=(
-	'zshgod.element.rectangular.current-pwd 004 000'
-	'zshgod.element.rectangular.vcs.system 005 000'
-	'zshgod.element.rectangular.vcs.branch 002 000'
-	'zshgod.element.rectangular.vcs.action 001 000'
-	'zshgod.element.rectangular.git.info 000 002 003 001 006 005'
-	'zshgod.element.rectangular.root.indicator 002 000 001 000'
-	'zshgod.element.rectangular.ssh-only.userandhostname 002 000 001 000 003 000 004 000'
-	'zshgod.element.rectangular.time 003 000'
-	'zshgod.element.rectangular.jobs 005 000'
-	'zshgod.element.rectangular.exit-code 001 000'
+	'zshgod_element_rectangular_current-pwd 004 000'
+	'zshgod_element_rectangular_vcs_system 005 000'
+	'zshgod_element_rectangular_vcs_branch 002 000'
+	'zshgod_element_rectangular_vcs_action 001 000'
+	'zshgod_element_rectangular_git_info 000 002 003 001 006 005'
+	'zshgod_element_rectangular_root_indicator 002 000 001 000'
+	'zshgod_element_rectangular_ssh-only_userandhostname 002 000 001 000 003 000 004 000'
+	'zshgod_element_rectangular_time 003 000'
+	'zshgod_element_rectangular_jobs 005 000'
+	'zshgod_element_rectangular_exit-code 001 000'
 )
 
 # [ Zsh hook functions ]
 # preexec function which gets called before every COMMAND
-zshgod.theme.preexec() {}
+zshgod_theme_preexec() {}
 
 # precmd function which gets called after commands and before showing prompt
-zshgod.theme.precmd() {
+zshgod_theme_precmd() {
 	# Function/Command to set title of the terminal
-	zshgod.set.title -P '%1~'
+	zshgod_set_title -P '%1~'
 }
 
 # [ Main prompt ]
@@ -84,7 +84,7 @@ typeset -ga ZSHGOD_TOP_LEFT=(
 	'$ZSHGOD_ELEMENT_RECTANGULAR_VCS_BRANCH'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_VCS_ACTION'
 	'$ZSHGOD_ELEMENT_RECTANGULAR_GIT_INFO'
-	'$(zshgod.element.rectangular.exectime.human-readable "$ZSHGOD_EXECTIME" 003 000)'
+	'$(zshgod_element_rectangular_exectime_human-readable "$ZSHGOD_EXECTIME" 003 000)'
 )
 
 # Array with items of main prompts bottom left side

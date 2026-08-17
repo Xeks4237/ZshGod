@@ -26,19 +26,19 @@ typeset -g PS4='%F{005}%N%f %F{003}%i%f%F{002}:%f '
 # [ Functions used in prompt ]
 # Autoload functions used in prompt
 autoload -Uz \
-	zshgod.element.text-only.current-pwd \
-	zshgod.element.text-only.vcs.system \
-	zshgod.element.text-only.vcs.branch \
-	zshgod.element.text-only.vcs.action \
-	zshgod.element.text-only.git.info \
-	zshgod.element.text-only.git.dirty \
-	zshgod.element.text-only.exectime.human-readable \
-	zshgod.element.text-only.root.indicator \
-	zshgod.element.text-only.userandhostname \
-	zshgod.element.text-only.ssh-only.userandhostname \
-	zshgod.element.text-only.time \
-	zshgod.element.text-only.jobs \
-	zshgod.element.text-only.exit-code
+	zshgod_element_text-only_current-pwd \
+	zshgod_element_text-only_vcs_system \
+	zshgod_element_text-only_vcs_branch \
+	zshgod_element_text-only_vcs_action \
+	zshgod_element_text-only_git_info \
+	zshgod_element_text-only_git_dirty \
+	zshgod_element_text-only_exectime_human-readable \
+	zshgod_element_text-only_root_indicator \
+	zshgod_element_text-only_userandhostname \
+	zshgod_element_text-only_ssh-only_userandhostname \
+	zshgod_element_text-only_time \
+	zshgod_element_text-only_jobs \
+	zshgod_element_text-only_exit-code
 
 # Array with functions and args for them which are used in main prompt
 # This functions going to be used asynchronously in prompt
@@ -47,27 +47,27 @@ autoload -Uz \
 # For Example: ZsH_fOo-BoO => ZSH_FOO_BOO
 # NOTE: exectime related elements shouldn't be runned in asynchronously
 typeset -ga ZSHGOD_USED_FUNCTIONS=(
-	'zshgod.element.text-only.current-pwd 004'
-	'zshgod.element.text-only.vcs.system 005'
-	'zshgod.element.text-only.vcs.branch 002'
-	'zshgod.element.text-only.vcs.action 001'
-	'zshgod.element.text-only.git.info 002 003 001 006 005'
-	'zshgod.element.text-only.git.dirty 003'
-	'zshgod.element.text-only.root.indicator 002 001'
-	'zshgod.element.text-only.ssh-only.userandhostname 002 001 003 004'
-	'zshgod.element.text-only.time 003'
-	'zshgod.element.text-only.jobs 005'
-	'zshgod.element.text-only.exit-code 001'
+	'zshgod_element_text-only_current-pwd 004'
+	'zshgod_element_text-only_vcs_system 005'
+	'zshgod_element_text-only_vcs_branch 002'
+	'zshgod_element_text-only_vcs_action 001'
+	'zshgod_element_text-only_git_info 002 003 001 006 005'
+	'zshgod_element_text-only_git_dirty 003'
+	'zshgod_element_text-only_root_indicator 002 001'
+	'zshgod_element_text-only_ssh-only_userandhostname 002 001 003 004'
+	'zshgod_element_text-only_time 003'
+	'zshgod_element_text-only_jobs 005'
+	'zshgod_element_text-only_exit-code 001'
 )
 
 # [ Zsh hook functions ]
 # preexec function which gets called before every COMMAND
-zshgod.theme.preexec() {}
+zshgod_theme_preexec() {}
 
 # precmd function which gets called after commands and before showing prompt
-zshgod.theme.precmd() {
+zshgod_theme_precmd() {
 	# Function/Command to set title of the terminal
-	zshgod.set.title -P '%1~'
+	zshgod_set_title -P '%1~'
 }
 
 # [ Main prompt ]
@@ -93,7 +93,7 @@ typeset -ga ZSHGOD_TOP_LEFT=(
 	' '
 	'$ZSHGOD_ELEMENT_TEXT_ONLY_GIT_INFO'
 	' '
-	'$(zshgod.element.text-only.exectime.human-readable "$ZSHGOD_EXECTIME" 003)'
+	'$(zshgod_element_text-only_exectime_human-readable "$ZSHGOD_EXECTIME" 003)'
 	'$b'
 )
 
