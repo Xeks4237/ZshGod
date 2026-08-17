@@ -36,33 +36,33 @@ function prompt_zshgod_setup() {
 		prompt_zshgod_chpwd \
 		prompt_zshgod_preview \
 		prompt_zshgod_help \
-		zshgod.set.title \
-		zshgod.set.nerd-icons \
-		zshgod.length-calculator \
-		zshgod.middle-line \
-		zshgod.generic \
-		zshgod.vcs.system \
-		zshgod.vcs.branch \
-		zshgod.vcs.action \
-		zshgod.vi-mode \
-		zshgod.async.engine \
-		zshgod.async.run \
-		zshgod.async.zle-handler \
-		zshgod.async.callback \
-		zshgod.vimode \
-		zshgod.configure
+		zshgod_set_title \
+		zshgod_set_nerd-icons \
+		zshgod_length-calculator \
+		zshgod_middle-line \
+		zshgod_generic \
+		zshgod_vcs_system \
+		zshgod_vcs_branch \
+		zshgod_vcs_action \
+		zshgod_vi-mode \
+		zshgod_async_engine \
+		zshgod_async_run \
+		zshgod_async_zle-handler \
+		zshgod_async_callback \
+		zshgod_vimode \
+		zshgod_configure
 
 	# Empty local precmd and preexec function of previous used theme
-	zshgod.theme.precmd() {}
-	zshgod.theme.preexec() {}
+	zshgod_theme_precmd() {}
+	zshgod_theme_preexec() {}
 
 	# Add preexec hook which gets called before running any COMMAND to some functions
 	add-zsh-hook preexec prompt_zshgod_preexec
-	add-zsh-hook preexec zshgod.theme.preexec
+	add-zsh-hook preexec zshgod_theme_preexec
 
 	# Add precmd hook which gets called ALWAYS before showing prompt
 	add-zsh-hook precmd prompt_zshgod_precmd
-	add-zsh-hook precmd zshgod.theme.precmd
+	add-zsh-hook precmd zshgod_theme_precmd
 
 	# Add chpwd hook which gets called after current working directory changes
 	add-zsh-hook chpwd prompt_zshgod_chpwd
@@ -86,7 +86,7 @@ function prompt_zshgod_setup() {
 	case "$1" in
 			# Subcommand to open simple configuration wizard/editor
 		configure)
-			zshgod.configure
+			zshgod_configure
 			return
 			;;
 

@@ -1,5 +1,5 @@
 # Function which allows to set title of terminal where zsh is running
-function zshgod.set.title() {
+function zshgod_set_title() {
 	# Emacs terminal does not support setting the title
 	(( ${+EMACS} || ${+INSIDE_EMACS} )) && return
 

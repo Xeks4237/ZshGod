@@ -1,7 +1,7 @@
 # Function which sends output of async engine to callback function
 # This is called through zle file descriptors of zsh defined in
-# zshgod.async.run function
-function zshgod.async.zle-handler() {
+# zshgod_async_run function
+function zshgod_async_zle-handler() {
 	# If function gets any errors as second argument by zsh then return and do nothing
 	# Also first argument passed to this function by zsh is not needed for what we want to do
 	if [[ -n $2 ]]; then
@@ -26,5 +26,5 @@ function zshgod.async.zle-handler() {
 	output=${output%$'\0'}
 
 	# Send result to callback function
-	zshgod.async.callback "$jobname" "$output"
+	zshgod_async_callback "$jobname" "$output"
 }

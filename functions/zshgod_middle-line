@@ -4,11 +4,11 @@
 # right side of prompt and to easily customize stuff in between of
 # prompt's sides.
 #
-# Uses zshgod.length-calculator to measure real width of both sides
+# Uses zshgod_length-calculator to measure real width of both sides
 # First argument sets LEFT
 # Second argument sets RIGHT
 # Third argument sets character/string which going to be used
-function zshgod.middle-line() {
+function zshgod_middle-line() {
 	local -i left_len=$(zshgod_length-calculator $1)
 
 	local -i right_len=$(zshgod_length-calculator $2)

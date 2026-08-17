@@ -1,5 +1,5 @@
 # Function which returns current vi mode of prompt
-function zshgod.vi-mode() {
+function zshgod_vi-mode() {
 	if (( REGION_ACTIVE )); then
 		if (( REGION_ACTIVE == 2 )); then
 			print 'V-LINE'

@@ -10,9 +10,9 @@
 # in environment of async engine where functions/commands gonna be
 # runned just make wrapper function for it, you can also make/pass
 # wrapper function directly in this function
-function zshgod.async.run() {
+function zshgod_async_run() {
 	# Check and start zpty with async engine if not already running
-	zpty -t zpty_of_zshgod_async_engine 2> /dev/null || zpty -b zpty_of_zshgod_async_engine zshgod.async.engine
+	zpty -t zpty_of_zshgod_async_engine 2> /dev/null || zpty -b zpty_of_zshgod_async_engine zshgod_async_engine
 
 	# Send the command to async engine with null character in end
 	zpty -w zpty_of_zshgod_async_engine "$*" $'\0'

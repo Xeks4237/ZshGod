@@ -1,5 +1,5 @@
 # Function which sets $ZSHGOD_ICONS array with icons and glyphs from nerd fonts
-function zshgod.set.nerd-icons() {
+function zshgod_set_nerd-icons() {
 	typeset -gA ZSHGOD_ICONS=(
 		[NERD_FA_FA]=$'\uF2B4' # 
 		[NERD_COD_ACCOUNT]=$'\uEB99' # 

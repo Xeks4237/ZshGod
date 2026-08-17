@@ -1,5 +1,5 @@
-# Function which is used as async engine of zshgod by zshgod.async.run function
-function zshgod.async.engine() {
+# Function which is used as async engine of zshgod by zshgod_async_run function
+function zshgod_async_engine() {
 	# [ Preparing zpty pseudo-terminal's environment ]
 	# Reset all options to defaults inside async worker.
 	emulate -R zsh

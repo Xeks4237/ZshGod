@@ -1,8 +1,8 @@
 # Function which is used as callback function for async engine of zshgod
-# This function is called by zshgod.async.zle-handler and should be
+# This function is called by zshgod_async_zle-handler and should be
 # mostly used in interactive zsh shell
-function zshgod.async.callback() {
-	# Output passed to this callback function by zshgod.async.zle-handler
+function zshgod_async_callback() {
+	# Output passed to this callback function by zshgod_async_zle-handler
 	# becomes just a null character if async job in async engine returned no output
 	# Output given from command/function runned in async engine
 	local output="$2"
@@ -21,9 +21,9 @@ function zshgod.async.callback() {
 
 	# [ Generating $ZSHGOD_FILLER_LINE ]
 	# Generate $ZSHGOD_FILLER_LINE by calculating length of top right and top left
-	# of prompt using zshgod.length-calculator function
-	local -i left_len=$(zshgod.length-calculator "${(ej::)ZSHGOD_TOP_LEFT}")
-	local -i right_len=$(zshgod.length-calculator "${(ej::)ZSHGOD_TOP_RIGHT}")
+	# of prompt using zshgod_length-calculator function
+	local -i left_len=$(zshgod_length-calculator "${(ej::)ZSHGOD_TOP_LEFT}")
+	local -i right_len=$(zshgod_length-calculator "${(ej::)ZSHGOD_TOP_RIGHT}")
 
 	# Get needed length for $ZSHGOD_FILLER_LINE by subtracting length
 	# of both top left and top right side of prompt from terminal length
