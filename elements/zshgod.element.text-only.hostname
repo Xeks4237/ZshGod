@@ -1,7 +1,0 @@
-# Function which returns colored arrow with current hostname
-function zshgod.element.text-only.hostname() {
-	# Allow passing args to function for changing foreground color
-	local fg_color=$1
-
-	print "%F{$fg_color}%m%f"
-}

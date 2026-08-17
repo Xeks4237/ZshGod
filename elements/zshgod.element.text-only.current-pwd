@@ -1,7 +1,0 @@
-# Function for showing arrow with current working directory
-function zshgod.element.text-only.current-pwd() {
-	# Allow passing args to function for changing foreground color
-	local fg_color=$1
-
-	print "%F{$fg_color}%~%f"
-}

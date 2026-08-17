@@ -1,8 +1,0 @@
-# Function for showing rectangular element with exit code of previous command
-function zshgod.element.rectangular.exit-code() {
-	# Allow passing args to function for changing foreground and background colors
-	local bg_color=$1
-	local fg_color=$2
-
-	print "%(?,,$(zshgod.generic rectangular '%?' $bg_color $fg_color))"
-}

@@ -1,8 +1,0 @@
-# Function which shows colored arrow with different color if current user is root
-function zshgod.element.text-only.root-indicator () {
-	# Allow passing args to function for changing foreground color
-	local user_fg_color=$1
-	local root_fg_color=$2
-
-	print "%(!,%F{$root_fg_color}#%f,%F{$user_fg_color}\$%f)"
-}
