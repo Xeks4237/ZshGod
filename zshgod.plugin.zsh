@@ -1,7 +1,7 @@
 # [ Title with useful information ]
 # Zsh-God Prompt
-# Made by Xeks4237: https://gitlab.com/Xeks4237
-# Licensed under: MIT License
+# Made by Xeks4237: https://codeberg.org/Xeks4237
+# Licensed under: 0BSD License
 
 # [ Sourcing and Loading extra stuff ]
 # Standarized way of handling plugin directory,
